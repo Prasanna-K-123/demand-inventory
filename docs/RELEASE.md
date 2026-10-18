@@ -1,13 +1,11 @@
-# Release preparation — 18 October 2026
+# v 1.0.0 research release
 
-Audited data, bounded forecasts, final evaluation, operating simulation and reports A–E are complete. Public release gate F remains open.
+[Open the live explorer](https://prasanna-k-123.github.io/demand-inventory/).
 
-The explorer selects the nine saved model/budget combinations. Twelve script checks pass, including changes to affected order quantities under tighter capital. Report links and their generator now resolve inside the static hosting root. Five HTML pages and 15 local links pass static checks. Scientific model/data hashes remain unchanged.
+Actual browser verification completed 18 October 2026 at desktop and 375/320-pixel iframe widths, with native keyboard controls and the linked evidence checked. The iframe tests use real CSS layout widths; they do not emulate a phone OS, touch input or a screen reader. Detailed observations are in [browser_verification.json](../reports/browser_verification.json).
 
-Remaining work is bounded:
+Nine scientific tests; twelve explorer-script checks; all eleven frozen files, the final analysis and three report/explorer outputs reproduce byte for byte after fresh fitting of the same four fixed models from the cached pinned ZIP. No fresh-network or measured-savings claim.
 
-1. Prepare the public source tree with attribution, excluding raw M5 data and fitted artifacts from the code release. Use pinned reacquisition and the documented fixed sample rather than claiming a raw-data license.
-2. Check actual browser controls at desktop/mobile widths, native keyboard operation and report links; correct any observed defects. Do not equate the minimal DOM harness with browser verification.
-3. Publish the checked commit, enable static hosting for `main/docs`, create a verified version tag and check the live site. Publication and hosting await specific owner approval; the signed-in browser is available for administration.
+The release tag identifies the final checked source commit. Raw source observations, credentials and private fitted artifacts are excluded. The explorer selects fixed aggregate research results or explicitly hypothetical assumptions; it does not refit or claim deployment.
 
-Prepared description: A historical probabilistic-demand and constrained inventory study on 210 M5 item/store series. Fixed quantile boosting reduces final mean pinball loss by 36.53% against the development-selected Croston baseline. Forecast, cost and service rankings are evaluated separately under common hypothetical capital/capacity rules. Includes a frozen future test, dependence-aware uncertainty, inventory conservation checks, technical memo and interactive budget explorer. Simulated penalties are not measured retailer savings.
+Profile integration is tracked separately from this project release.

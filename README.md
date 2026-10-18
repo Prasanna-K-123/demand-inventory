@@ -24,4 +24,8 @@ The public source tree excludes raw sales rows, the processed panel and fitted a
 
 Sales are observed; latent demand, inventory, costs, stockouts and lead times are not. Operating outcomes are simulations with explicit common capital/capacity constraints, not measured savings or a deployment. The final comparison spans only 15 weekly origins. Fourteen-day forecasting targets overlap; uncertainty resamples origins with all series together. This is not an official M5 leaderboard submission/rank.
 
-The explorer has script and static-link checks. Rendered/live browser verification, public hosting and a version tag remain in the [release checklist](docs/RELEASE.md). See the [protocol](PROTOCOL.md) and [source guide](docs/SOURCES.md) for the fixed study and its data-use boundaries.
+The [live explorer](https://prasanna-k-123.github.io/demand-inventory/) has passed desktop, 375/320-pixel layout,
+keyboard-control and report-link checks. A separate clean public-source run
+retrained all four fixed quantile models from the pinned cached M5 ZIP; all
+eleven frozen files and the final analysis reproduce byte for byte. See the
+[release record](docs/RELEASE.md). See the [protocol](PROTOCOL.md) and [source guide](docs/SOURCES.md) for the fixed study and its data-use boundaries.
