@@ -24,4 +24,4 @@ The public source tree excludes raw sales rows, the processed panel and fitted a
 
 Sales are observed; latent demand, inventory, costs, stockouts and lead times are not. Operating outcomes are simulations with explicit common capital/capacity constraints, not measured savings or a deployment. The final comparison spans only 15 weekly origins. Fourteen-day forecasting targets overlap; uncertainty resamples origins with all series together. This is not an official M5 leaderboard submission/rank.
 
-The offline page has script checks; rendered/live browser verification, public repository/tag and live hosting remain release gate F. Scientific results and explanations are complete independently of that release gate. See [protocol](PROTOCOL.md) and [source guide](docs/SOURCES.md).
+The explorer has script and static-link checks. Rendered/live browser verification, public hosting and a version tag remain in the [release checklist](docs/RELEASE.md). See the [protocol](PROTOCOL.md) and [source guide](docs/SOURCES.md) for the fixed study and its data-use boundaries.
