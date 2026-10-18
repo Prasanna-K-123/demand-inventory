@@ -1,0 +1,10 @@
+__pycache__/
+.pytest_cache/
+node_modules/
+.env*
+data/
+artifacts/
+*.joblib
+*.zip
+RESUME.md
+RECOVERY_MANIFEST.json

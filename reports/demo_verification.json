@@ -1,0 +1,7 @@
+{
+  "checks_passed": 12,
+  "scope": "Actual inline script in Node VM and a minimal DOM; not rendered browser/mobile/accessibility verification",
+  "all_nine_model_budget_combinations": true,
+  "source_evidence_equal": true,
+  "tighter_budget_changes_saved_orders": true
+}

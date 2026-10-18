@@ -1,0 +1,9 @@
+{
+  "method": "Deterministic aggregate reevaluation from frozen saved artifacts, same environment; no retraining",
+  "byte_identical": true,
+  "sha256": {
+    "reports/final.json": "31768163c8d2244c6f5def74e8ce82da4771691697a9255e4cc766d23f824863",
+    "reports/verification.json": "27d5c3808766769318c9ee35455d068af0dfe518da1ee1d804bf97e0fa2e8308"
+  },
+  "fresh_source_retraining": false
+}

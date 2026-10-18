@@ -1,0 +1,63 @@
+{
+  "date_range": [
+    "2011-01-29",
+    "2016-05-22"
+  ],
+  "days": 1941,
+  "departments": 7,
+  "duplicate_series_keys": 0,
+  "items": 70,
+  "latent_demand_inventory_costs_observed": false,
+  "member_bytes": {
+    "calendar.csv": 112477,
+    "sales_test_evaluation.csv": 3260569,
+    "sales_test_validation.csv": 2955524,
+    "sales_train_evaluation.csv": 121168898,
+    "sales_train_validation.csv": 119440050,
+    "sell_prices.csv": 237073689,
+    "weights_evaluation.csv": 2257736,
+    "weights_validation.csv": 2242706
+  },
+  "member_sha256": {
+    "calendar.csv": "568d0fe5f41790142379698732908e4e57432c1c6396f3f59fb880a9c2b54231",
+    "sales_test_evaluation.csv": "73773250dd7f7464f7a1bf3a54874dc7fc8cbb49885cd0bf1efe09bf48fd930d",
+    "sales_test_validation.csv": "964f8ff2c36ff8763fc1bfeb4753f081abf70923d0209e78bc4dd470d49e438a",
+    "sales_train_evaluation.csv": "c21a519596680feb86f27a9e62f6c8b583f8be60c2c195f080ae8ca2990af2b7",
+    "sales_train_validation.csv": "a4bb02b2f900543fdc78f5b4b4dc32eb606ae78bbb98baf088a976aa7f8c1d07",
+    "sell_prices.csv": "5c7cf045b1abbdc8d5007809c40b3682c5216075937f93e2cef01caddc4a30d9",
+    "weights_evaluation.csv": "b430c288d92a0e55e08b76c20aafb4c538469c7ba95e47ab768e37e385299497",
+    "weights_validation.csv": "c957ad6429e59ac148918ddca13656d71784957c38af19e3314cad5c931572ab"
+  },
+  "mirror_schema_normalization": "Nixtla ZIP omits competition id and calendar d: stable item__store key and sequential d_1... labels are explicitly constructed; no sales values modified",
+  "missing_prices_first_test_origin": 0,
+  "negative_or_noninteger_sales": 0,
+  "official_purpose": "M5 organizers publish files for replication and research; Nixtla supplies ZIP version of that same linked collection",
+  "price_rows_selected": 48490,
+  "price_week_complete_at_all_origins": true,
+  "processed_sha256": {
+    "calendar.csv": "a240049251d2c686ed3ae81ff4f6df9194f5b8bd40ce2cd15bc61c40e49a8733",
+    "panel.npz": "171c8557d6cb291b1f286ddbd8af725262365edf6f8e038215ae2683309dbabb",
+    "prices_subset.csv": "21480edeb0e827012d0ebaa258838b3069a282b1ff4eedc8b3ca5109b717ef10",
+    "sales_subset.csv": "332f8ba8f0bf2f784853396e49f33ce28506ac2c849fc1001ce57b76b80ba8fb",
+    "series.csv": "7fe32b1883533b59874940ab3157a520ea109c70701d67ef1105326cd4a2526d"
+  },
+  "raw_zip_all_members_crc_read": true,
+  "raw_zip_bytes": 50219189,
+  "raw_zip_sha256": "cc704ba15d6802f8262e6ec7d4c6041e4ad6366a94365e8c84f721e450eed774",
+  "reuse_boundary": "Research/replication; no unrestricted raw-data redistribution or commercial-use license claimed",
+  "sample_selection": "First10 lexicographic itemIDs per department crossed with CA_1/TX_1/WI_1; no outcome filters",
+  "series": 210,
+  "source_links": [
+    "https://github.com/Mcompetitions/M5-methods",
+    "https://github.com/Nixtla/m5-forecasts",
+    "https://nixtla.github.io/datasetsforecast/m5.html"
+  ],
+  "source_sales_rows": 30490,
+  "stores": [
+    "CA_1",
+    "TX_1",
+    "WI_1"
+  ],
+  "total_units": 304026,
+  "zero_fraction": 0.7273619391084615
+}

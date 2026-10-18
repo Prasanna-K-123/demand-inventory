@@ -1,0 +1,21 @@
+{
+  "python": "3.12.14",
+  "selection": {
+    "baseline": "croston_sba",
+    "forecast": "global_quantiles"
+  },
+  "sha256": {
+    "PROTOCOL.md": "45f4c9e102eb047f1158634324acede341f2af63b43e5bc5c8b74a6797ca6bdd",
+    "artifacts/forecast.joblib": "8488967c217c8c698560e18bd3070031458cbb014e892a1aa80e662701e603e9",
+    "data/processed/development_forecasts.npz": "831f9c9e93bff3627d601f57e0e41714e8549443df93a3388823a837e0744dc3",
+    "data/processed/panel.npz": "171c8557d6cb291b1f286ddbd8af725262365edf6f8e038215ae2683309dbabb",
+    "data/processed/series.csv": "7fe32b1883533b59874940ab3157a520ea109c70701d67ef1105326cd4a2526d",
+    "data/processed/test_forecasts.npz": "d4ee976e5e5ae1d2cf2f8abee39532c94246ada861865d0ae3b6a2f667f7bc31",
+    "reports/development.json": "d238c211d357549bb3fee00e1ad2bfb80472237976b448ac76bfc40727f2795b",
+    "reports/protocol_freeze.json": "46294be97fb8ed2c26c26aec458f2337c4be2745f0d0ccce27efbbcced437737",
+    "scripts/prepare_data.py": "36a90f48927082fd5e15c8050a9171812c7d1648456446c4ae2739771b18323f",
+    "scripts/train_and_freeze.py": "587c64dc821b401eb138e5cdad53b08dbb72c30926abb5d7fc32d440e35c2212",
+    "src/demand_inventory/core.py": "c40e291bbcdc2e7a8f925c855d5813ea8999c615eaa86ce150dfec7fdeb87e3d"
+  },
+  "status": "Fitted artifacts and all final forecasts frozen before final scoring; no test labels used in selection"
+}
