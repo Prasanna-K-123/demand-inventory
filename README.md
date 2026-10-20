@@ -1,14 +1,21 @@
 # Forecasts, capital and inventory decisions
 
+[![Public research checks](https://github.com/Prasanna-K-123/demand-inventory/actions/workflows/verify.yml/badge.svg)](https://github.com/Prasanna-K-123/demand-inventory/actions/workflows/verify.yml)
+
 A reproducible historical M5 research case linking probabilistic forecasts to a constrained replenishment policy. The sample contains 210 item-store series across seven departments and three states. Data and future-period boundaries were fixed before fitting.
 
 Start with the [decision memo](reports/DECISION_MEMO.md), [technical report](reports/TECHNICAL_REPORT.md), [diagnostic figure](reports/diagnostics.svg) or [offline explorer](docs/index.html). The explorer selects saved budget scenarios and shows affected order quantities. It does not refit models or invent observed retailer savings.
+
+## Automated public checks
+
+The automated checks run on public files without private data, credentials or model refitting. They include unit tests and explorer arithmetic. Raw-source model reproduction is separate.
 
 ## Reproduce
 
 Use the pinned Python requirements. Obtain the documented M5 ZIP from https://github.com/Nixtla/m5-forecasts/raw/main/datasets/m5.zip and the organizers' guide from https://github.com/Mcompetitions/M5-methods . Source data remain separate from any code license. No account/credential is embedded. With the cached inputs in data/raw:
 
 ```bash
+python -m pip install -r requirements.txt
 python scripts/prepare_data.py
 PYTHONPATH=src python -m unittest discover -s tests -v
 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 python scripts/train_and_freeze.py
