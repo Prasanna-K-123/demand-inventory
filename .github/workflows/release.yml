@@ -18,18 +18,18 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
       AUDITED_REPOSITORY: Prasanna-K-123/demand-inventory
-      AUDITED_BASELINE: 58ef90d49539bf46cf3789070cfd0ee1f21b7189
-      RELEASE_TAG: v1.0.2
-      RELEASE_TITLE: Demand & Inventory Decisions — v1.0.2
+      AUDITED_BASELINE: 7e3bad6ce1de5c05895694a1d8e96e04e36881aa
+      RELEASE_TAG: v1.0.3
+      RELEASE_TITLE: Demand & Inventory Decisions — v1.0.3
       RELEASE_NOTES: |
-        Input-contract maintenance with the original frozen research preserved.
+        Input-contract chronology maintenance with the original frozen research preserved.
 
-        - Rejects missing sales, invalid target windows, misaligned allocation/simulation inputs, and delivery delays that cannot arrive in the weekly event model.
-        - All 19 public tests pass, including 80 complete valid-input simulations compared exactly with the preserved original implementation. Explorer checks cover all nine saved model/budget views.
-        - Two clean original/revised runs each prepare the pinned public M5 ZIP and refit all four fixed quantile models. Model bytes, forecasts, frozen records and final analysis reproduce exactly. The receipt gives commands, versions, hashes and scope.
-        - Preserves the original source and readable patch. Exact revision checks supplement the unchanged historical freeze; no forecast selection or empirical result was retuned.
+        - Rejects unsigned weekly origins that wrap through zero. All dates are bounds-checked before signed full-width differences are computed; valid date representations retain identical simulations.
+        - All 20 public tests pass, including 80 complete valid-input simulations compared exactly with the preserved original implementation. The new regression rejects wrapped chronology and checks signed/unsigned equivalence.
+        - Fresh clean original/current runs each prepare the pinned public M5 ZIP and refit all four fixed quantile models. All 11 compared model/data/forecast/freeze/analysis outputs are byte-identical in the recorded environment.
+        - Retains the earlier missing-sales, delivery-delay and alignment guards, original sources, unchanged public research freezes and the historical v1.0.2 receipt. The incremental patch and its exact hash are verified separately.
 
-        [Input contracts and verification](https://github.com/Prasanna-K-123/demand-inventory/blob/v1.0.2/docs/INPUT_CONTRACTS.md) · [Open the budget explorer](https://prasanna-k-123.github.io/demand-inventory/).
+        [Current verification receipt](https://github.com/Prasanna-K-123/demand-inventory/blob/v1.0.3/reports/origin_dtype_revision_20261022.json) · [Input contracts](https://github.com/Prasanna-K-123/demand-inventory/blob/v1.0.3/docs/INPUT_CONTRACTS.md) · [Budget explorer](https://prasanna-k-123.github.io/demand-inventory/).
 
         Original releases and their tags remain unchanged. Operating effects are simulations, not observed retailer savings or deployment results.
     steps:
