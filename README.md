@@ -8,7 +8,9 @@ Start with the [decision memo](reports/DECISION_MEMO.md), [technical report](rep
 
 ## Automated public checks
 
-The automated checks run on public files without private data, credentials or model refitting. They include unit tests and explorer arithmetic. Raw-source model reproduction is separate.
+The automated checks run on public files without private data, credentials or model refitting. All **19 tests** cover the original nine scientific checks and ten input-contract regressions, including 80 complete synthetic simulations checked against the preserved original implementation. Explorer arithmetic is checked separately. Raw-source model reproduction is separate.
+
+The [22 October input-contract revision](docs/INPUT_CONTRACTS.md) rejects missing sales, invalid target windows, misaligned inputs and nonpositive or fractional delivery delays. Complete original and revised runs independently refit all four fixed models and reproduce the model bytes, forecasts and final analysis exactly. No forecast selection or reported result changed.
 
 ## Reproduce
 
@@ -25,7 +27,7 @@ python scripts/report_results.py
 node tests/check_explorer.cjs
 ```
 
-The public source tree excludes raw sales rows, the processed panel and fitted artifacts. The preparation script reconstructs the fixed sample from the documented ZIP and rejects changed input bytes. Private recovery records retain the cached inputs and fitted artifacts. The raw ZIP/member hashes and schema normalization are recorded in reports/data_audit.json. A model freeze guards protocol/code/data, fitted models and final forecasts before evaluation. Do not alter parameters or choose another test-best comparator after scoring.
+The public source tree excludes raw sales rows, the processed panel and fitted artifacts. The preparation script reconstructs the fixed sample from the documented ZIP and rejects changed input bytes. Private recovery records retain the cached inputs and fitted artifacts. The raw ZIP/member hashes and schema normalization are recorded in reports/data_audit.json. A model freeze guards protocol/code/data, fitted models and final forecasts before evaluation. The original source bytes and freeze are retained under the documented revision; the integrity helper also verifies the exact revised source, input contracts and readable patch. Other frozen files must still match their original hashes. Do not alter parameters or choose another test-best comparator after scoring.
 
 ## Boundaries
 

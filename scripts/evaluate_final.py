@@ -5,11 +5,13 @@ ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'src'))
 from demand_inventory.core import metrics,pinball,targets,simulate,allocate
 from train_and_freeze import load_data,ORIGINS
 from prepare_data import dump
+from source_integrity import research_digest, verify_revision
 
 def verify_freeze():
+    verify_revision(ROOT)
     f=json.loads((ROOT/'reports/model_freeze.json').read_text())
     for p,h in f['sha256'].items():
-        if hashlib.sha256((ROOT/p).read_bytes()).hexdigest()!=h:raise RuntimeError('Frozen input/model changed: '+p)
+        if research_digest(ROOT,p)!=h:raise RuntimeError('Frozen input/model changed: '+p)
     return f
 
 def block_bootstrap(delta,draws=2000):

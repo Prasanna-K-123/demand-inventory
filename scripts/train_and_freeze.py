@@ -7,6 +7,7 @@ from sklearn.ensemble import HistGradientBoostingRegressor
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'src'))
 from demand_inventory.core import FEATURES,QUANTILES,features,targets,sba_path,coherent,metrics
 from prepare_data import dump
+from source_integrity import research_digest
 ORIGINS={'train':np.arange(364,1597,7),'calibration':np.arange(1624,1716,7),
          'development':np.arange(1743,1800,7),'test':np.arange(1827,1926,7)}
 
@@ -42,7 +43,7 @@ def run():
     y,p,dt,meta=load_data();code,voc=code_meta(meta);n=len(meta)
     report=ROOT/'reports';(ROOT/'artifacts').mkdir(exist_ok=True)
     protocol_paths=['PROTOCOL.md','src/demand_inventory/core.py','scripts/prepare_data.py','scripts/train_and_freeze.py']
-    design={f:hashlib.sha256((ROOT/f).read_bytes()).hexdigest() for f in protocol_paths}
+    design={f:research_digest(ROOT,f) for f in protocol_paths}
     pre=report/'protocol_freeze.json'
     if pre.exists():
         if json.loads(pre.read_text())['sha256']!=design:raise RuntimeError('Frozen modelling design changed')
@@ -80,7 +81,7 @@ def run():
         'first_test_origin':int(min(ORIGINS['test']))})
     frozen=protocol_paths+['artifacts/forecast.joblib','reports/protocol_freeze.json','reports/development.json',
          'data/processed/panel.npz','data/processed/series.csv','data/processed/development_forecasts.npz','data/processed/test_forecasts.npz']
-    dump(report/'model_freeze.json',{'sha256':{f:hashlib.sha256((ROOT/f).read_bytes()).hexdigest() for f in frozen},
+    dump(report/'model_freeze.json',{'sha256':{f:research_digest(ROOT,f) for f in frozen},
         'selection':{'baseline':baseline,'forecast':selected},'python':platform.python_version(),
         'status':'Fitted artifacts and all final forecasts frozen before final scoring; no test labels used in selection'})
     print(json.dumps({'development':dev,'baseline':baseline,'selected_forecast':selected,'crossing':cross},indent=2))

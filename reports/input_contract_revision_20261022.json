@@ -1,0 +1,161 @@
+{
+  "date": "2026-10-22",
+  "baseline": "db9217a84ae9a29df4e3e7f519c262bdf4edc118",
+  "changes": {
+    "src/demand_inventory/core.py": {
+      "original_sha256": "c40e291bbcdc2e7a8f925c855d5813ea8999c615eaa86ce150dfec7fdeb87e3d",
+      "revised_sha256": "67cc56b345b871c69d5a84ebc3048a712a773dce1b31dc538b8319fe34a7ed77",
+      "preserved_path": "reproducibility/original_core.py"
+    },
+    "scripts/train_and_freeze.py": {
+      "original_sha256": "587c64dc821b401eb138e5cdad53b08dbb72c30926abb5d7fc32d440e35c2212",
+      "revised_sha256": "4bf2664669b3e63c4c6a137b9a0fd1356fcfec22f55d9377f0854ae4bbda0f90",
+      "preserved_path": "reproducibility/original_train_and_freeze.py"
+    },
+    "scripts/evaluate_final.py": {
+      "original_sha256": "3285f1340386c4e2b884d7b5edaece1513788cec096b3e5213b04b662db70771",
+      "revised_sha256": "61d7716a8e52160bc4568bfc462b6db7816b85bf11312d8dedbc8c068bd21aff",
+      "preserved_path": "reproducibility/original_evaluate_final.py"
+    }
+  },
+  "revision_patch_sha256": "e49bfe690bbf3f5ebfd45fc924770e411f1d334c4d469bede6168441bacf0aea",
+  "contracts_sha256": "e50fda81e1bce2d36d9814f79473b870146494f4ddff94ef8c61369208a73271",
+  "verification_status": "passed",
+  "public_unit_tests": 19,
+  "original_scientific_tests": 9,
+  "input_contract_regression_tests": 10,
+  "valid_input_equivalence_simulations": 80,
+  "raw_source_sha256": "cc704ba15d6802f8262e6ec7d4c6041e4ad6366a94365e8c84f721e450eed774",
+  "full_reproduction": {
+    "original": [
+      {
+        "script": "scripts/prepare_data.py",
+        "exit_code": 0,
+        "seconds": 9.46,
+        "summary": "{\n  \"series\": 210,\n  \"items\": 70,\n  \"departments\": 7,\n  \"days\": 1941,\n  \"date_range\": [\n    \"2011-01-29\",\n    \"2016-05-22\"\n  ],\n  \"zero_fraction\": 0.7273619391084615,\n  \"missing_prices_first_test_origin\": 0,\n  \"price_rows_selected\": 48490\n}\n"
+      },
+      {
+        "script": "scripts/train_and_freeze.py",
+        "exit_code": 0,
+        "seconds": 6.49,
+        "summary": "\"mae_median\": 6.6158730158730155,\n      \"wape_median\": 0.5708025198575732,\n      \"interval80_coverage\": 0.7873015873015873,\n      \"interval80_width\": 20.5913107295193,\n      \"q80_empirical_fraction_leq\": 0.7857142857142857,\n      \"observations\": 1890,\n      \"actual_units_14day\": 21906.0\n    },\n    \"croston_sba\": {\n      \"mean_pinball\": 2.2118721590396753,\n      \"mae_median\": 6.092594254899274,\n      \"wape_median\": 0.5256552150899126,\n      \"interval80_coverage\": 0.7904761904761904,\n      \"interval80_width\": 19.827594923785863,\n      \"q80_empirical_fraction_leq\": 0.7915343915343915,\n      \"observations\": 1890,\n      \"actual_units_14day\": 21906.0\n    },\n    \"global_quantiles\": {\n      \"mean_pinball\": 1.7937661534715246,\n      \"mae_median\": 4.999399676515585,\n      \"wape_median\": 0.4313368660921417,\n      \"interval80_coverage\": 0.8846560846560847,\n      \"interval80_width\": 19.378774899322906,\n      \"q80_empirical_fraction_leq\": 0.7867724867724868,\n      \"observations\": 1890,\n      \"actual_units_14day\": 21906.0\n    }\n  },\n  \"baseline\": \"croston_sba\",\n  \"selected_forecast\": \"global_quantiles\",\n  \"crossing\": {\n    \"development\": 0.07301587301587302,\n    \"test\": 0.04285714285714286\n  }\n}\n"
+      },
+      {
+        "script": "scripts/evaluate_final.py",
+        "exit_code": 0,
+        "seconds": 3.05,
+        "summary": "3695,\n      -0.6190884254664244\n    ],\n    \"conditional_test_improvement_established\": true,\n    \"bootstrap\": \"2000 circular moving-block draws,2weekly origins per block, all stores/items resampled together\",\n    \"forecast_ranking\": [\n      \"global_quantiles\",\n      \"seasonal_naive\",\n      \"croston_sba\"\n    ],\n    \"primary_operating_ranking\": [\n      \"global_quantiles\",\n      \"croston_sba\",\n      \"seasonal_naive\"\n    ],\n    \"operating_ranking_is_descriptive_not_new_model_selection\": true\n  },\n  \"primary_operating\": {\n    \"seasonal_naive\": {\n      \"total_penalty\": 15314.387,\n      \"unit_fill_rate\": 0.7715797066602549,\n      \"procurement_spend\": 31376.7,\n      \"ending_inventory_units\": 2229.0,\n      \"ending_pipeline_units\": 1188.0\n    },\n    \"croston_sba\": {\n      \"total_penalty\": 12526.511,\n      \"unit_fill_rate\": 0.7670113007934599,\n      \"procurement_spend\": 29523.774,\n      \"ending_inventory_units\": 1473.0,\n      \"ending_pipeline_units\": 1066.0\n    },\n    \"global_quantiles\": {\n      \"total_penalty\": 11194.183,\n      \"unit_fill_rate\": 0.7694758355373887,\n      \"procurement_spend\": 29274.018,\n      \"ending_inventory_units\": 1308.0,\n      \"ending_pipeline_units\": 1251.0\n    }\n  }\n}\n"
+      },
+      {
+        "script": "scripts/verify_results.py",
+        "exit_code": 0,
+        "seconds": 2.67,
+        "summary": "{\n  \"checks_passed\": true,\n  \"unit_tests\": 9,\n  \"saved_model_prediction_equality\": \"all final quantiles bitwise equal\",\n  \"pinball_reconciled_to_sklearn\": true,\n  \"future_sales_price_feature_invariance_origins\": [\n    1827,\n    1876,\n    1925\n  ],\n  \"inventory_budget_capacity_conservation_all_scenarios\": true,\n  \"unknown_final_price_costs\": 0,\n  \"frozen_input_model_hashes\": 11,\n  \"bootstrap_independent_units\": \"Origin blocks, not series rows\",\n  \"independent_external_review\": false\n}\n"
+      }
+    ],
+    "revised": [
+      {
+        "script": "prepare_data",
+        "exit_code": 0,
+        "seconds": 10.614,
+        "summary": "{\n  \"series\": 210,\n  \"items\": 70,\n  \"departments\": 7,\n  \"days\": 1941,\n  \"date_range\": [\n    \"2011-01-29\",\n    \"2016-05-22\"\n  ],\n  \"zero_fraction\": 0.7273619391084615,\n  \"missing_prices_first_test_origin\": 0,\n  \"price_rows_selected\": 48490\n}\n"
+      },
+      {
+        "script": "train_and_freeze",
+        "exit_code": 0,
+        "seconds": 6.127,
+        "summary": "croston_sba\": {\n      \"mean_pinball\": 2.2118721590396753,\n      \"mae_median\": 6.092594254899274,\n      \"wape_median\": 0.5256552150899126,\n      \"interval80_coverage\": 0.7904761904761904,\n      \"interval80_width\": 19.827594923785863,\n      \"q80_empirical_fraction_leq\": 0.7915343915343915,\n      \"observations\": 1890,\n      \"actual_units_14day\": 21906.0\n    },\n    \"global_quantiles\": {\n      \"mean_pinball\": 1.7937661534715246,\n      \"mae_median\": 4.999399676515585,\n      \"wape_median\": 0.4313368660921417,\n      \"interval80_coverage\": 0.8846560846560847,\n      \"interval80_width\": 19.378774899322906,\n      \"q80_empirical_fraction_leq\": 0.7867724867724868,\n      \"observations\": 1890,\n      \"actual_units_14day\": 21906.0\n    }\n  },\n  \"baseline\": \"croston_sba\",\n  \"selected_forecast\": \"global_quantiles\",\n  \"crossing\": {\n    \"development\": 0.07301587301587302,\n    \"test\": 0.04285714285714286\n  }\n}\n"
+      },
+      {
+        "script": "evaluate_final",
+        "exit_code": 0,
+        "seconds": 3.039,
+        "summary": "sba\"\n    ],\n    \"primary_operating_ranking\": [\n      \"global_quantiles\",\n      \"croston_sba\",\n      \"seasonal_naive\"\n    ],\n    \"operating_ranking_is_descriptive_not_new_model_selection\": true\n  },\n  \"primary_operating\": {\n    \"seasonal_naive\": {\n      \"total_penalty\": 15314.387,\n      \"unit_fill_rate\": 0.7715797066602549,\n      \"procurement_spend\": 31376.7,\n      \"ending_inventory_units\": 2229.0,\n      \"ending_pipeline_units\": 1188.0\n    },\n    \"croston_sba\": {\n      \"total_penalty\": 12526.511,\n      \"unit_fill_rate\": 0.7670113007934599,\n      \"procurement_spend\": 29523.774,\n      \"ending_inventory_units\": 1473.0,\n      \"ending_pipeline_units\": 1066.0\n    },\n    \"global_quantiles\": {\n      \"total_penalty\": 11194.183,\n      \"unit_fill_rate\": 0.7694758355373887,\n      \"procurement_spend\": 29274.018,\n      \"ending_inventory_units\": 1308.0,\n      \"ending_pipeline_units\": 1251.0\n    }\n  }\n}\n"
+      },
+      {
+        "script": "verify_results",
+        "exit_code": 0,
+        "seconds": 2.597,
+        "summary": "{\n  \"checks_passed\": true,\n  \"unit_tests\": 9,\n  \"saved_model_prediction_equality\": \"all final quantiles bitwise equal\",\n  \"pinball_reconciled_to_sklearn\": true,\n  \"future_sales_price_feature_invariance_origins\": [\n    1827,\n    1876,\n    1925\n  ],\n  \"inventory_budget_capacity_conservation_all_scenarios\": true,\n  \"unknown_final_price_costs\": 0,\n  \"frozen_input_model_hashes\": 11,\n  \"bootstrap_independent_units\": \"Origin blocks, not series rows\",\n  \"independent_external_review\": false\n}\n"
+      }
+    ],
+    "compared_outputs": [
+      {
+        "path": "artifacts/forecast.joblib",
+        "identical": true,
+        "original_sha256": "8488967c217c8c698560e18bd3070031458cbb014e892a1aa80e662701e603e9",
+        "revised_sha256": "8488967c217c8c698560e18bd3070031458cbb014e892a1aa80e662701e603e9"
+      },
+      {
+        "path": "data/processed/panel.npz",
+        "identical": true,
+        "original_sha256": "171c8557d6cb291b1f286ddbd8af725262365edf6f8e038215ae2683309dbabb",
+        "revised_sha256": "171c8557d6cb291b1f286ddbd8af725262365edf6f8e038215ae2683309dbabb"
+      },
+      {
+        "path": "data/processed/series.csv",
+        "identical": true,
+        "original_sha256": "7fe32b1883533b59874940ab3157a520ea109c70701d67ef1105326cd4a2526d",
+        "revised_sha256": "7fe32b1883533b59874940ab3157a520ea109c70701d67ef1105326cd4a2526d"
+      },
+      {
+        "path": "data/processed/development_forecasts.npz",
+        "identical": true,
+        "original_sha256": "831f9c9e93bff3627d601f57e0e41714e8549443df93a3388823a837e0744dc3",
+        "revised_sha256": "831f9c9e93bff3627d601f57e0e41714e8549443df93a3388823a837e0744dc3"
+      },
+      {
+        "path": "data/processed/test_forecasts.npz",
+        "identical": true,
+        "original_sha256": "d4ee976e5e5ae1d2cf2f8abee39532c94246ada861865d0ae3b6a2f667f7bc31",
+        "revised_sha256": "d4ee976e5e5ae1d2cf2f8abee39532c94246ada861865d0ae3b6a2f667f7bc31"
+      },
+      {
+        "path": "reports/protocol_freeze.json",
+        "identical": true,
+        "original_sha256": "46294be97fb8ed2c26c26aec458f2337c4be2745f0d0ccce27efbbcced437737",
+        "revised_sha256": "46294be97fb8ed2c26c26aec458f2337c4be2745f0d0ccce27efbbcced437737"
+      },
+      {
+        "path": "reports/model_freeze.json",
+        "identical": true,
+        "original_sha256": "dc9bbec7b5b87eb0c2e471e5d7ced7ca2882e16fd0945e95996471c82dfde940",
+        "revised_sha256": "dc9bbec7b5b87eb0c2e471e5d7ced7ca2882e16fd0945e95996471c82dfde940"
+      },
+      {
+        "path": "reports/development.json",
+        "identical": true,
+        "original_sha256": "d238c211d357549bb3fee00e1ad2bfb80472237976b448ac76bfc40727f2795b",
+        "revised_sha256": "d238c211d357549bb3fee00e1ad2bfb80472237976b448ac76bfc40727f2795b"
+      },
+      {
+        "path": "reports/final.json",
+        "identical": true,
+        "original_sha256": "31768163c8d2244c6f5def74e8ce82da4771691697a9255e4cc766d23f824863",
+        "revised_sha256": "31768163c8d2244c6f5def74e8ce82da4771691697a9255e4cc766d23f824863"
+      },
+      {
+        "path": "reports/verification.json",
+        "identical": true,
+        "original_sha256": "27d5c3808766769318c9ee35455d068af0dfe518da1ee1d804bf97e0fa2e8308",
+        "revised_sha256": "27d5c3808766769318c9ee35455d068af0dfe518da1ee1d804bf97e0fa2e8308"
+      },
+      {
+        "path": "reports/data_audit.json",
+        "identical": true,
+        "original_sha256": "47e8c76e4c566e83e10d13bda64ac891ca760eee77c20f79c2a5e378982b853e",
+        "revised_sha256": "47e8c76e4c566e83e10d13bda64ac891ca760eee77c20f79c2a5e378982b853e"
+      }
+    ],
+    "all_compared_bytes_identical": true,
+    "scope": "Two clean same-environment runs, each preparing the public pinned ZIP and refitting all four fixed models. Verification-summary field names subsequently clarified; no scientific output changed."
+  },
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "scikit-learn": "1.8.0",
+    "joblib": "1.5.3"
+  }
+}

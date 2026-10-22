@@ -1,12 +1,13 @@
 import math
 import numpy as np
+from ._contracts import sba_inputs, target_inputs, allocation_inputs, simulation_inputs
 
 QUANTILES=np.array([.1,.5,.8,.9])
 FEATURES=['item','department','store','next_month','sin_day','cos_day','sum7','sum14','sum28','sum56',
           'recent_week_ratio','zero28','zero56','age_active','never_active','last_observed_price','price_missing']
 
 def sba_path(sales,alpha=.1):
-    y=np.asarray(sales,float)
+    y,alpha=sba_inputs(sales,alpha)
     if not 0<alpha<1 or y.ndim!=1 or np.any(y<0):raise ValueError('Invalid SBA data')
     out=np.zeros(len(y));q=period=None;last=None
     for j,x in enumerate(y):
@@ -34,6 +35,7 @@ def features(sales,prices,dates,meta_codes,origin):
                             *sums,recent,*z,age,(~active).astype(float),last,missing.astype(float)])
 
 def targets(sales,origin,horizon=14):
+    sales,origin,horizon=target_inputs(sales,origin,horizon)
     if origin+horizon>sales.shape[1]:raise ValueError('Target truncated')
     return np.asarray(sales)[:,origin:origin+horizon].sum(axis=1)
 
@@ -55,6 +57,7 @@ def metrics(y,p):
         'observations':len(y),'actual_units_14day':float(den)}
 
 def allocate(desired,cost,penalty,coverage,ids,budget,capacity):
+    desired,cost,penalty,coverage,ids,budget,capacity=allocation_inputs(desired,cost,penalty,coverage,ids,budget,capacity)
     d=np.asarray(desired,float);c=np.asarray(cost,float)
     if len(d)!=len(c) or np.any(d<0) or budget<0 or capacity<0:raise ValueError('Invalid allocation inputs')
     order=np.zeros(len(d),int);left=float(budget);units=int(math.floor(capacity))
@@ -67,6 +70,8 @@ def allocate(desired,cost,penalty,coverage,ids,budget,capacity):
     return order
 
 def simulate(sales,price,origins,quantiles,ids,budget_multiplier=1.,lead_weeks=1,shortage_fraction=.4,censor=False):
+    sales,price,origins,quantiles,ids,budget_multiplier,lead_weeks,shortage_fraction,censor=simulation_inputs(
+        sales,price,origins,quantiles,ids,budget_multiplier,lead_weeks,shortage_fraction,censor)
     n=len(ids);stock=np.zeros(n);pending=[];rows=[];byseries=np.zeros((n,4))
     for step,origin in enumerate(origins):
         opening=stock.copy();arrival=np.zeros(n)

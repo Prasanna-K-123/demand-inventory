@@ -33,7 +33,7 @@ def run():
             assert r['unknown_price_demand_units']==0
     # Force no order when the price is missing and verify exact integer budget edge.
     np.testing.assert_array_equal(allocate([5,5],[np.nan,2],[np.nan,1],[0,0],['x','y'],3.99,100),[0,1])
-    summary={'checks_passed':True,'unit_tests':9,'saved_model_prediction_equality':'all final quantiles bitwise equal',
+    summary={'checks_passed':True,'original_scientific_unit_tests':9,'unit_tests_run_by_this_script':False,'saved_model_prediction_equality':'all final quantiles bitwise equal',
         'pinball_reconciled_to_sklearn':True,'future_sales_price_feature_invariance_origins':[int(orig[0]),int(orig[7]),int(orig[-1])],
         'inventory_budget_capacity_conservation_all_scenarios':True,'unknown_final_price_costs':0,
         'frozen_input_model_hashes':len(freeze['sha256']),'bootstrap_independent_units':'Origin blocks, not series rows',
