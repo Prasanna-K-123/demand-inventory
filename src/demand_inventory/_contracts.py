@@ -96,7 +96,12 @@ def simulation_inputs(sales, price, origins, quantiles, ids, budget_multiplier,
     dates = np.asarray(origins)
     if dates.ndim != 1 or dates.dtype.kind not in 'iu' or len(dates) == 0:
         raise ValueError('Simulation origins must be a nonempty integer vector')
-    if dates[0] < 28 or np.any(dates > sales.shape[1] - 7) or np.any(np.diff(dates) != 7):
+    if np.any(dates < 28) or np.any(dates > sales.shape[1] - 7):
+        raise ValueError('Origins must be consecutive seven-day periods with 28 prior and seven future days')
+    # Bounds are checked before conversion: unsigned values outside int64 cannot
+    # wrap into range. Compute differences in a signed, full-width type.
+    dates = dates.astype(np.int64, copy=False)
+    if np.any(np.diff(dates) != 7):
         raise ValueError('Origins must be consecutive seven-day periods with 28 prior and seven future days')
     forecasts = numbers(quantiles, 'Forecast quantiles', ndim=3)
     if forecasts.shape != (len(dates), len(keys), 4) or np.any(np.diff(forecasts, axis=2) < 0):

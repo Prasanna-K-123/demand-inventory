@@ -17,6 +17,9 @@ research; they do not change its models, decision rule or measured results.
   history and outcome days. Sales/prices, four ordered forecast quantiles and
   unique series identifiers must align. Scenario parameters must be finite and
   nonnegative, and the censoring-proxy switch must be boolean.
+- Unsigned date arrays cannot wrap through zero and masquerade as consecutive
+  weeks. Every date is bounds-checked before signed full-width differences are
+  computed. Valid signed/unsigned representations produce identical simulations.
 - Target windows cannot wrap around a negative index or silently truncate.
   Allocation vectors must align. Missing prices/costs remain allowed as NaN;
   those series receive no new orders. A known orderable cost requires a finite
@@ -24,7 +27,7 @@ research; they do not change its models, decision rule or measured results.
 
 ## Verification and research integrity
 
-All 19 tests pass: the original nine scientific tests and ten regression tests.
+All 20 tests pass: the original nine scientific tests and eleven regression tests.
 The regressions include 80 deterministic complete simulations with different
 series counts, budgets, delays, penalties, missing prices and censoring settings.
 Every valid result exactly matches the preserved original implementation, and
@@ -48,3 +51,8 @@ summary script does not itself execute unit tests.
 [Machine-readable receipt](../reports/input_contract_revision_20261022.json)
 · [Readable patch](../reproducibility/input_contract_revision_20261022.patch)
 · [Regression tests](../tests/test_input_contracts.py)
+
+The later [origin-dtype receipt](../reports/origin_dtype_revision_20261022.json)
+and [incremental patch](../reproducibility/origin_dtype_revision_20261022.patch)
+record the final adversarial review. The earlier 19-test receipt remains an
+accurate record of v1.0.2; the current suite has 20 tests.

@@ -57,6 +57,21 @@ class InputContracts(unittest.TestCase):
             with self.subTest(origins=origins), self.assertRaises(ValueError):
                 self.run_case(origins=origins)
 
+    def test_unsigned_origin_arithmetic_cannot_hide_wrapped_dates(self):
+        sales = np.ones((2, 300))
+        price = np.ones_like(sales)
+        with self.assertRaises(ValueError):
+            self.run_case(sales=sales, price=price,
+                          origins=np.array([252, 3, 10], dtype=np.uint8))
+        for dtype in [np.int8, np.uint8, np.int16, np.uint16, np.uint64]:
+            with self.subTest(dtype=dtype):
+                self.assertEqual(self.run_case(origins=self.origins.astype(dtype)),
+                                 self.run_case())
+        self.assertEqual(
+            self.run_case(sales=sales, price=price,
+                          origins=np.array([238, 245, 252], dtype=np.uint8)),
+            self.run_case(sales=sales, price=price, origins=[238, 245, 252]))
+
     def test_simulation_rejects_misaligned_nonfinite_data(self):
         bad_sales = self.sales.copy(); bad_sales[0, 60] = np.nan
         bad_price = self.price.copy(); bad_price[0, 55] = np.inf
@@ -120,6 +135,7 @@ class InputContracts(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             target = Path(directory)
             paths = ['reproducibility/input_contract_revision_20261022.patch',
+                     'reproducibility/origin_dtype_revision_20261022.patch',
                      'src/demand_inventory/_contracts.py']
             for path, revision in REVISIONS.items():
                 paths.extend([path, revision['preserved_path']])
