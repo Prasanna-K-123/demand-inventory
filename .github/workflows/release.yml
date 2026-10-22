@@ -18,20 +18,20 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
       AUDITED_REPOSITORY: Prasanna-K-123/demand-inventory
-      AUDITED_BASELINE: 78fb42450ce4095b5667757b2b1ad10419fec50b
-      RELEASE_TAG: v1.0.1
-      RELEASE_TITLE: Demand & Inventory Decisions — v1.0.1
+      AUDITED_BASELINE: 58ef90d49539bf46cf3789070cfd0ee1f21b7189
+      RELEASE_TAG: v1.0.2
+      RELEASE_TITLE: Demand & Inventory Decisions — v1.0.2
       RELEASE_NOTES: |
-        This maintenance release aligns the source archive with the current public verification and research documentation.
+        Input-contract maintenance with the original frozen research preserved.
 
-        - Adds public scientific and explorer checks and clarifies reproduction instructions and simulation limitations.
-        - Includes a guarded release workflow that checks source consistency and successful research CI before publication.
-        - All 9 public scientific tests and the explorer checks pass at the tagged commit.
-        - The frozen forecasting protocol, models and reported empirical results are unchanged.
+        - Rejects missing sales, invalid target windows, misaligned allocation/simulation inputs, and delivery delays that cannot arrive in the weekly event model.
+        - All 19 public tests pass, including 80 complete valid-input simulations compared exactly with the preserved original implementation. Explorer checks cover all nine saved model/budget views.
+        - Two clean original/revised runs each prepare the pinned public M5 ZIP and refit all four fixed quantile models. Model bytes, forecasts, frozen records and final analysis reproduce exactly. The receipt gives commands, versions, hashes and scope.
+        - Preserves the original source and readable patch. Exact revision checks supplement the unchanged historical freeze; no forecast selection or empirical result was retuned.
 
-        [Open the budget explorer](https://prasanna-k-123.github.io/demand-inventory/).
+        [Input contracts and verification](https://github.com/Prasanna-K-123/demand-inventory/blob/v1.0.2/docs/INPUT_CONTRACTS.md) · [Open the budget explorer](https://prasanna-k-123.github.io/demand-inventory/).
 
-        The original v1.0.0 release remains available. Simulated operating costs and service outcomes are scenarios, not measured retailer savings or a live deployment.
+        Original releases and their tags remain unchanged. Operating effects are simulations, not observed retailer savings or deployment results.
     steps:
       - name: Verify the audited baseline and publish
         shell: bash
@@ -93,7 +93,7 @@ jobs:
           require(
               len(changes) == 1
               and changes[0]["filename"] == ".github/workflows/release.yml"
-              and changes[0]["status"] == "added",
+              and changes[0]["status"] == "modified",
               "Research files must match the audited baseline exactly.",
           )
 
