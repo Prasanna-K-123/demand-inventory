@@ -1,0 +1,247 @@
+{
+  "dependencies": {
+    "annotated-doc": {
+      "license_expression": "MIT",
+      "metadata_license": "",
+      "version": "0.0.5"
+    },
+    "annotated-types": {
+      "license_expression": "MIT",
+      "metadata_license": "",
+      "version": "0.8.0"
+    },
+    "anyio": {
+      "license_expression": "MIT",
+      "metadata_license": "",
+      "version": "4.15.1"
+    },
+    "certifi": {
+      "license_expression": null,
+      "metadata_license": "MPL-2.0",
+      "version": "2026.10.23"
+    },
+    "charset-normalizer": {
+      "license_expression": null,
+      "metadata_license": "MIT",
+      "version": "3.5.2"
+    },
+    "click": {
+      "license_expression": "BSD-3-Clause",
+      "metadata_license": "",
+      "version": "8.5.0"
+    },
+    "colorama": {
+      "license_expression": null,
+      "metadata_license": "",
+      "version": "0.4.6"
+    },
+    "contourpy": {
+      "license_expression": "BSD-3-Clause",
+      "metadata_license": "",
+      "version": "1.4.0"
+    },
+    "cycler": {
+      "license_expression": null,
+      "metadata_license": "Copyright (c) 2015, matplotlib project\nAll rights reserved.\n\nRedistribution and use in source and bi",
+      "version": "0.12.1"
+    },
+    "duckdb": {
+      "license_expression": null,
+      "metadata_license": "",
+      "version": "2.0.0"
+    },
+    "fastapi": {
+      "license_expression": "MIT",
+      "metadata_license": "",
+      "version": "0.162.0"
+    },
+    "fonttools": {
+      "license_expression": null,
+      "metadata_license": "MIT",
+      "version": "4.67.0"
+    },
+    "h11": {
+      "license_expression": null,
+      "metadata_license": "MIT",
+      "version": "0.16.0"
+    },
+    "httpcore": {
+      "license_expression": "BSD-3-Clause",
+      "metadata_license": "",
+      "version": "1.0.9"
+    },
+    "httpx": {
+      "license_expression": null,
+      "metadata_license": "BSD-3-Clause",
+      "version": "0.28.1"
+    },
+    "idna": {
+      "license_expression": "BSD-3-Clause",
+      "metadata_license": "",
+      "version": "3.20"
+    },
+    "iniconfig": {
+      "license_expression": "MIT",
+      "metadata_license": "",
+      "version": "2.3.1"
+    },
+    "joblib": {
+      "license_expression": "BSD-3-Clause",
+      "metadata_license": "",
+      "version": "1.5.3"
+    },
+    "kiwisolver": {
+      "license_expression": null,
+      "metadata_license": "=========================\n The Kiwi licensing terms\n=========================\nKiwi is licensed under",
+      "version": "1.5.1"
+    },
+    "matplotlib": {
+      "license_expression": null,
+      "metadata_license": "License agreement for matplotlib versions 1.3.0 and later\n =========================================",
+      "version": "3.10.8"
+    },
+    "numpy": {
+      "license_expression": null,
+      "metadata_license": "Copyright (c) 2005-2025, NumPy Developers.\n All rights reserved.\n\n Redistribution and use in source ",
+      "version": "2.3.5"
+    },
+    "opentelemetry-api": {
+      "license_expression": "Apache-2.0",
+      "metadata_license": "",
+      "version": "1.45.1"
+    },
+    "packaging": {
+      "license_expression": "Apache-2.0 OR BSD-2-Clause",
+      "metadata_license": "",
+      "version": "26.3"
+    },
+    "pandas": {
+      "license_expression": null,
+      "metadata_license": "BSD 3-Clause License\n\nCopyright (c) 2008-2011, AQR Capital Management, LLC, Lambda Foundry, Inc. and",
+      "version": "2.2.3"
+    },
+    "pillow": {
+      "license_expression": "MIT-CMU",
+      "metadata_license": "",
+      "version": "13.0.0"
+    },
+    "pluggy": {
+      "license_expression": null,
+      "metadata_license": "MIT",
+      "version": "1.7.0"
+    },
+    "psutil": {
+      "license_expression": null,
+      "metadata_license": "BSD-3-Clause",
+      "version": "7.2.2"
+    },
+    "pydantic": {
+      "license_expression": "MIT",
+      "metadata_license": "",
+      "version": "2.14.1"
+    },
+    "pydantic-core": {
+      "license_expression": "MIT",
+      "metadata_license": "",
+      "version": "2.50.1"
+    },
+    "pygments": {
+      "license_expression": "BSD-2-Clause",
+      "metadata_license": "",
+      "version": "2.21.0"
+    },
+    "pyparsing": {
+      "license_expression": "MIT",
+      "metadata_license": "",
+      "version": "3.3.3"
+    },
+    "pytest": {
+      "license_expression": "MIT",
+      "metadata_license": "",
+      "version": "9.1.1"
+    },
+    "python-dateutil": {
+      "license_expression": null,
+      "metadata_license": "Dual License",
+      "version": "2.9.0.post0"
+    },
+    "pytz": {
+      "license_expression": null,
+      "metadata_license": "MIT",
+      "version": "2026.5"
+    },
+    "requests": {
+      "license_expression": null,
+      "metadata_license": "Apache-2.0",
+      "version": "2.34.2"
+    },
+    "scikit-learn": {
+      "license_expression": "BSD-3-Clause",
+      "metadata_license": "",
+      "version": "1.8.0"
+    },
+    "scipy": {
+      "license_expression": null,
+      "metadata_license": "Copyright (c) 2001-2002 Enthought, Inc. 2003, SciPy Developers.\n All rights reserved.\n\n Redistributi",
+      "version": "1.17.0"
+    },
+    "six": {
+      "license_expression": null,
+      "metadata_license": "MIT",
+      "version": "1.17.0"
+    },
+    "starlette": {
+      "license_expression": "BSD-3-Clause",
+      "metadata_license": "",
+      "version": "1.10.0"
+    },
+    "threadpoolctl": {
+      "license_expression": null,
+      "metadata_license": "BSD-3-Clause",
+      "version": "3.6.0"
+    },
+    "typing-extensions": {
+      "license_expression": "PSF-2.0",
+      "metadata_license": "",
+      "version": "4.16.0"
+    },
+    "typing-inspection": {
+      "license_expression": "MIT",
+      "metadata_license": "",
+      "version": "0.4.4"
+    },
+    "tzdata": {
+      "license_expression": null,
+      "metadata_license": "Apache-2.0",
+      "version": "2026.5"
+    },
+    "urllib3": {
+      "license_expression": "MIT",
+      "metadata_license": "",
+      "version": "2.8.0"
+    },
+    "uvicorn": {
+      "license_expression": "BSD-3-Clause",
+      "metadata_license": "",
+      "version": "0.54.0"
+    }
+  },
+  "dependency_count": 45,
+  "direct_requirements_sha256": "e26d68ac98c87abcbfe609fcd237e43faedea2a0a3862b0159287e4dfaa4a020",
+  "high_specificity_secret_pattern_hits": [],
+  "known_vulnerability_audit": "not performed; no claim that installed packages are vulnerability-free",
+  "lock_sha256": "d67b8e501209348c395f552ae563079b7307561bbdecaee73ee5582f8896c354",
+  "pip_check_exit": 0,
+  "pip_check_output": "No broken requirements found.",
+  "python": "3.12.14",
+  "python_files_parsed": 28,
+  "security_boundaries": [
+    "bind IPv4 loopback only; no authentication/TLS, therefore never expose directly",
+    "1 MiB request-body cap and typed item limits",
+    "SQL values parameterized; static table names only",
+    "only bundled trusted pickle accepted, SHA256 checked before deserialization; digest is corruption detection, not publisher authentication",
+    "source digests and immutable conflict quarantine",
+    "raw source data and SQLite runtime excluded from repository"
+  ],
+  "shell_true_calls": []
+}

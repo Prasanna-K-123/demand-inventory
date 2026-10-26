@@ -1,0 +1,7 @@
+{
+  "addendum_version": "1.1",
+  "additional_reporting": "Aggregate final historical results into disjoint 7-day blocks starting 2025-05-01; report each full block and exclude last partial block from the count of full windows. Fixed trained model, legitimately updated one-day lags. No refit per origin. Daily-block bootstrap remains the originally declared uncertainty method. Report p50, p95 and p99 in the service benchmark.",
+  "locked_at_utc": "2026-10-26T09:39:27.975328+00:00",
+  "parent_protocol_sha256": "9fba7468115261827064dbc3ebbd00bd1051d4ffcd00986f395c03eb63e8aa0a",
+  "timing": "first full-source audit in progress; no model fits or evaluation scores yet"
+}

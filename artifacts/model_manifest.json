@@ -1,0 +1,63 @@
+{
+  "artifact_sha256": "03f20df9cfe9d3fd192c4585281fb492fcf70a768c05e3356312865432380c9f",
+  "calibration_end": "2025-04-30",
+  "calibration_margin": 0.00015274425100321204,
+  "calibration_raw_margin": 0.00015274425100321204,
+  "calibration_rows": 44553,
+  "calibration_start": "2025-03-01",
+  "cohort_sha256": "553c2a4743a54896ef8c1235c3eea3db42f7ea3ba5de394083c0303e4d8a40fa",
+  "decision_policy_id": "raw-quantile-point-grid-v1",
+  "feature_names": [
+    "log_scale",
+    "mean7_ratio",
+    "sd28_ratio",
+    "last_ratio",
+    "seasonal_ratio",
+    "lag1_ratio",
+    "lag7_ratio",
+    "lag14_ratio",
+    "lag28_ratio",
+    "missing_lag1",
+    "missing_lag7",
+    "missing_lag14",
+    "missing_lag28",
+    "history28_fraction",
+    "history7_fraction",
+    "oos28_fraction",
+    "last_age",
+    "dow_sin",
+    "dow_cos",
+    "year_sin",
+    "year_cos"
+  ],
+  "feature_version": "history-v1",
+  "fit_seconds": {
+    "poisson": 4.914911100175232,
+    "q10": 6.244945399928838,
+    "q90": 8.277100499952212
+  },
+  "implementation_sha256": {
+    "api.py": "84908248c0b814c89449aee0467597332ff30861fc704cf035cb46e564791329",
+    "contracts.py": "c65b2d396f01577371a587ab1b6453cf70c0bcc961d36c4ed3fa810f7e2680b5",
+    "decisions.py": "eb792bf604fcb2dc19bfeffdd21039ac0550c0fb9aceb6024bcf16d80962b6cc",
+    "features.py": "f1a20c779eec7392de6de5009cf140014ce0fa44fd89fab006a6243115bb739f",
+    "ledger.py": "aa5f63022bdf97527ff8646ad11888cc3780bf50bb7a2932da4d685a99b65aa1",
+    "model.py": "8671f8a42f29e0a6e9b881b753bd9894cc5dd32b229f4675fdc4e45970251821",
+    "worker.py": "f423bd1e50767c0e996e29f923d18a59a79cf44b9d5ab42f2795750fe0415e46"
+  },
+  "model_version": "47ae70b6ffe5eb2d",
+  "monitoring_policy_version": "unique-label-coverage-v2",
+  "poisson_interpretation": "mean model using Poisson loss on normalized non-integer quantities; not a calibrated count distribution",
+  "protocol_sha256": "9fba7468115261827064dbc3ebbd00bd1051d4ffcd00986f395c03eb63e8aa0a",
+  "selected_point_model": "pooled_poisson",
+  "selection_split": "validation only",
+  "serialization": "trusted local pickle only; verify digest before loading",
+  "served_configuration_sha256": "47ae70b6ffe5eb2d11b7cfd072e21eb949dc2a9de326aaa40de441970a648089",
+  "source_hashes": [
+    "e744c537ed16a8254c50f8456de7c5614866d4d8b6787e3cc3b67be02ea2f1e3",
+    "370ca7f995d2a059744e1659eb681e60db694bec2f80a84252426afdd2b6d626"
+  ],
+  "training_end": "2024-12-31",
+  "training_rows": 356925,
+  "version_scope": "pickle + inference configuration + feature/policy/ledger/API UTF-8 LF-text implementation digests"
+}

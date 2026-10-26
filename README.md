@@ -1,40 +1,65 @@
-# Forecasts, capital and inventory decisions
+# Stockout-aware operational decision platform
 
-[![Public research checks](https://github.com/Prasanna-K-123/demand-inventory/actions/workflows/verify.yml/badge.svg)](https://github.com/Prasanna-K-123/demand-inventory/actions/workflows/verify.yml)
+An executed research and local-software prototype for **observed-sales forecasting and explicitly simulated capacity decisions**: immutable source receipts, a durable SQLite ledger, a bounded worker, and a typed HTTP API.
 
-A reproducible historical M5 research case linking probabilistic forecasts to a constrained replenishment policy. The sample contains 210 item-store series across seven departments and three states. Data and future-period boundaries were fixed before fitting.
+[Saved-results explorer](https://prasanna-k-123.github.io/demand-inventory/) · [Research report](docs/RESEARCH_REPORT.md) · [System design](docs/SYSTEM_DESIGN.md) · [Claim map](docs/CLAIM_MAP.md) · [Machine-readable summary](artifacts/integration_summary.json)
 
-Start with the [decision memo](reports/DECISION_MEMO.md), [technical report](reports/TECHNICAL_REPORT.md), [diagnostic figure](reports/diagnostics.svg) or [offline explorer](docs/index.html). The explorer selects saved budget scenarios and shows affected order quantities. It does not refit models or invent observed retailer savings.
+**Result:** final historical MAE **0.4587**, versus **0.5378** for seasonality (14.7% lower) and **0.5170** for the strongest simple baseline (11.3% lower). Quantities are normalized sales. Real latent demand during organic stockouts is not identified.
 
-## Automated public checks
+## What ran
 
-The automated checks run on public files without private data, credentials or model refitting. All **20 tests** cover the original nine scientific checks and eleven input-contract regressions, including 80 complete synthetic simulations checked against the preserved original implementation. Explorer arithmetic is checked separately. Raw-source model reproduction is separate.
+- Hash and contract checks across **7,939,549 source rows**; deterministic cohort of **1,024 series / 634,383 records**.
+- **831 fitting identities + 193 identity holdouts**; fixed pooled mean/quantile models; four simple baselines; ten full disjoint weekly test blocks and a short external check.
+- All **634,383 records** parsed as typed events and durably conserved. Synthetic arrival times are explicit.
+- **44 automated tests, 0 failures**, plus four actual abrupt publication-process exits with clean/restart equivalence.
+- Real local HTTP: **200 measured jobs / 4 clients**, **457.6 ms p95**, **13.54 jobs/s**, **178.8 MiB** sampled server-tree RSS, zero errors.
+- Batch/HTTP forecasts match exactly; allocation scenarios, caps and quantities match with objective error **0**.
 
-The [22 October input-contract revision](docs/INPUT_CONTRACTS.md) rejects missing sales, invalid target windows, misaligned inputs and nonpositive or fractional delivery delays. Complete original and revised runs independently refit all four fixed models and reproduce the model bytes, forecasts and final analysis exactly. No forecast selection or reported result changed.
+The benchmark is a small warmed repeated-history workload on a shared Windows host, not production or cloud evidence. It measures serving version `509b40e9d63ead14`; the final expired-failure fencing repair is version `47ae70b6ffe5eb2d`, verified by a separate HTTP correctness smoke without repeating performance measurement. The simulated allocation loses to proportional allocation at one tested cost ratio; sensitivity is reported.
 
-## Reproduce
+## Reproduce and run locally
 
-Use the pinned Python requirements. Obtain the documented M5 ZIP from https://github.com/Nixtla/m5-forecasts/raw/main/datasets/m5.zip and the organizers' guide from https://github.com/Mcompetitions/M5-methods . Source data remain separate from any code license. No account/credential is embedded. With the cached inputs in data/raw:
+Python 3.12 is tested. The public repository excludes raw source files, fitted pickle objects, row-level forecast exports and private audit files. The saved explorer works immediately. To run the API from a fresh clone, regenerate its trusted model first; the already executed local build contains that model.
 
-```bash
-python -m pip install -r requirements.txt
-python scripts/prepare_data.py
-PYTHONPATH=src python -m unittest discover -s tests -v
-OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 python scripts/train_and_freeze.py
-OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 python scripts/evaluate_final.py
-OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 python scripts/verify_results.py
-python scripts/report_results.py
-node tests/check_explorer.cjs
+```powershell
+py -3.12 -m venv .venv
+.venv/Scripts/python.exe -m pip install -r requirements.lock
+$env:PYTHONPATH = (Resolve-Path src).Path
+$env:OMP_NUM_THREADS = '2'
+$env:OPENBLAS_NUM_THREADS = '2'
+$env:MKL_NUM_THREADS = '2'
+.venv/Scripts/python.exe scripts/acquire.py --dest runtime/raw
+.venv/Scripts/python.exe scripts/research.py --data runtime/raw --runtime runtime/research
+.venv/Scripts/python.exe scripts/serve.py --db runtime/demo.sqlite --port 8765
 ```
 
-The public source tree excludes raw sales rows, the processed panel and fitted artifacts. The preparation script reconstructs the fixed sample from the documented ZIP and rejects changed input bytes. Private recovery records retain the cached inputs and fitted artifacts. The raw ZIP/member hashes and schema normalization are recorded in reports/data_audit.json. A model freeze guards protocol/code/data, fitted models and final forecasts before evaluation. The original source bytes and freeze are retained under the documented revision; the integrity helper also verifies the exact revised source, input contracts and readable patch. Other frozen files must still match their original hashes. Do not alter parameters or choose another test-best comparator after scoring.
+In another terminal with the same environment, run `.venv/Scripts/python.exe scripts/demo_client.py --url http://127.0.0.1:8765`. It ingests the attributed 56-record fixture, submits an idempotent job, polls status, and prints version-linked predictions and a finite-grid allocation. Interactive API documentation is at `http://127.0.0.1:8765/docs`.
 
-## Boundaries
+Use a fresh demo database. Repeating the exact demo reuses its batch/job; changing a payload under an existing key correctly conflicts. The server is loopback-only and lacks authentication/TLS.
 
-Sales are observed; latent demand, inventory, costs, stockouts and lead times are not. Operating outcomes are simulations with explicit common capital/capacity constraints, not measured savings or a deployment. The final comparison spans only 15 weekly origins. Fourteen-day forecasting targets overlap; uncertainty resamples origins with all series together. This is not an official M5 leaderboard submission/rank.
+Independent AI-agent review passed within the [recorded scope](artifacts/review_status.json); no external employer validation or browser QA is claimed.
 
-The [live explorer](https://prasanna-k-123.github.io/demand-inventory/) has passed desktop, 375/320-pixel layout,
-keyboard-control and report-link checks. A separate clean public-source run
-retrained all four fixed quantile models from the pinned cached M5 ZIP; all
-eleven frozen files and the final analysis reproduce byte for byte. See the
-[release record](docs/RELEASE.md). See the [protocol](PROTOCOL.md) and [source guide](docs/SOURCES.md) for the fixed study and its data-use boundaries.
+The public CI runs 38 artifact-free tests; six model-dependent checks are explicitly skipped until the fitted artifact is regenerated. The recorded full local suite includes all 44 checks.
+
+Full verification, after research:
+
+```powershell
+.venv/Scripts/python.exe scripts/audit_contracts.py --data runtime/raw
+.venv/Scripts/python.exe scripts/weekly_results.py
+.venv/Scripts/python.exe scripts/ingest_cohort.py --cohort runtime/research/cohort.parquet --db runtime/cohort.sqlite
+.venv/Scripts/python.exe -m pytest tests -q --junitxml=artifacts/tests.xml
+.venv/Scripts/python.exe scripts/recovery_check.py --runtime runtime/recovery
+.venv/Scripts/python.exe scripts/benchmark.py --runtime runtime/benchmark
+.venv/Scripts/python.exe scripts/dependency_check.py
+.venv/Scripts/python.exe scripts/build_deliverables.py
+```
+
+Set `TEMP`, `TMP` and `MPLCONFIGDIR` to writable folders if home-directory caches are restricted. Acquisition checks the frozen hashes and refuses changed source bytes. The first research run took 96.8 seconds; full typed cohort ingestion took 249.3 seconds on the shared environment. These are observations, not portable promises.
+
+## Limits and provenance
+
+There are no actual inventories, costs, lead times, prices, product dimensions or original arrival timestamps. Capacity and shortage/excess weights are assumptions. No retailer-savings, organic-demand-recovery, deployment-impact or personal-mastery claim is made. Temporal dependence limits interval guarantees; identity holdout is transfer with history, and attrition is substantial. [Full report](docs/RESEARCH_REPORT.md) and [corrected issues](docs/REVIEW_NOTES.md).
+
+Source: [Dingdong-Inc FreshRetailNet-LT v1.0](https://huggingface.co/datasets/Dingdong-Inc/FreshRetailNet-LT), released 2026-02-02, CC BY 4.0. The placeholder report citation is not treated as a published paper. Original software/narrative: MIT; [data attribution](DATA_LICENSE.md).
+
+This project replaces the previous M5 case study in the existing [demand-inventory repository](https://github.com/Prasanna-K-123/demand-inventory). Its complete previous tree/history is preserved at [legacy/m5-20261026](https://github.com/Prasanna-K-123/demand-inventory/tree/legacy/m5-20261026), commit `43c6f6193c0e7ccaf617fcd2a9283bddbc26df88`. The repository name is retained; this build uses FreshRetailNet-LT.

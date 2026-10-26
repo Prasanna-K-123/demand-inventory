@@ -1,0 +1,102 @@
+[
+  {
+    "expected_calendar_rows": 478656,
+    "identity_split": "fitting_identities",
+    "observed_identities": 831,
+    "observed_rows": 374275,
+    "selected_identities": 831,
+    "split": "fit",
+    "usable_identities": 831,
+    "usable_rows": 356925
+  },
+  {
+    "expected_calendar_rows": 49029,
+    "identity_split": "fitting_identities",
+    "observed_identities": 791,
+    "observed_rows": 45221,
+    "selected_identities": 831,
+    "split": "validation",
+    "usable_identities": 791,
+    "usable_rows": 44856
+  },
+  {
+    "expected_calendar_rows": 50691,
+    "identity_split": "fitting_identities",
+    "observed_identities": 777,
+    "observed_rows": 44699,
+    "selected_identities": 831,
+    "split": "calibration",
+    "usable_identities": 775,
+    "usable_rows": 44553
+  },
+  {
+    "expected_calendar_rows": 61494,
+    "identity_split": "fitting_identities",
+    "observed_identities": 684,
+    "observed_rows": 44785,
+    "selected_identities": 831,
+    "split": "final",
+    "usable_identities": 684,
+    "usable_rows": 44693
+  },
+  {
+    "expected_calendar_rows": 5817,
+    "identity_split": "fitting_identities",
+    "observed_identities": 531,
+    "observed_rows": 3717,
+    "selected_identities": 831,
+    "split": "official_external",
+    "usable_identities": 531,
+    "usable_rows": 3717
+  },
+  {
+    "expected_calendar_rows": 111168,
+    "identity_split": "transfer_holdout",
+    "observed_identities": 193,
+    "observed_rows": 89451,
+    "selected_identities": 193,
+    "split": "fit",
+    "usable_identities": 193,
+    "usable_rows": 85354
+  },
+  {
+    "expected_calendar_rows": 11387,
+    "identity_split": "transfer_holdout",
+    "observed_identities": 184,
+    "observed_rows": 10509,
+    "selected_identities": 193,
+    "split": "validation",
+    "usable_identities": 184,
+    "usable_rows": 10425
+  },
+  {
+    "expected_calendar_rows": 11773,
+    "identity_split": "transfer_holdout",
+    "observed_identities": 180,
+    "observed_rows": 10374,
+    "selected_identities": 193,
+    "split": "calibration",
+    "usable_identities": 180,
+    "usable_rows": 10360
+  },
+  {
+    "expected_calendar_rows": 14282,
+    "identity_split": "transfer_holdout",
+    "observed_identities": 158,
+    "observed_rows": 10477,
+    "selected_identities": 193,
+    "split": "final",
+    "usable_identities": 158,
+    "usable_rows": 10435
+  },
+  {
+    "expected_calendar_rows": 1351,
+    "identity_split": "transfer_holdout",
+    "observed_identities": 125,
+    "observed_rows": 875,
+    "selected_identities": 193,
+    "split": "official_external",
+    "usable_identities": 125,
+    "usable_rows": 875
+  }
+]

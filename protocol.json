@@ -1,0 +1,130 @@
+{
+  "artificial_masking": {
+    "comparison": "recover full business-hour subtotal on final in-stock days; paired errors; not evidence of organic stockout recovery",
+    "eligibility": "all business-hour stock status zero on a day",
+    "estimators": "zero-fill observed subtotal, uniform exposure scaling, learned pooled hourly-share scaling",
+    "fit": "hourly sales-share profile from fit-period in-stock rows of fitting identities only",
+    "hours": "6..21 inclusive; masking last 4 and last 8 hours separately"
+  },
+  "baselines": [
+    "last_observation",
+    "lag_7_fallback_mean_28",
+    "mean_28",
+    "seasonal_4week_fallback_mean_28"
+  ],
+  "benchmark_predeclared": {
+    "concurrent_clients": 4,
+    "environment": "single-machine Windows local loopback; one worker; no cloud/production claims",
+    "report": "achieved/not-achieved and actual throughput, latency distribution, RSS; omit portable performance guarantee",
+    "slo_error_rate": 0.0,
+    "slo_p95_single_series_result_job_ms": 2000,
+    "slo_p95_submit_or_status_ms": 250,
+    "slo_peak_process_rss_mb": 1500,
+    "warm_requests": 200
+  },
+  "capacity_simulation": {
+    "action_grid": "0.1 normalized sales increments, per-item maximum ceil(1.5 * max(predicted q90,0.1) / 0.1), bounded 100 increments",
+    "budget": "floor(0.8 * sum(max(mean_28,0.1))/0.1)",
+    "demand": "next-day observed normalized sales is evaluation proxy only",
+    "interpretation": "synthetic one-period normalized-capacity exercise, no inventory, real lead time, money or retailer-savings claim",
+    "items": "first 8 fitting identities by locked hash with records and forecasts on each final date, selection by identity and availability only",
+    "objective": "minimize equally weighted expected shortage*3 + excess*1 across three scenario demands (q10,q50,q90); sensitivity shortage weights 1 and 5",
+    "solver": "exact dynamic programming on stated finite integer grid and capacity constraint; compare proportional point allocation, no allocation, oracle hindsight; brute-force small-instance certificate"
+  },
+  "cohort": {
+    "claim_scope": "bounded hash sample of history-eligible series; no full-population representativeness claim",
+    "eligibility": "at least 180 training rows through 2024-12-31, including at least 60 rows in 2024-10-01..2024-12-31",
+    "selection": "first 1024 eligible store-product identities sorted by SHA256(stockout-v1|store_id|product_id); no evaluation availability filtering",
+    "transfer_holdout": "selected identities with integer SHA256 digest modulo 5 == 0 excluded from every model fit and calibration; identity transfer is not cold-start because historical lags remain available"
+  },
+  "estimand": "one-day-ahead observed normalized sales, updated with yesterday outcomes; not fixed-origin seven-day forecasting or latent demand identification",
+  "feature_policy": {
+    "excluded": "future sales, realized weather, discounts, activity, stock status, and all contemporaneous fields; no actual stockout indicator in future predictors",
+    "features": "lagged observed sales ratios and levels, 7/28-day history summaries, historical stockout fraction, target day-of-week and annual calendar harmonics only; strict event_date < target_date and arrival <= as_of",
+    "lags": [
+      1,
+      7,
+      14,
+      28
+    ],
+    "minimum_history_rows_in_previous_28_days": 14,
+    "rolling_windows": [
+      7,
+      28
+    ]
+  },
+  "locked_at_utc": "2026-10-26T09:32:31.862364+00:00",
+  "metrics": [
+    "MAE primary",
+    "WAPE with pooled denominator",
+    "RMSE",
+    "80% interval coverage and mean width",
+    "quantile pinball loss",
+    "fully-in-stock business-hour diagnostic strata"
+  ],
+  "minimum_acceptance": "A valid negative result is acceptable. Completion requires computed baseline/model results, explicit attrition, provenance, measured local service and meaningful failure-class tests. No requirement to outperform.",
+  "model_selection": "report all fixed models; select validation minimum MAE among seasonal_4week and pooled_poisson for served point forecast; no final-based tuning; quantile interval remains separately labelled pooled quantile",
+  "pooled_model": {
+    "early_stopping": false,
+    "l2_regularization": 3.0,
+    "learning_rate": 0.05,
+    "library": "sklearn HistGradientBoostingRegressor",
+    "loss": "poisson",
+    "max_iter": 160,
+    "max_leaf_nodes": 15,
+    "min_samples_leaf": 40,
+    "random_state": 42,
+    "target": "observed sales divided by max(previous-28-day mean,0.1)"
+  },
+  "protocol_version": "stockout-1.0",
+  "quantiles": {
+    "calibration": "single scalar conformalized quantile correction on in-cohort calibration rows, finite-sample ceil((n+1)*0.8) quantile of max(lower-y,y-upper); lower clipped zero; temporal dependence voids distribution-free coverage guarantee",
+    "loss": "quantile",
+    "other_parameters": "same as point model",
+    "quantiles": [
+      0.1,
+      0.9
+    ]
+  },
+  "source": {
+    "eval_sha256": "370ca7f995d2a059744e1659eb681e60db694bec2f80a84252426afdd2b6d626",
+    "license": "CC-BY-4.0",
+    "name": "Dingdong-Inc/FreshRetailNet-LT",
+    "train_sha256": "e744c537ed16a8254c50f8456de7c5614866d4d8b6787e3cc3b67be02ea2f1e3"
+  },
+  "splits": {
+    "calibration": [
+      "2025-03-01",
+      "2025-04-30"
+    ],
+    "final": [
+      "2025-05-01",
+      "2025-07-13"
+    ],
+    "fit": [
+      "2023-06-05",
+      "2024-12-31"
+    ],
+    "official_external": [
+      "2025-07-14",
+      "2025-07-20"
+    ],
+    "validation": [
+      "2025-01-01",
+      "2025-02-28"
+    ]
+  },
+  "status": "locked before model fitting or evaluation-outcome inspection; source training examples only encountered in official dataset card",
+  "systems_acceptance": [
+    "source hashes and full contracts audited",
+    "durable SQLite typed source and job ledger",
+    "replay/crash equivalence, transactional publication and worker lease fencing",
+    "as-of late-arrival tests and no-future tamper",
+    "offline/served features and forecasts parity",
+    "bounded request bodies, input errors, deduplication/conflict quarantine",
+    "concurrent idempotent submission and distinct worker claims",
+    "before/after-commit fault recovery",
+    "available-label-only monitoring and fallback/restrict policies"
+  ],
+  "uncertainty": "500 paired bootstrap replications of final-date daily mean absolute-error differences (pooled minus seasonal), resampling contiguous 7-day date blocks; report exploratory percentile 95% interval, dependence across series preserved within days"
+}

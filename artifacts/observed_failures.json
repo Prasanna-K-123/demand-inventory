@@ -1,0 +1,57 @@
+[
+  {
+    "stage": "first full-source audit",
+    "failure": "DuckDB 2.0 rejects deprecated single-arrow list lambda syntax",
+    "resolution": "Use explicit lambda x: expression; pinned actual DuckDB 2.0.0. No source or outcome changes."
+  },
+  {
+    "stage": "matplotlib import",
+    "failure": "Default user-home cache directory denied",
+    "resolution": "Set MPLCONFIGDIR to writable runtime cache; first attempt used workspace temporary cache. No plot output yet."
+  },
+  {
+    "stage": "child HTTP tests",
+    "failure": "Windows asyncio socketpair blocked before app startup by child network permissions; TestClient hung. Faulthandler identified socket.accept during event-loop construction.",
+    "resolution": "Interrupted both hung test runs. Root execution with existing network permission requested; non-HTTP tests continue. No HTTP pass or latency claim until execution."
+  },
+  {
+    "stage": "internal design review",
+    "failure": "Monitoring originally counted repeated jobs for the same series/date as multiple labels.",
+    "resolution": "Deduplicate series/date forecasts before computing label counts; added a regression test that 35 repeated forecasts produce one available label."
+  },
+  {
+    "stage": "first HTTP memory benchmark",
+    "failure": "RSS sampler tracked the Windows virtual-environment launcher (4.2 MiB) and omitted its Python child; initial memory SLO claim invalid.",
+    "resolution": "Retain original receipt marked invalid; sample aggregate server process tree and explicitly terminate owned server descendants; rerun actual HTTP benchmark."
+  },
+  {
+    "stage": "scientific reporting review",
+    "failure": "Retrospective validation CQR coverage used later Mar\u2013Apr calibration, so it was not available as-of Jan\u2013Feb. Point-model selection was unaffected.",
+    "resolution": "Suppress calibrated validation coverage/width; retain raw quantile losses, and label calibration coverage as in-sample diagnostic. Final and external scores unchanged."
+  },
+  {
+    "stage": "capacity protocol interpretation",
+    "failure": "Protocol named middle scenario q50, while implementation uses the selected point forecast (Poisson mean model).",
+    "resolution": "Record an explicit protocol deviation; label all allocation results as equal-weight q10/selected-point/q90 scenarios. No claim that point is a fitted median. No outcome-driven model tuning."
+  },
+  {
+    "stage": "root integration review",
+    "failure": "Initial service allocation used calibrated interval endpoints, while the locked research decision study used raw quantile estimates. Forecast parity did not establish decision-policy parity.",
+    "resolution": "Service aligned to frozen raw-quantile/selected-point/raw-quantile scenarios and q90-based caps; added policy ID and explicit scenario matrix, typed allocation result and offline-versus-HTTP allocation checks. Prior response and benchmark retained in artifacts/audit. No research refits or numeric changes."
+  },
+  {
+    "stage": "root replay review",
+    "failure": "Event snapshots alone did not freeze monitoring state: later forecast publications could change fallback policy between attempts.",
+    "resolution": "Freeze the complete monitoring summary inside the job submission transaction, filtered to requested model and feature versions. Compute and recovery consume that immutable JSON. Regression publishes 30 threshold-changing historical forecasts between attempts and verifies unchanged output."
+  },
+  {
+    "stage": "root version-identity review",
+    "failure": "Initial model_version was derived from pickle bytes only and did not identify calibration, selected point model or feature implementation.",
+    "resolution": "Bind served identity to pickle digest, inference configuration, feature list and hashes of relevant serving implementation files; reject manifest-only or runtime-implementation changes. Preserve old manifest, fitted artifact and receipts; no refit."
+  },
+  {
+    "stage": "independent review: expired failure publication",
+    "failure": "An expired worker could mark a running job failed when its token had not yet been replaced, preventing lease recovery. Successful publication already checked expiry.",
+    "resolution": "Failure publication now requires an unexpired lease in addition to current owner/token. Regression proves expired failure does nothing, replacement can reclaim, and current-owner failure succeeds. Rebound version without refitting; prior 200-job performance receipt retained with its version, then current-version HTTP correctness smoke."
+  }
+]

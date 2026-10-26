@@ -1,0 +1,96 @@
+{
+  "allocation_policy_id": "raw-quantile-point-grid-v1",
+  "completed_jobs": 200,
+  "direct_model_compute_only": {
+    "max_ms": 10.931900003924966,
+    "n": 200,
+    "p50_ms": 7.33325001783669,
+    "p95_ms": 9.483585087582465,
+    "p99_ms": 10.31326791970059
+  },
+  "elapsed_seconds": 14.776475299848244,
+  "environment": {
+    "hardware_model": "not reliably exposed; no dedicated-machine claim",
+    "host_ram_gib": 7.75,
+    "logical_cpus": 8,
+    "os": "Windows",
+    "os_release": "11",
+    "physical_cpus": 8,
+    "python": "3.12.14",
+    "shared_machine": true
+  },
+  "error_rate": 0.0,
+  "errors": [],
+  "job_end_to_end": {
+    "max_ms": 557.3271999601275,
+    "n": 200,
+    "p50_ms": 283.2518999930471,
+    "p95_ms": 457.6437199953943,
+    "p99_ms": 506.2557731522246
+  },
+  "jobs_per_second": 13.535027531366294,
+  "ledger_counts": {
+    "batches": 1,
+    "events": 56,
+    "feature_ledger": 222,
+    "jobs": 221,
+    "quarantine": 0,
+    "results": 221,
+    "states": {
+      "succeeded": 221
+    }
+  },
+  "limitations": "single machine; warmed repeated history, one active model, no multi-host/load-balancer/failover or sustained production claim; whole-machine peak and client memory excluded",
+  "load": {
+    "concurrent_clients": 4,
+    "history": "same real 28-day fixture repeatedly; cache-warm tiny local workload",
+    "max_series_contract": 64,
+    "measured_single_series_jobs": 200,
+    "model_threads": 2,
+    "warmup_jobs_excluded": 20,
+    "worker_threads": 1
+  },
+  "max_server_processes": 4,
+  "memory_sampling_interval_ms": 20,
+  "memory_sampling_scope": "Windows venv launcher plus all Python server descendants; summed working-set RSS may double-count shared pages",
+  "model_version": "509b40e9d63ead14",
+  "multi_series_items": 2,
+  "multi_series_parity_absolute_error": 0.0,
+  "offline_service_allocation_identical": true,
+  "offline_service_allocation_objective_error": 0.0,
+  "offline_service_max_absolute_error": 0.0,
+  "offline_service_scenarios_identical": true,
+  "peak_server_process_tree_rss_mb": 178.84765625,
+  "requests": {
+    "result": {
+      "max_ms": 73.84450011886656,
+      "n": 200,
+      "p50_ms": 11.539499973878264,
+      "p95_ms": 41.199975030031055,
+      "p99_ms": 54.00584389921262
+    },
+    "status": {
+      "max_ms": 86.80319995619357,
+      "n": 2091,
+      "p50_ms": 13.909699860960245,
+      "p95_ms": 40.61969998292625,
+      "p99_ms": 54.63212998583911
+    },
+    "submit": {
+      "max_ms": 90.69850016385317,
+      "n": 200,
+      "p50_ms": 33.48089999053627,
+      "p95_ms": 71.57016992568967,
+      "p99_ms": 84.44503904785955
+    }
+  },
+  "run_id": "84ab393a00b6",
+  "served_configuration_sha256": "509b40e9d63ead141292fdff44ee0c3e05041bd4c64ff438b5c3c91570bc1c5d",
+  "slo": {
+    "job_p95_below_2000ms": true,
+    "request_p95_below_250ms": true,
+    "server_process_tree_rss_below_1500mb": true,
+    "zero_errors": true
+  },
+  "transport": "real HTTP on IPv4 loopback"
+}

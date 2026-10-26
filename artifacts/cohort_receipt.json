@@ -1,0 +1,9 @@
+{
+  "cohort_sha256": "553c2a4743a54896ef8c1235c3eea3db42f7ea3ba5de394083c0303e4d8a40fa",
+  "eligible_series": 8849,
+  "fitting_identities": 831,
+  "protocol_sha256": "9fba7468115261827064dbc3ebbd00bd1051d4ffcd00986f395c03eb63e8aa0a",
+  "selected_series": 1024,
+  "selection_used": "training identity and date availability only",
+  "transfer_holdout": 193
+}

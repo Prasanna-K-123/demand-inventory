@@ -1,0 +1,282 @@
+{
+  "$defs": {
+    "AllocationResult": {
+      "additionalProperties": false,
+      "properties": {
+        "capacity_steps": {
+          "title": "Capacity Steps",
+          "type": "integer"
+        },
+        "caps": {
+          "items": {
+            "type": "integer"
+          },
+          "title": "Caps",
+          "type": "array"
+        },
+        "excess_weight": {
+          "const": 1.0,
+          "title": "Excess Weight",
+          "type": "number"
+        },
+        "objective": {
+          "title": "Objective",
+          "type": "number"
+        },
+        "optimality_scope": {
+          "title": "Optimality Scope",
+          "type": "string"
+        },
+        "policy_id": {
+          "const": "raw-quantile-point-grid-v1",
+          "title": "Policy Id",
+          "type": "string"
+        },
+        "quantities": {
+          "items": {
+            "type": "number"
+          },
+          "title": "Quantities",
+          "type": "array"
+        },
+        "quantity_steps": {
+          "items": {
+            "type": "integer"
+          },
+          "title": "Quantity Steps",
+          "type": "array"
+        },
+        "scenario_definition": {
+          "title": "Scenario Definition",
+          "type": "string"
+        },
+        "scenario_values": {
+          "items": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array"
+          },
+          "title": "Scenario Values",
+          "type": "array"
+        },
+        "shortage_weight": {
+          "enum": [
+            1,
+            3,
+            5
+          ],
+          "title": "Shortage Weight",
+          "type": "integer"
+        },
+        "step": {
+          "title": "Step",
+          "type": "number"
+        },
+        "used_steps": {
+          "title": "Used Steps",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "quantity_steps",
+        "quantities",
+        "used_steps",
+        "capacity_steps",
+        "objective",
+        "step",
+        "caps",
+        "optimality_scope",
+        "policy_id",
+        "scenario_definition",
+        "scenario_values",
+        "shortage_weight",
+        "excess_weight"
+      ],
+      "title": "AllocationResult",
+      "type": "object"
+    },
+    "Prediction": {
+      "additionalProperties": false,
+      "properties": {
+        "decision_allowed": {
+          "title": "Decision Allowed",
+          "type": "boolean"
+        },
+        "feature_hash": {
+          "title": "Feature Hash",
+          "type": "string"
+        },
+        "history_hash": {
+          "title": "History Hash",
+          "type": "string"
+        },
+        "history_rows": {
+          "title": "History Rows",
+          "type": "integer"
+        },
+        "interval_model": {
+          "title": "Interval Model",
+          "type": "string"
+        },
+        "last_age_days": {
+          "title": "Last Age Days",
+          "type": "integer"
+        },
+        "lower": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Lower"
+        },
+        "point": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Point"
+        },
+        "policy": {
+          "title": "Policy",
+          "type": "string"
+        },
+        "product_id": {
+          "title": "Product Id",
+          "type": "integer"
+        },
+        "store_id": {
+          "title": "Store Id",
+          "type": "integer"
+        },
+        "target_date": {
+          "title": "Target Date",
+          "type": "string"
+        },
+        "upper": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Upper"
+        }
+      },
+      "required": [
+        "store_id",
+        "product_id",
+        "target_date",
+        "point",
+        "lower",
+        "upper",
+        "policy",
+        "decision_allowed",
+        "feature_hash",
+        "history_hash",
+        "history_rows",
+        "last_age_days",
+        "interval_model"
+      ],
+      "title": "Prediction",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "allocation": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AllocationResult"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "allocation_policy": {
+      "title": "Allocation Policy",
+      "type": "string"
+    },
+    "as_of": {
+      "title": "As Of",
+      "type": "string"
+    },
+    "feature_version": {
+      "title": "Feature Version",
+      "type": "string"
+    },
+    "job_id": {
+      "title": "Job Id",
+      "type": "string"
+    },
+    "model_version": {
+      "title": "Model Version",
+      "type": "string"
+    },
+    "monitoring": {
+      "additionalProperties": true,
+      "title": "Monitoring",
+      "type": "object"
+    },
+    "predictions": {
+      "items": {
+        "$ref": "#/$defs/Prediction"
+      },
+      "title": "Predictions",
+      "type": "array"
+    },
+    "result_hash": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Result Hash"
+    },
+    "run_id": {
+      "title": "Run Id",
+      "type": "string"
+    },
+    "snapshot_seq": {
+      "title": "Snapshot Seq",
+      "type": "integer"
+    },
+    "source_sha256s": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Source Sha256S",
+      "type": "array"
+    }
+  },
+  "required": [
+    "job_id",
+    "run_id",
+    "model_version",
+    "feature_version",
+    "snapshot_seq",
+    "source_sha256s",
+    "as_of",
+    "predictions",
+    "allocation",
+    "allocation_policy",
+    "monitoring"
+  ],
+  "title": "JobResult",
+  "type": "object"
+}

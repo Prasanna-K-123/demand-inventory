@@ -1,0 +1,113 @@
+{
+  "independent_review": {
+    "not_claimed": [
+      "visual browser QA",
+      "external employer validation",
+      "production impact",
+      "new model fits"
+    ],
+    "review_type": "independent AI-agent technical review",
+    "scopes": [
+      "scientific recomputation and source/actual-database audit",
+      "targeted expired-failure fencing reproduction and repair verification",
+      "artifact and local-link concordance",
+      "public staging tests:38 passed,6 explicit fitted-artifact skips",
+      "public allowlist and secret-pattern review"
+    ],
+    "serving_version": "47ae70b6ffe5eb2d",
+    "source_fits_unchanged": true,
+    "status": "passed"
+  },
+  "legacy": {
+    "branch": "legacy/m5-20261026",
+    "commit": "43c6f6193c0e7ccaf617fcd2a9283bddbc26df88"
+  },
+  "limits": [
+    "Normalized quantities, not money or physical units",
+    "Organic latent demand is unidentified",
+    "History-eligible sample with substantial attrition",
+    "Synthetic arrivals and assumed costs/capacity",
+    "Temporal dependence limits coverage and bootstrap claims",
+    "Loopback-only single machine; no visual-browser QA or production claim"
+  ],
+  "maturity": "executed local research prototype; independent AI-agent technical review passed",
+  "model_version": "47ae70b6ffe5eb2d",
+  "pages_url": "https://prasanna-k-123.github.io/demand-inventory/",
+  "paths": {
+    "api_demo": "scripts/demo_client.py",
+    "claims": "docs/CLAIM_MAP.md",
+    "code": "src/stockout",
+    "explorer": "explorer/index.html",
+    "independent_review": "artifacts/review_status.json",
+    "readme": "README.md",
+    "scientific_report": "docs/RESEARCH_REPORT.md",
+    "systems": "docs/SYSTEM_DESIGN.md"
+  },
+  "primary": {
+    "best_simple_mae": 0.5169869702248852,
+    "final_rows": 44693,
+    "interval_coverage80": 0.8036157787572998,
+    "mae": 0.458717410414742,
+    "model": "pooled_poisson",
+    "relative_mae_reduction_vs_best_simple": 0.11270991952620457,
+    "relative_mae_reduction_vs_seasonal": 0.14707119682186098,
+    "seasonal_mae": 0.5378144209756934,
+    "task": "rolling one-day observed normalized-sales forecasting",
+    "wape": 0.2964821412527667,
+    "weekly_blocks": 10,
+    "weekly_wins_vs_seasonal": 10
+  },
+  "private_defense_excluded_from_repository": true,
+  "project_id": "stockout-decision-platform",
+  "protocol_sha256": "9fba7468115261827064dbc3ebbd00bd1051d4ffcd00986f395c03eb63e8aa0a",
+  "repository_url": "https://github.com/Prasanna-K-123/demand-inventory",
+  "secondary": {
+    "allocation": "Exact finite-grid scenarios; slightly lower proxy cost at shortage weights 3/5, worse at 1; no retailer-savings claim",
+    "artificial_masking": "Learned hourly-share scaling improves conditional artificial reconstruction; no organic-demand identification",
+    "policy_id": "raw-quantile-point-grid-v1"
+  },
+  "served_configuration_sha256": "47ae70b6ffe5eb2d11b7cfd072e21eb949dc2a9de326aaa40de441970a648089",
+  "source": {
+    "fit_rows": 356925,
+    "hashes": [
+      "e744c537ed16a8254c50f8456de7c5614866d4d8b6787e3cc3b67be02ea2f1e3",
+      "370ca7f995d2a059744e1659eb681e60db694bec2f80a84252426afdd2b6d626"
+    ],
+    "license": "CC-BY-4.0",
+    "name": "Dingdong-Inc/FreshRetailNet-LT",
+    "rows_audited": 7939549,
+    "selected_rows": 634383,
+    "selected_series": 1024,
+    "transfer_holdout_identities": 193,
+    "url": "https://huggingface.co/datasets/Dingdong-Inc/FreshRetailNet-LT"
+  },
+  "systems": {
+    "allocation_parity": true,
+    "automated_tests": 44,
+    "crash_equivalence": true,
+    "crash_publication_trials": 4,
+    "current_http_smoke": "artifacts/http_smoke.json",
+    "durable_records": 634383,
+    "forecast_parity_error": 0.0,
+    "http_errors": 0,
+    "http_measured_jobs": 200,
+    "job_p95_ms": 457.6437199953943,
+    "jobs_per_second": 13.535027531366294,
+    "peak_server_tree_rss_mb": 178.84765625,
+    "performance_model_version": "509b40e9d63ead14",
+    "receipt": "artifacts/benchmark.json",
+    "test_failures": 0
+  },
+  "title": "Stockout-aware operational decision platform",
+  "uncertainty": {
+    "block_days": 7,
+    "ci95_percentile": [
+      -0.09248092441610381,
+      -0.06957246629881514
+    ],
+    "daily_average_mae_difference_pooled_minus_seasonal": -0.08003396559165851,
+    "dates": 74,
+    "interpretation": "exploratory paired moving-block bootstrap; not an IID or causal guarantee",
+    "replicates": 500
+  }
+}

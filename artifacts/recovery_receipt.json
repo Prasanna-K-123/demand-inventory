@@ -1,0 +1,95 @@
+{
+  "all_semantically_equal": true,
+  "lease_seconds": 1.0,
+  "scope": "actual abrupt Python process exits around SQLite result commit; clean versus crash/restart outputs excluding run identifiers; one Windows host; no distributed failover claim",
+  "trials": [
+    {
+      "final_attempt": 2,
+      "phase": "process_exit_before_commit",
+      "post_crash_counts": {
+        "batches": 1,
+        "events": 28,
+        "feature_ledger": 0,
+        "jobs": 1,
+        "quarantine": 0,
+        "results": 0,
+        "states": {
+          "running": 1
+        }
+      },
+      "process_exit_code": 93,
+      "recovery_seconds_after_process_exit": 0.9845668999478221,
+      "repetition": 0,
+      "result_semantic_sha256": "d920c4226d852318998f0db97039755123b909b9677e7c0a570c05d26def883c",
+      "semantic_equivalence_to_clean_run": true,
+      "total_seconds_including_child_startup": 4.15232599992305
+    },
+    {
+      "final_attempt": 2,
+      "phase": "process_exit_before_commit",
+      "post_crash_counts": {
+        "batches": 1,
+        "events": 28,
+        "feature_ledger": 0,
+        "jobs": 1,
+        "quarantine": 0,
+        "results": 0,
+        "states": {
+          "running": 1
+        }
+      },
+      "process_exit_code": 93,
+      "recovery_seconds_after_process_exit": 1.012228700099513,
+      "repetition": 1,
+      "result_semantic_sha256": "d920c4226d852318998f0db97039755123b909b9677e7c0a570c05d26def883c",
+      "semantic_equivalence_to_clean_run": true,
+      "total_seconds_including_child_startup": 4.197478200076148
+    },
+    {
+      "final_attempt": 1,
+      "phase": "process_exit_after_commit",
+      "post_crash_counts": {
+        "batches": 1,
+        "events": 28,
+        "feature_ledger": 1,
+        "jobs": 1,
+        "quarantine": 0,
+        "results": 1,
+        "states": {
+          "succeeded": 1
+        }
+      },
+      "process_exit_code": 94,
+      "recovery_seconds_after_process_exit": 0.014703599968925118,
+      "repetition": 0,
+      "result_semantic_sha256": "d920c4226d852318998f0db97039755123b909b9677e7c0a570c05d26def883c",
+      "semantic_equivalence_to_clean_run": true,
+      "total_seconds_including_child_startup": 3.3293119999580085
+    },
+    {
+      "final_attempt": 1,
+      "phase": "process_exit_after_commit",
+      "post_crash_counts": {
+        "batches": 1,
+        "events": 28,
+        "feature_ledger": 1,
+        "jobs": 1,
+        "quarantine": 0,
+        "results": 1,
+        "states": {
+          "succeeded": 1
+        }
+      },
+      "process_exit_code": 94,
+      "recovery_seconds_after_process_exit": 0.05155090009793639,
+      "repetition": 1,
+      "result_semantic_sha256": "d920c4226d852318998f0db97039755123b909b9677e7c0a570c05d26def883c",
+      "semantic_equivalence_to_clean_run": true,
+      "total_seconds_including_child_startup": 3.4797086999751627
+    }
+  ],
+  "model_versions": [
+    "509b40e9d63ead14"
+  ],
+  "version_note": "Actual publication-crash trials use the listed serving version. Later fail-only fencing repair is separately tested by tests-final-fencing.xml and current-version HTTP smoke; no model refit."
+}

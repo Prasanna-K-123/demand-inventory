@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "review_type": "independent AI-agent technical review",
+  "scopes": [
+    "scientific recomputation and source/actual-database audit",
+    "targeted expired-failure fencing reproduction and repair verification",
+    "artifact and local-link concordance",
+    "public staging tests:38 passed,6 explicit fitted-artifact skips",
+    "public allowlist and secret-pattern review"
+  ],
+  "not_claimed": [
+    "visual browser QA",
+    "external employer validation",
+    "production impact",
+    "new model fits"
+  ],
+  "serving_version": "47ae70b6ffe5eb2d",
+  "source_fits_unchanged": true
+}

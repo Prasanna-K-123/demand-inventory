@@ -1,0 +1,25 @@
+{
+  "dataset": "FreshRetailNet-LT",
+  "fields": {
+    "activity_flag": "INTEGER",
+    "avg_humidity": "DOUBLE",
+    "avg_temperature": "DOUBLE",
+    "avg_wind_level": "DOUBLE",
+    "city_id": "BIGINT",
+    "discount": "DOUBLE",
+    "dt": "VARCHAR",
+    "first_category_id": "BIGINT",
+    "holiday_flag": "INTEGER",
+    "hours_sale": "DOUBLE[]",
+    "hours_stock_status": "INTEGER[]",
+    "management_group_id": "BIGINT",
+    "precpt": "DOUBLE",
+    "product_id": "BIGINT",
+    "sale_amount": "DOUBLE",
+    "second_category_id": "BIGINT",
+    "stock_hour6_22_cnt": "INTEGER",
+    "store_id": "BIGINT",
+    "third_category_id": "BIGINT"
+  },
+  "prediction_policy": "Only historical daily sales and historical business-hour stockout counts plus calendar are used; unused source fields audited but excluded from predictors."
+}

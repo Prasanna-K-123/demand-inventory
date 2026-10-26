@@ -1,0 +1,8 @@
+{
+  "addendum_sha256": "d5f665d61f30e4b0b904a630013166fffcd528715f76661898a7cead4d5c1473",
+  "fixed_fit": "No refits per origin; observed prior-day lags updated. One-day-ahead forecast, not fixed-origin seven-day prediction.",
+  "full_disjoint_seven_day_blocks": 10,
+  "pooled_beats_seasonal_blocks": 10,
+  "pooled_best_of_all_five_blocks": 9,
+  "window_definition": "2025-05-01 anchored consecutive non-overlapping 7-day blocks; partial final block reported separately"
+}

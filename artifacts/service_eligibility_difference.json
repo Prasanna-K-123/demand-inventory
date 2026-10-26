@@ -1,0 +1,9 @@
+{
+  "final_research_rows": 55128,
+  "service_extra_freshness_exclusions": 2,
+  "by_identity_split": {
+    "fitting_identities": 2
+  },
+  "reason": "research protocol requires >=14 observations in previous28days; service additionally restricts last_age>2",
+  "not_zero_filled": true
+}

@@ -1,0 +1,110 @@
+{
+  "grid_bound": {
+    "derivation": "For identical per-item caps and capacity, round continuous q down to grid. Feasibility preserved; loss increases by at most shortage_weight * step per item. Bound concerns declared scenario objective, not realized retailer outcomes.",
+    "items_per_day": 8,
+    "step": 0.1,
+    "upper_bound_continuous_optimality_gap_per_day": {
+      "shortage1": 0.8,
+      "shortage3": 2.4,
+      "shortage5": 4.0
+    }
+  },
+  "results": [
+    {
+      "days": 74,
+      "mean_excess": 5.933691976206073e-16,
+      "mean_proxy_cost": 3.970391891891892,
+      "mean_shortage": 3.9703918918918917,
+      "policy": "hindsight_grid_oracle",
+      "shortage_weight": 1.0
+    },
+    {
+      "days": 74,
+      "mean_excess": 0.6758243243243245,
+      "mean_proxy_cost": 5.57204054054054,
+      "mean_shortage": 4.896216216216216,
+      "policy": "proportional_point",
+      "shortage_weight": 1.0
+    },
+    {
+      "days": 74,
+      "mean_excess": 0.9585135135135138,
+      "mean_proxy_cost": 5.730662162162162,
+      "mean_shortage": 4.772148648648648,
+      "policy": "scenario_dp",
+      "shortage_weight": 1.0
+    },
+    {
+      "days": 74,
+      "mean_excess": 0.0,
+      "mean_proxy_cost": 16.375797297297296,
+      "mean_shortage": 16.375797297297296,
+      "policy": "zero_capacity",
+      "shortage_weight": 1.0
+    },
+    {
+      "days": 74,
+      "mean_excess": 0.0008108108108114049,
+      "mean_proxy_cost": 11.910364864864864,
+      "mean_shortage": 3.9698513513513514,
+      "policy": "hindsight_grid_oracle",
+      "shortage_weight": 3.0
+    },
+    {
+      "days": 74,
+      "mean_excess": 0.6758243243243245,
+      "mean_proxy_cost": 15.36447297297297,
+      "mean_shortage": 4.896216216216216,
+      "policy": "proportional_point",
+      "shortage_weight": 3.0
+    },
+    {
+      "days": 74,
+      "mean_excess": 0.9585135135135138,
+      "mean_proxy_cost": 15.27495945945946,
+      "mean_shortage": 4.772148648648648,
+      "policy": "scenario_dp",
+      "shortage_weight": 3.0
+    },
+    {
+      "days": 74,
+      "mean_excess": 0.0,
+      "mean_proxy_cost": 49.1273918918919,
+      "mean_shortage": 16.375797297297296,
+      "policy": "zero_capacity",
+      "shortage_weight": 3.0
+    },
+    {
+      "days": 74,
+      "mean_excess": 0.0008108108108114049,
+      "mean_proxy_cost": 19.850067567567567,
+      "mean_shortage": 3.9698513513513514,
+      "policy": "hindsight_grid_oracle",
+      "shortage_weight": 5.0
+    },
+    {
+      "days": 74,
+      "mean_excess": 0.6758243243243245,
+      "mean_proxy_cost": 25.156905405405404,
+      "mean_shortage": 4.896216216216216,
+      "policy": "proportional_point",
+      "shortage_weight": 5.0
+    },
+    {
+      "days": 74,
+      "mean_excess": 0.9585135135135138,
+      "mean_proxy_cost": 24.819256756756754,
+      "mean_shortage": 4.772148648648648,
+      "policy": "scenario_dp",
+      "shortage_weight": 5.0
+    },
+    {
+      "days": 74,
+      "mean_excess": 0.0,
+      "mean_proxy_cost": 81.87898648648648,
+      "mean_shortage": 16.375797297297296,
+      "policy": "zero_capacity",
+      "shortage_weight": 5.0
+    }
+  ]
+}

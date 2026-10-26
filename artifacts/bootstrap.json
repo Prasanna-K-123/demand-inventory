@@ -1,0 +1,11 @@
+{
+  "block_days": 7,
+  "ci95_percentile": [
+    -0.09248092441610381,
+    -0.06957246629881514
+  ],
+  "daily_average_mae_difference_pooled_minus_seasonal": -0.08003396559165851,
+  "dates": 74,
+  "interpretation": "exploratory paired moving-block bootstrap; not an IID or causal guarantee",
+  "replicates": 500
+}

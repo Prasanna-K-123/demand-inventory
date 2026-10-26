@@ -1,0 +1,14 @@
+{
+  "allocation_identical": true,
+  "fixture_records": 56,
+  "forecast_max_absolute_error": 0.0,
+  "http_transport": "actual IPv4 loopback",
+  "idempotent_submission": true,
+  "model_version": "47ae70b6ffe5eb2d",
+  "monitoring_version_bound": true,
+  "run_id": "smoke-d63e3990fe",
+  "scope": "correctness smoke after expired-failure fencing repair; prior 200-job performance receipt retains its measured version",
+  "series": 2,
+  "served_configuration_sha256": "47ae70b6ffe5eb2d11b7cfd072e21eb949dc2a9de326aaa40de441970a648089",
+  "status": "passed"
+}

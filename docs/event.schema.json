@@ -1,0 +1,91 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "arrival_kind": {
+      "enum": [
+        "synthetic_next_midnight",
+        "synthetic_delayed",
+        "synthetic_fault_fixture"
+      ],
+      "title": "Arrival Kind",
+      "type": "string"
+    },
+    "arrived_at": {
+      "format": "date-time",
+      "title": "Arrived At",
+      "type": "string"
+    },
+    "event_date": {
+      "format": "date",
+      "title": "Event Date",
+      "type": "string"
+    },
+    "hours_sale": {
+      "items": {
+        "maximum": 1000000,
+        "minimum": 0,
+        "type": "number"
+      },
+      "maxItems": 24,
+      "minItems": 24,
+      "title": "Hours Sale",
+      "type": "array"
+    },
+    "hours_stock_status": {
+      "items": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer"
+      },
+      "maxItems": 24,
+      "minItems": 24,
+      "title": "Hours Stock Status",
+      "type": "array"
+    },
+    "oos_hours": {
+      "maximum": 16,
+      "minimum": 0,
+      "title": "Oos Hours",
+      "type": "integer"
+    },
+    "product_id": {
+      "maximum": 2147483647,
+      "minimum": 0,
+      "title": "Product Id",
+      "type": "integer"
+    },
+    "sale_amount": {
+      "maximum": 1000000,
+      "minimum": 0,
+      "title": "Sale Amount",
+      "type": "number"
+    },
+    "source_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Source Sha256",
+      "type": "string"
+    },
+    "store_id": {
+      "maximum": 2147483647,
+      "minimum": 0,
+      "title": "Store Id",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "source_sha256",
+    "store_id",
+    "product_id",
+    "event_date",
+    "arrived_at",
+    "sale_amount",
+    "hours_sale",
+    "hours_stock_status",
+    "oos_hours",
+    "arrival_kind"
+  ],
+  "title": "SaleEvent",
+  "type": "object"
+}

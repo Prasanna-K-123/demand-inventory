@@ -1,0 +1,86 @@
+{
+  "$defs": {
+    "SeriesKey": {
+      "additionalProperties": false,
+      "properties": {
+        "product_id": {
+          "maximum": 2147483647,
+          "minimum": 0,
+          "title": "Product Id",
+          "type": "integer"
+        },
+        "store_id": {
+          "maximum": 2147483647,
+          "minimum": 0,
+          "title": "Store Id",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "store_id",
+        "product_id"
+      ],
+      "title": "SeriesKey",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "as_of": {
+      "format": "date-time",
+      "title": "As Of",
+      "type": "string"
+    },
+    "capacity_steps": {
+      "anyOf": [
+        {
+          "maximum": 1000,
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Capacity Steps"
+    },
+    "model_version": {
+      "pattern": "^[0-9a-f]{16}$",
+      "title": "Model Version",
+      "type": "string"
+    },
+    "series": {
+      "items": {
+        "$ref": "#/$defs/SeriesKey"
+      },
+      "maxItems": 64,
+      "minItems": 1,
+      "title": "Series",
+      "type": "array"
+    },
+    "shortage_weight": {
+      "default": 3,
+      "enum": [
+        1,
+        3,
+        5
+      ],
+      "title": "Shortage Weight",
+      "type": "integer"
+    },
+    "target_date": {
+      "format": "date",
+      "title": "Target Date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "series",
+    "target_date",
+    "as_of",
+    "model_version"
+  ],
+  "title": "JobRequest",
+  "type": "object"
+}

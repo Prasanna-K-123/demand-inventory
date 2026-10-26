@@ -1,0 +1,12 @@
+{
+  "html_static_checks": "passed",
+  "python_files_parsed": 28,
+  "unique_element_ids": 22,
+  "labelled_selects": 3,
+  "local_markdown_links": "passed",
+  "inline_saved_results_match_summary": true,
+  "public_trace_export_absent": true,
+  "protocol_hashes_match": true,
+  "no_browser_qa": true,
+  "scope": "HTML structure, labels, anchors, local links, embedded data concordance and Python syntax; no browser layout or accessibility conformance certification"
+}
