@@ -1,82 +1,82 @@
 [
   {
     "coverage80": 0.8000359122842458,
+    "evaluation_role": "in-sample calibration diagnostic",
     "identity_split": "fitting_identities",
-    "mean_width": 1.2311204731963474,
+    "mean_width": 1.2286343565134459,
     "n": 44553,
-    "pinball10_raw": 0.08324967801739641,
-    "pinball90_raw": 0.09090090389085431,
-    "split": "calibration",
-    "evaluation_role": "in-sample calibration diagnostic"
+    "pinball10_raw": 0.08325288746993986,
+    "pinball90_raw": 0.09087783195005299,
+    "split": "calibration"
   },
   {
-    "coverage80": 0.8013513513513514,
+    "coverage80": 0.8006756756756757,
+    "evaluation_role": "in-sample calibration diagnostic",
     "identity_split": "transfer_holdout",
-    "mean_width": 1.3632739810124164,
+    "mean_width": 1.3598800981636614,
     "n": 10360,
-    "pinball10_raw": 0.09265128929423788,
-    "pinball90_raw": 0.10133335850301889,
-    "split": "calibration",
-    "evaluation_role": "in-sample calibration diagnostic"
+    "pinball10_raw": 0.09271926767691548,
+    "pinball90_raw": 0.10138760649414785,
+    "split": "calibration"
   },
   {
-    "coverage80": 0.8036157787572998,
+    "coverage80": 0.8045107734992057,
+    "evaluation_role": "held-out temporal evaluation",
     "identity_split": "fitting_identities",
-    "mean_width": 1.4529552605394045,
+    "mean_width": 1.4521490671396204,
     "n": 44693,
-    "pinball10_raw": 0.10481116668112425,
-    "pinball90_raw": 0.10719798246138654,
-    "split": "final",
-    "evaluation_role": "held-out temporal evaluation"
+    "pinball10_raw": 0.10482959245199568,
+    "pinball90_raw": 0.1071274736866713,
+    "split": "final"
   },
   {
-    "coverage80": 0.8011499760421658,
+    "coverage80": 0.8020124580737902,
+    "evaluation_role": "held-out temporal evaluation",
     "identity_split": "transfer_holdout",
-    "mean_width": 1.6936132287010959,
+    "mean_width": 1.6899174625051896,
     "n": 10435,
-    "pinball10_raw": 0.12540575088140238,
-    "pinball90_raw": 0.12777002160315126,
-    "split": "final",
-    "evaluation_role": "held-out temporal evaluation"
+    "pinball10_raw": 0.12546451179329432,
+    "pinball90_raw": 0.12738253552237933,
+    "split": "final"
   },
   {
-    "coverage80": 0.8326607479149852,
+    "coverage80": 0.8375033629270917,
+    "evaluation_role": "held-out temporal evaluation",
     "identity_split": "fitting_identities",
-    "mean_width": 1.507205659310997,
+    "mean_width": 1.506864451528303,
     "n": 3717,
-    "pinball10_raw": 0.10360570072492671,
-    "pinball90_raw": 0.09649596077867739,
-    "split": "official_external",
-    "evaluation_role": "held-out temporal evaluation"
+    "pinball10_raw": 0.10358918908259722,
+    "pinball90_raw": 0.09653427688249795,
+    "split": "official_external"
   },
   {
-    "coverage80": 0.8308571428571428,
+    "coverage80": 0.832,
+    "evaluation_role": "held-out temporal evaluation",
     "identity_split": "transfer_holdout",
-    "mean_width": 1.5737291251003516,
+    "mean_width": 1.5725684286728496,
     "n": 875,
-    "pinball10_raw": 0.11509791423430865,
-    "pinball90_raw": 0.09885881079522947,
-    "split": "official_external",
-    "evaluation_role": "held-out temporal evaluation"
+    "pinball10_raw": 0.11490460488507587,
+    "pinball90_raw": 0.09878688839212425,
+    "split": "official_external"
   },
   {
     "coverage80": null,
+    "evaluation_role": "raw quantile validation only; CQR calibration unavailable as-of",
     "identity_split": "fitting_identities",
     "mean_width": null,
     "n": 44856,
-    "pinball10_raw": 0.08427295684402558,
-    "pinball90_raw": 0.10638405308381112,
-    "split": "validation",
-    "evaluation_role": "raw quantile validation only; CQR calibration unavailable as-of"
+    "pinball10_raw": 0.08430923945382632,
+    "pinball90_raw": 0.10700933593942345,
+    "split": "validation"
   },
   {
     "coverage80": null,
+    "evaluation_role": "raw quantile validation only; CQR calibration unavailable as-of",
     "identity_split": "transfer_holdout",
     "mean_width": null,
     "n": 10425,
-    "pinball10_raw": 0.0920591242297694,
-    "pinball90_raw": 0.11628025682378416,
-    "split": "validation",
-    "evaluation_role": "raw quantile validation only; CQR calibration unavailable as-of"
+    "pinball10_raw": 0.09207348056388275,
+    "pinball90_raw": 0.1168629953767343,
+    "split": "validation"
   }
 ]

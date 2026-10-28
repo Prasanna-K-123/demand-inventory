@@ -4,11 +4,11 @@
   "forecast_max_absolute_error": 0.0,
   "http_transport": "actual IPv4 loopback",
   "idempotent_submission": true,
-  "model_version": "47ae70b6ffe5eb2d",
+  "model_version": "9d74170418437ab8",
   "monitoring_version_bound": true,
-  "run_id": "smoke-d63e3990fe",
-  "scope": "correctness smoke after expired-failure fencing repair; prior 200-job performance receipt retains its measured version",
+  "run_id": "smoke-0fca227b30",
+  "scope": "current-version correctness smoke; performance and post-stop durability are measured separately in benchmark.json",
   "series": 2,
-  "served_configuration_sha256": "47ae70b6ffe5eb2d11b7cfd072e21eb949dc2a9de326aaa40de441970a648089",
+  "served_configuration_sha256": "9d74170418437ab8df83f2586e3ca42b183b9233cc8109f13053807b7a92f630",
   "status": "passed"
 }

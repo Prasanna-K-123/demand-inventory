@@ -1,34 +1,56 @@
 {
   "allocation_policy_id": "raw-quantile-point-grid-v1",
+  "artifact_sha256_before_and_after": {
+    "model_manifest.json": "b96112b46f6010d85676e2ca7fa0d88a0fff8f74870e2af587bf8e9caf64fd73",
+    "models.pkl": "0985c8e73839f783bbf820cc155d09cd81ff848e2e05aac503f84666b6148bd0"
+  },
   "completed_jobs": 200,
   "direct_model_compute_only": {
-    "max_ms": 10.931900003924966,
+    "max_ms": 5.525175998627674,
     "n": 200,
-    "p50_ms": 7.33325001783669,
-    "p95_ms": 9.483585087582465,
-    "p99_ms": 10.31326791970059
+    "p50_ms": 2.9124780012352858,
+    "p95_ms": 3.8434782478361735,
+    "p99_ms": 4.469965850512376
   },
-  "elapsed_seconds": 14.776475299848244,
+  "durable_state_after_shutdown": {
+    "counts": {
+      "batches": 1,
+      "events": 56,
+      "feature_ledger": 222,
+      "forecasts": 222,
+      "jobs": 221,
+      "results": 221
+    },
+    "foreign_key_check": [],
+    "integrity_check": [
+      "ok"
+    ],
+    "states": {
+      "succeeded": 221
+    }
+  },
+  "elapsed_seconds": 5.113682973998948,
   "environment": {
     "hardware_model": "not reliably exposed; no dedicated-machine claim",
-    "host_ram_gib": 7.75,
-    "logical_cpus": 8,
-    "os": "Windows",
-    "os_release": "11",
-    "physical_cpus": 8,
+    "host_ram_gib": null,
+    "logical_cpus": 9,
+    "os": "Linux",
+    "os_release": "6.18.55",
+    "physical_cpus": null,
     "python": "3.12.14",
     "shared_machine": true
   },
   "error_rate": 0.0,
   "errors": [],
+  "executed_utc": "2026-10-28T09:18:06.723751+00:00",
   "job_end_to_end": {
-    "max_ms": 557.3271999601275,
+    "max_ms": 314.87624700093875,
     "n": 200,
-    "p50_ms": 283.2518999930471,
-    "p95_ms": 457.6437199953943,
-    "p99_ms": 506.2557731522246
+    "p50_ms": 97.26410300027055,
+    "p95_ms": 144.7115238481274,
+    "p99_ms": 164.22696857734942
   },
-  "jobs_per_second": 13.535027531366294,
+  "jobs_per_second": 39.110754619893484,
   "ledger_counts": {
     "batches": 1,
     "events": 56,
@@ -50,47 +72,52 @@
     "warmup_jobs_excluded": 20,
     "worker_threads": 1
   },
-  "max_server_processes": 4,
+  "max_server_processes": null,
   "memory_sampling_interval_ms": 20,
-  "memory_sampling_scope": "Windows venv launcher plus all Python server descendants; summed working-set RSS may double-count shared pages",
-  "model_version": "509b40e9d63ead14",
+  "memory_sampling_scope": "Server process and descendants when OS telemetry is available; summed RSS may double-count shared pages; null means unmeasured",
+  "model_version": "9d74170418437ab8",
   "multi_series_items": 2,
   "multi_series_parity_absolute_error": 0.0,
   "offline_service_allocation_identical": true,
   "offline_service_allocation_objective_error": 0.0,
   "offline_service_max_absolute_error": 0.0,
   "offline_service_scenarios_identical": true,
-  "peak_server_process_tree_rss_mb": 178.84765625,
+  "peak_server_process_tree_rss_mb": null,
   "requests": {
     "result": {
-      "max_ms": 73.84450011886656,
+      "max_ms": 40.00267800074653,
       "n": 200,
-      "p50_ms": 11.539499973878264,
-      "p95_ms": 41.199975030031055,
-      "p99_ms": 54.00584389921262
+      "p50_ms": 6.671659501080285,
+      "p95_ms": 14.530265651046644,
+      "p99_ms": 22.559369299051397
     },
     "status": {
-      "max_ms": 86.80319995619357,
-      "n": 2091,
-      "p50_ms": 13.909699860960245,
-      "p95_ms": 40.61969998292625,
-      "p99_ms": 54.63212998583911
+      "max_ms": 42.33801899681566,
+      "n": 1233,
+      "p50_ms": 6.789207000110764,
+      "p95_ms": 16.26466499947128,
+      "p99_ms": 19.70198515977245
     },
     "submit": {
-      "max_ms": 90.69850016385317,
+      "max_ms": 250.87806499868748,
       "n": 200,
-      "p50_ms": 33.48089999053627,
-      "p95_ms": 71.57016992568967,
-      "p99_ms": 84.44503904785955
+      "p50_ms": 15.38051399984397,
+      "p95_ms": 32.94988919988098,
+      "p99_ms": 69.11916044075033
     }
   },
-  "run_id": "84ab393a00b6",
-  "served_configuration_sha256": "509b40e9d63ead141292fdff44ee0c3e05041bd4c64ff438b5c3c91570bc1c5d",
+  "run_id": "ea8c25d36557",
+  "served_configuration_sha256": "9d74170418437ab8df83f2586e3ca42b183b9233cc8109f13053807b7a92f630",
   "slo": {
     "job_p95_below_2000ms": true,
     "request_p95_below_250ms": true,
-    "server_process_tree_rss_below_1500mb": true,
+    "server_process_tree_rss_below_1500mb": null,
     "zero_errors": true
   },
+  "telemetry_errors": [
+    "NoSuchProcess: process PID not found (pid=71)",
+    "physical_cpus: FileNotFoundError: [Errno 2] No such file or directory: '/proc/cpuinfo'",
+    "host_ram_gib: FileNotFoundError: [Errno 2] No such file or directory: '/proc/meminfo'"
+  ],
   "transport": "real HTTP on IPv4 loopback"
 }

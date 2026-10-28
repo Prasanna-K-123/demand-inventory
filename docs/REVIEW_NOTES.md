@@ -1,6 +1,6 @@
 # Review notes and issue history
 
-Research, ingestion, tests, actual crash trials and local HTTP benchmark executed. Independent AI-agent technical review passed: scientific recomputation, actual-database audit, targeted lease repair, artifact/link concordance and public staging tests. This is not external employer validation. No browser interaction or visual-browser QA occurred; the explorer has static/content checks only.
+Research, ingestion, tests, actual crash trials and local HTTP benchmark executed. The dated replay and storage incident record is in [REPRODUCIBILITY.md](REPRODUCIBILITY.md). Independent technical review scope and closed findings are recorded in artifacts/review_status.json; historical review is retained separately in that receipt. This is not employer validation. No browser interaction or visual-browser QA occurred; the explorer has static/content checks only.
 
 ## first full-source audit
 
@@ -68,4 +68,4 @@ Observed: An expired worker could mark a running job failed when its token had n
 
 Resolution: Failure publication now requires an unexpired lease in addition to current owner/token. Regression proves expired failure does nothing, replacement can reclaim, and current-owner failure succeeds. Rebound version without refitting; prior 200-job performance receipt retained with its version, then current-version HTTP correctness smoke.
 
-Original invalid memory measurements, initial CQR-policy responses and the original retrospective interval export are retained in the local build audit directory. Public distribution excludes fitted pickle objects, row-level forecasts and private audit files. Aggregate corrected results and this issue history are public. Final/external numerical outcomes and validation MAE selection were unchanged by reporting corrections.
+Original invalid memory measurements, initial CQR-policy responses and the original retrospective interval export are retained in the local build audit directory. Public distribution excludes fitted pickle objects, row-level forecasts and private audit files. Aggregate corrected results and this issue history are public. Reporting corrections do not retune the model. The Linux replay changes numerical outputs relative to historical Windows values; source/cohort identities, model selection and the reported direction of decision comparisons are preserved. The difference is explicitly quantified in the reproduction record.

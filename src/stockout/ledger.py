@@ -1,4 +1,4 @@
-"""SQLite WAL ledger: atomic ingest/checkpoint, fenced leases, atomic publish.
+"""SQLite rollback-journal ledger: atomic ingest/checkpoint, fenced leases, atomic publish.
 This is a one-machine application, not a distributed exactly-once claim.
 """
 from __future__ import annotations
@@ -34,7 +34,11 @@ class Ledger:
     def __init__(self,path):
         self.path=Path(path);self.path.parent.mkdir(parents=True,exist_ok=True)
         with self.connect() as c:
-            c.execute("PRAGMA journal_mode=WAL");c.execute("PRAGMA synchronous=FULL");c.executescript(SCHEMA)
+            # This bounded single-writer service uses rollback journaling. Do not
+            # silently change to WAL: the observed WAL incident is documented.
+            mode=c.execute("PRAGMA journal_mode=DELETE").fetchone()[0]
+            if mode.lower()!="delete":raise RuntimeError("DELETE journal mode is required")
+            c.execute("PRAGMA synchronous=FULL");c.executescript(SCHEMA)
             columns={r[1] for r in c.execute("PRAGMA table_info(jobs)")}
             if "monitoring_json" not in columns:
                 if c.execute("select count(*) from jobs").fetchone()[0]:
@@ -43,8 +47,13 @@ class Ledger:
     @contextmanager
     def connect(self):
         c=sqlite3.connect(self.path,timeout=15,isolation_level=None)
-        c.row_factory=sqlite3.Row;c.execute("PRAGMA foreign_keys=ON");c.execute("PRAGMA busy_timeout=15000");c.execute("PRAGMA synchronous=FULL")
         try:
+            # Setup can fail for a damaged/unavailable database too. Keep it inside
+            # the cleanup boundary so that every opened connection is closed.
+            c.row_factory=sqlite3.Row
+            c.execute("PRAGMA foreign_keys=ON")
+            c.execute("PRAGMA busy_timeout=15000")
+            c.execute("PRAGMA synchronous=FULL")
             yield c
             if c.in_transaction:c.commit()
         except BaseException:

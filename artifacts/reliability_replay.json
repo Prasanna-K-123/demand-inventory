@@ -1,0 +1,82 @@
+{
+  "reference_date": "2026-10-28",
+  "journal_mode": "DELETE",
+  "synchronous": "FULL",
+  "completed_measured_jobs": 600,
+  "repetitions": [
+    {
+      "check": "http_0",
+      "returncode": 0,
+      "elapsed_seconds": 12.104587099998753,
+      "run_id": "65f915c6c083",
+      "job_p95_ms": 134.31323730255826,
+      "durable_state": {
+        "counts": {
+          "batches": 1,
+          "events": 56,
+          "feature_ledger": 222,
+          "forecasts": 222,
+          "jobs": 221,
+          "results": 221
+        },
+        "foreign_key_check": [],
+        "integrity_check": [
+          "ok"
+        ],
+        "states": {
+          "succeeded": 221
+        }
+      }
+    },
+    {
+      "check": "http_1",
+      "returncode": 0,
+      "elapsed_seconds": 11.418702973998734,
+      "run_id": "dcb94dad889d",
+      "job_p95_ms": 129.5897568019427,
+      "durable_state": {
+        "counts": {
+          "batches": 1,
+          "events": 56,
+          "feature_ledger": 222,
+          "forecasts": 222,
+          "jobs": 221,
+          "results": 221
+        },
+        "foreign_key_check": [],
+        "integrity_check": [
+          "ok"
+        ],
+        "states": {
+          "succeeded": 221
+        }
+      }
+    },
+    {
+      "check": "http_2",
+      "returncode": 0,
+      "elapsed_seconds": 11.446302005999314,
+      "run_id": "ea8c25d36557",
+      "job_p95_ms": 144.7115238481274,
+      "durable_state": {
+        "counts": {
+          "batches": 1,
+          "events": 56,
+          "feature_ledger": 222,
+          "forecasts": 222,
+          "jobs": 221,
+          "results": 221
+        },
+        "foreign_key_check": [],
+        "integrity_check": [
+          "ok"
+        ],
+        "states": {
+          "succeeded": 221
+        }
+      }
+    }
+  ],
+  "original_wal_failure": "Two observed HTTP runs produced malformed, physically short database files; cause not established. A separate mtime reversion probe is not proof of that cause.",
+  "mitigation_scope": "Three final real-HTTP runs, post-stop integrity/count checks, and four abrupt process-exit recovery cases passed. This is local prototype evidence, not a general fault-free guarantee."
+}

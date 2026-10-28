@@ -2,10 +2,10 @@
   "bootstrap": {
     "block_days": 7,
     "ci95_percentile": [
-      -0.09248092441610381,
-      -0.06957246629881514
+      -0.09272447471901392,
+      -0.06970050253282863
     ],
-    "daily_average_mae_difference_pooled_minus_seasonal": -0.08003396559165851,
+    "daily_average_mae_difference_pooled_minus_seasonal": -0.08021049468206086,
     "dates": 74,
     "interpretation": "exploratory paired moving-block bootstrap; not an IID or causal guarantee",
     "replicates": 500
@@ -13,7 +13,7 @@
   "cohort_rows": 634383,
   "evaluation_rows": 169914,
   "feature_rows": 612193,
-  "finished_utc": "2026-10-26T09:40:16.207766+00:00",
+  "finished_utc": "2026-10-28T09:03:22.455360+00:00",
   "fit_rows": 356925,
   "maturity": "executed local research prototype; no production use or retailer impact established",
   "protocol_deviations": [
@@ -23,6 +23,5 @@
   "run_id": "research-9fba74681152",
   "selected_model": "pooled_poisson",
   "source_covered_rows": 7939549,
-  "total_seconds": 96.8474237001501,
-  "interval_reporting_correction": "Validation CQR coverage suppressed because later calibration was unavailable as-of; final/external scores unchanged."
+  "total_seconds": 46.516627018998406
 }

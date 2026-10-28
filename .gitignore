@@ -10,3 +10,6 @@ artifacts/models.pkl
 artifacts/forecast_results*.csv.gz
 artifacts/audit/
 artifacts/*invalid*.json
+
+# Local pytest temporary work is not a public artifact.
+pytest-of-root/

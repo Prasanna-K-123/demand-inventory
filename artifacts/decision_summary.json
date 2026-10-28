@@ -20,17 +20,17 @@
     },
     {
       "days": 74,
-      "mean_excess": 0.6758243243243245,
-      "mean_proxy_cost": 5.57204054054054,
-      "mean_shortage": 4.896216216216216,
+      "mean_excess": 0.6724459459459461,
+      "mean_proxy_cost": 5.546364864864865,
+      "mean_shortage": 4.8739189189189185,
       "policy": "proportional_point",
       "shortage_weight": 1.0
     },
     {
       "days": 74,
-      "mean_excess": 0.9585135135135138,
-      "mean_proxy_cost": 5.730662162162162,
-      "mean_shortage": 4.772148648648648,
+      "mean_excess": 0.9500000000000002,
+      "mean_proxy_cost": 5.713635135135135,
+      "mean_shortage": 4.763635135135135,
       "policy": "scenario_dp",
       "shortage_weight": 1.0
     },
@@ -52,17 +52,17 @@
     },
     {
       "days": 74,
-      "mean_excess": 0.6758243243243245,
-      "mean_proxy_cost": 15.36447297297297,
-      "mean_shortage": 4.896216216216216,
+      "mean_excess": 0.6724459459459461,
+      "mean_proxy_cost": 15.294202702702702,
+      "mean_shortage": 4.8739189189189185,
       "policy": "proportional_point",
       "shortage_weight": 3.0
     },
     {
       "days": 74,
-      "mean_excess": 0.9585135135135138,
-      "mean_proxy_cost": 15.27495945945946,
-      "mean_shortage": 4.772148648648648,
+      "mean_excess": 0.9500000000000002,
+      "mean_proxy_cost": 15.240905405405405,
+      "mean_shortage": 4.763635135135135,
       "policy": "scenario_dp",
       "shortage_weight": 3.0
     },
@@ -84,17 +84,17 @@
     },
     {
       "days": 74,
-      "mean_excess": 0.6758243243243245,
-      "mean_proxy_cost": 25.156905405405404,
-      "mean_shortage": 4.896216216216216,
+      "mean_excess": 0.6724459459459461,
+      "mean_proxy_cost": 25.04204054054054,
+      "mean_shortage": 4.8739189189189185,
       "policy": "proportional_point",
       "shortage_weight": 5.0
     },
     {
       "days": 74,
-      "mean_excess": 0.9585135135135138,
-      "mean_proxy_cost": 24.819256756756754,
-      "mean_shortage": 4.772148648648648,
+      "mean_excess": 0.9500000000000002,
+      "mean_proxy_cost": 24.76817567567567,
+      "mean_shortage": 4.763635135135135,
       "policy": "scenario_dp",
       "shortage_weight": 5.0
     },

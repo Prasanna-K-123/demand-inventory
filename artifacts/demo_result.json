@@ -6,45 +6,45 @@
       24
     ],
     "excess_weight": 1.0,
-    "objective": 0.9973465173345599,
+    "objective": 0.9835455457209816,
     "optimality_scope": "exact finite grid only",
     "policy_id": "raw-quantile-point-grid-v1",
     "quantities": [
       1.5,
-      1.6
+      1.5
     ],
     "quantity_steps": [
       15,
-      16
+      15
     ],
     "scenario_definition": "raw learned q10 / selected point forecast / raw learned q90; equal scenario weights are an explicit finite-distribution assumption, not calibrated masses",
     "scenario_values": [
       [
-        0.6148401994893319,
-        1.0267084571690643,
-        1.5280671810345154
+        0.6192717202920878,
+        1.025704673879386,
+        1.5200261594544318
       ],
       [
-        0.6189806764671619,
-        1.052833145464032,
-        1.5787995125102767
+        0.616739632508764,
+        1.0529638744449366,
+        1.568412686641608
       ]
     ],
     "shortage_weight": 3,
     "step": 0.1,
-    "used_steps": 31
+    "used_steps": 30
   },
   "allocation_policy": "finite_grid_simulation",
   "as_of": "2025-05-01T00:00:00+00:00",
   "feature_version": "history-v1",
-  "job_id": "2ff97e4931364b3aaa1f0ce183cc87e6",
-  "model_version": "47ae70b6ffe5eb2d",
+  "job_id": "94ce884178214c53bef37ba62f28c7d2",
+  "model_version": "9d74170418437ab8",
   "monitoring": {
     "available_labels": 0,
     "coverage80": null,
     "feature_version": "history-v1",
     "mae": null,
-    "model_version": "47ae70b6ffe5eb2d",
+    "model_version": "9d74170418437ab8",
     "policy": "insufficient_labels",
     "policy_version": "unique-label-coverage-v2",
     "threshold": "fallback if >=30 labelled forecasts and coverage<0.60"
@@ -57,13 +57,13 @@
       "history_rows": 28,
       "interval_model": "pooled_quantile_cqr_80pct",
       "last_age_days": 1,
-      "lower": 0.6146874552383287,
-      "point": 1.0267084571690643,
+      "lower": 0.6190557157084101,
+      "point": 1.025704673879386,
       "policy": "normal",
       "product_id": 99,
       "store_id": 366,
       "target_date": "2025-05-01",
-      "upper": 1.5282199252855186
+      "upper": 1.5202421640381094
     },
     {
       "decision_allowed": true,
@@ -72,17 +72,17 @@
       "history_rows": 28,
       "interval_model": "pooled_quantile_cqr_80pct",
       "last_age_days": 1,
-      "lower": 0.6188279322161587,
-      "point": 1.052833145464032,
+      "lower": 0.6165236279250863,
+      "point": 1.0529638744449366,
       "policy": "normal",
       "product_id": 244,
       "store_id": 505,
       "target_date": "2025-05-01",
-      "upper": 1.57895225676128
+      "upper": 1.5686286912252856
     }
   ],
-  "result_hash": "e77059eab9b25d65814f31bea7a2232d9614c8224a3ec5a5ddb1ba282a715928",
-  "run_id": "2ff97e4931364b3aaa1f0ce183cc87e6",
+  "result_hash": "4711fbab57519e58d346ac613615f637a6a31c512df08ef5c777c003431d98a7",
+  "run_id": "94ce884178214c53bef37ba62f28c7d2",
   "snapshot_seq": 56,
   "source_sha256s": [
     "e744c537ed16a8254c50f8456de7c5614866d4d8b6787e3cc3b67be02ea2f1e3"

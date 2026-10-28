@@ -1,19 +1,57 @@
 {
-  "status": "passed",
-  "review_type": "independent AI-agent technical review",
+  "status": "accepted within the bounded local prototype scope",
+  "review_date": "2026-10-28",
+  "review_type": "independent agent technical review",
+  "serving_version": "9d74170418437ab8",
   "scopes": [
-    "scientific recomputation and source/actual-database audit",
-    "targeted expired-failure fencing reproduction and repair verification",
-    "artifact and local-link concordance",
-    "public staging tests:38 passed,6 explicit fitted-artifact skips",
-    "public allowlist and secret-pattern review"
+    "Actual ledger, benchmark, numerical comparator, precision probe and generated documentation inspection",
+    "Independent read-only reopening of all three final load databases: 663 result hashes and 666 feature hashes checked",
+    "Independent original/current comparison of all nine numerical reference files",
+    "Nineteen distinct new setup, durability and numerical gate tests executed independently across two review passes",
+    "Actual full/public JUnit counts and public-package hashes inspected"
+  ],
+  "closed_findings": [
+    {
+      "id": "DR1",
+      "finding": "Ambiguous CSV headers/width could collapse before comparison",
+      "resolution": "Malformed headers and row widths now rejected; regression tests executed"
+    },
+    {
+      "id": "DR2",
+      "finding": "Artifact-free test count could be confused with total fitted-artifact count",
+      "resolution": "Fresh public XML confirms 57 passed and six model-dependent skips; package derives counts from receipt"
+    },
+    {
+      "id": "DR3",
+      "finding": "Unavailable RAM rendered as None GiB",
+      "resolution": "Generated documentation renders unmeasured telemetry"
+    }
   ],
   "not_claimed": [
-    "visual browser QA",
-    "external employer validation",
-    "production impact",
-    "new model fits"
+    "Proof of the original WAL corruption cause",
+    "Universal Windows/Linux numerical identity",
+    "Reviewer repeated the full source acquisition or model fit",
+    "Visual browser QA",
+    "External employer approval",
+    "Production or power-loss certification"
   ],
-  "serving_version": "47ae70b6ffe5eb2d",
-  "source_fits_unchanged": true
+  "historical_review_20261026": {
+    "status": "passed",
+    "review_type": "independent AI-agent technical review",
+    "scopes": [
+      "scientific recomputation and source/actual-database audit",
+      "targeted expired-failure fencing reproduction and repair verification",
+      "artifact and local-link concordance",
+      "public staging tests:38 passed,6 explicit fitted-artifact skips",
+      "public allowlist and secret-pattern review"
+    ],
+    "not_claimed": [
+      "visual browser QA",
+      "external employer validation",
+      "production impact",
+      "new model fits"
+    ],
+    "serving_version": "47ae70b6ffe5eb2d",
+    "source_fits_unchanged": true
+  }
 }

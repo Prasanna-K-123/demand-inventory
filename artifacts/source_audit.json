@@ -1,6 +1,5 @@
 {
   "eval": {
-    "all_19_columns_exact_type_match": true,
     "bad_array_length": 0.0,
     "bad_array_value": 0.0,
     "bad_scalar": 0.0,
@@ -11,8 +10,6 @@
     "hourly_normalized_sales_sum": 127764.76699999918,
     "last_date": "2025-07-20",
     "max_daily_hourly_delta": 3.552713678800501e-15,
-    "metadata_or_unused_covariate_invalid_rows": 0,
-    "noncanonical_date_rows": 0,
     "normalized_sales_sum": 127764.76699999918,
     "rows": 70000,
     "rows_with_business_hour_stockout": 34215.0,
@@ -99,7 +96,6 @@
     "stock_count_mismatch": 0.0
   },
   "train": {
-    "all_19_columns_exact_type_match": true,
     "bad_array_length": 0.0,
     "bad_array_value": 0.0,
     "bad_scalar": 0.0,
@@ -107,12 +103,10 @@
     "daily_hourly_mismatch": 0.0,
     "duplicate_keys": 0,
     "first_date": "2023-06-05",
-    "hourly_normalized_sales_sum": 13266595.026994614,
+    "hourly_normalized_sales_sum": 13266595.026994687,
     "last_date": "2025-07-13",
     "max_daily_hourly_delta": 2.842170943040401e-14,
-    "metadata_or_unused_covariate_invalid_rows": 0,
-    "noncanonical_date_rows": 0,
-    "normalized_sales_sum": 13266595.026994614,
+    "normalized_sales_sum": 13266595.026994687,
     "rows": 7869549,
     "rows_with_business_hour_stockout": 3792797.0,
     "schema": [

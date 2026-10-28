@@ -1,0 +1,1063 @@
+{
+  "historical_commit": "7d6df8fb62ca9db23d8d637cb28a675f4ae9c0df",
+  "historical_environment": "Windows (original public receipt)",
+  "reference_date": "2026-10-28",
+  "reference_environment": "Linux-6.18.55-x86_64-with-glibc2.39",
+  "source_hashes_unchanged": true,
+  "cohort_logical_identity_unchanged": true,
+  "files": {
+    "cohort.csv": {
+      "historical_sha256": "553c2a4743a54896ef8c1235c3eea3db42f7ea3ba5de394083c0303e4d8a40fa",
+      "reference_sha256": "7e3a9b1b05656040269b0f5a4317d15dca8dc1565d72c7b75388d4f433d3fcb7",
+      "changed_values": 0,
+      "max_absolute_change": 0,
+      "changes": []
+    },
+    "attrition.json": {
+      "historical_sha256": "452ffb2bb62ac98c4641744e271a91be7e31e51ee71644b7ec02d6176ee7566a",
+      "reference_sha256": "ba4eb85dd5d51a00644df69916ad4a32dbeaac9d6132536950e6fb85ce02fe48",
+      "changed_values": 0,
+      "max_absolute_change": 0,
+      "changes": []
+    },
+    "forecast_metrics.csv": {
+      "historical_sha256": "cf4a97758939c9fc10aead96535ad8ed5b7cee69e3df43435fba9b902091bc10",
+      "reference_sha256": "71e78f8f1914dd431fa7bd86f0c5545be1299c19ad25f3d91db1b66f4f8d379d",
+      "changed_values": 72,
+      "max_absolute_change": 0.0031577120160173333,
+      "changes": [
+        {
+          "path": "forecast_metrics.csv[4].mae",
+          "historical": 0.38572966442309553,
+          "reference": 0.38550481119804164,
+          "absolute_change": 0.00022485322505388927
+        },
+        {
+          "path": "forecast_metrics.csv[4].rmse",
+          "historical": 0.5683320805027874,
+          "reference": 0.5681762473112504,
+          "absolute_change": 0.0001558331915370026
+        },
+        {
+          "path": "forecast_metrics.csv[4].wape",
+          "historical": 0.2774004022401432,
+          "reference": 0.27723869734464796,
+          "absolute_change": 0.00016170489549521827
+        },
+        {
+          "path": "forecast_metrics.csv[9].mae",
+          "historical": 0.38383559492066294,
+          "reference": 0.3837001378285357,
+          "absolute_change": 0.00013545709212725576
+        },
+        {
+          "path": "forecast_metrics.csv[9].rmse",
+          "historical": 0.5584847785159137,
+          "reference": 0.5586134454758156,
+          "absolute_change": 0.0001286669599018797
+        },
+        {
+          "path": "forecast_metrics.csv[9].wape",
+          "historical": 0.25133629426574117,
+          "reference": 0.25124759669829877,
+          "absolute_change": 8.869756744239732e-05
+        },
+        {
+          "path": "forecast_metrics.csv[14].mae",
+          "historical": 0.3875787850618039,
+          "reference": 0.38726665719650943,
+          "absolute_change": 0.0003121278652944426
+        },
+        {
+          "path": "forecast_metrics.csv[14].rmse",
+          "historical": 0.5777838123652633,
+          "reference": 0.5773593358701211,
+          "absolute_change": 0.000424476495142212
+        },
+        {
+          "path": "forecast_metrics.csv[14].wape",
+          "historical": 0.30831288742756724,
+          "reference": 0.3080645945717542,
+          "absolute_change": 0.00024829285581301486
+        },
+        {
+          "path": "forecast_metrics.csv[19].mae",
+          "historical": 0.4263443148547834,
+          "reference": 0.42633673721994125,
+          "absolute_change": 7.577634842159675e-06
+        },
+        {
+          "path": "forecast_metrics.csv[19].rmse",
+          "historical": 0.6564032244725477,
+          "reference": 0.6563275557553329,
+          "absolute_change": 7.566871721487178e-05
+        },
+        {
+          "path": "forecast_metrics.csv[19].wape",
+          "historical": 0.2598608343073945,
+          "reference": 0.25985621566831907,
+          "absolute_change": 4.618639075415487e-06
+        },
+        {
+          "path": "forecast_metrics.csv[24].mae",
+          "historical": 0.4329486640940519,
+          "reference": 0.4329751414114185,
+          "absolute_change": 2.6477317366602193e-05
+        },
+        {
+          "path": "forecast_metrics.csv[24].rmse",
+          "historical": 0.6578719696140966,
+          "reference": 0.6578566575494849,
+          "absolute_change": 1.531206461169443e-05
+        },
+        {
+          "path": "forecast_metrics.csv[24].wape",
+          "historical": 0.2378838075810909,
+          "reference": 0.23789835555315333,
+          "absolute_change": 1.4547972062434189e-05
+        },
+        {
+          "path": "forecast_metrics.csv[29].mae",
+          "historical": 0.4193891995441466,
+          "reference": 0.4193457582517466,
+          "absolute_change": 4.344129240002603e-05
+        },
+        {
+          "path": "forecast_metrics.csv[29].rmse",
+          "historical": 0.6548529109876539,
+          "reference": 0.6547133804635247,
+          "absolute_change": 0.00013953052412918332
+        },
+        {
+          "path": "forecast_metrics.csv[29].wape",
+          "historical": 0.2888748063554819,
+          "reference": 0.2888448840424049,
+          "absolute_change": 2.992231307702431e-05
+        },
+        {
+          "path": "forecast_metrics.csv[34].mae",
+          "historical": 0.458717410414742,
+          "reference": 0.4585390936654102,
+          "absolute_change": 0.0001783167493318305
+        },
+        {
+          "path": "forecast_metrics.csv[34].rmse",
+          "historical": 0.6938001662938513,
+          "reference": 0.6937073508209292,
+          "absolute_change": 9.281547292216974e-05
+        },
+        {
+          "path": "forecast_metrics.csv[34].wape",
+          "historical": 0.29648214125276673,
+          "reference": 0.29636689005352546,
+          "absolute_change": 0.00011525119924127303
+        },
+        {
+          "path": "forecast_metrics.csv[39].mae",
+          "historical": 0.4182843813521725,
+          "reference": 0.41826777934072595,
+          "absolute_change": 1.6602011446542608e-05
+        },
+        {
+          "path": "forecast_metrics.csv[39].rmse",
+          "historical": 0.6055348228961314,
+          "reference": 0.6057599716776594,
+          "absolute_change": 0.00022514878152801732
+        },
+        {
+          "path": "forecast_metrics.csv[39].wape",
+          "historical": 0.25382214032916295,
+          "reference": 0.253812065943728,
+          "absolute_change": 1.0074385434932775e-05
+        },
+        {
+          "path": "forecast_metrics.csv[44].mae",
+          "historical": 0.4923053278926804,
+          "reference": 0.49199267390973067,
+          "absolute_change": 0.0003126539829497177
+        },
+        {
+          "path": "forecast_metrics.csv[44].rmse",
+          "historical": 0.7593609851447152,
+          "reference": 0.7590565146749242,
+          "absolute_change": 0.000304470469790985
+        },
+        {
+          "path": "forecast_metrics.csv[44].wape",
+          "historical": 0.3363858216158327,
+          "reference": 0.3361721892194778,
+          "absolute_change": 0.0002136323963549125
+        },
+        {
+          "path": "forecast_metrics.csv[49].mae",
+          "historical": 0.5497345502914573,
+          "reference": 0.5492265936548688,
+          "absolute_change": 0.0005079566365885357
+        },
+        {
+          "path": "forecast_metrics.csv[49].rmse",
+          "historical": 0.9161665366608992,
+          "reference": 0.91518445394292,
+          "absolute_change": 0.0009820827179791713
+        },
+        {
+          "path": "forecast_metrics.csv[49].wape",
+          "historical": 0.3011475582127294,
+          "reference": 0.3008692968214717,
+          "absolute_change": 0.0002782613912577503
+        },
+        {
+          "path": "forecast_metrics.csv[54].mae",
+          "historical": 0.48140618008806574,
+          "reference": 0.4816225282208107,
+          "absolute_change": 0.000216348132744959
+        },
+        {
+          "path": "forecast_metrics.csv[54].rmse",
+          "historical": 0.7766457924008164,
+          "reference": 0.777559554833657,
+          "absolute_change": 0.0009137624328405813
+        },
+        {
+          "path": "forecast_metrics.csv[54].wape",
+          "historical": 0.24186772218543037,
+          "reference": 0.24197641964763686,
+          "absolute_change": 0.00010869746220648624
+        },
+        {
+          "path": "forecast_metrics.csv[59].mae",
+          "historical": 0.6093226750777305,
+          "reference": 0.6081830633489765,
+          "absolute_change": 0.0011396117287539864
+        },
+        {
+          "path": "forecast_metrics.csv[59].rmse",
+          "historical": 1.0224148897526417,
+          "reference": 1.020160124034436,
+          "absolute_change": 0.002254765718205709
+        },
+        {
+          "path": "forecast_metrics.csv[59].wape",
+          "historical": 0.3623350081402763,
+          "reference": 0.3616573356329104,
+          "absolute_change": 0.0006776725073658896
+        },
+        {
+          "path": "forecast_metrics.csv[64].mae",
+          "historical": 0.4318949009086001,
+          "reference": 0.4318034937334739,
+          "absolute_change": 9.140717512623464e-05
+        },
+        {
+          "path": "forecast_metrics.csv[64].rmse",
+          "historical": 0.6126797615421667,
+          "reference": 0.6126146514756653,
+          "absolute_change": 6.511006650145035e-05
+        },
+        {
+          "path": "forecast_metrics.csv[64].wape",
+          "historical": 0.2489227114969951,
+          "reference": 0.24887002895354565,
+          "absolute_change": 5.268254344945045e-05
+        },
+        {
+          "path": "forecast_metrics.csv[69].mae",
+          "historical": 0.40853730445488845,
+          "reference": 0.40863481980052435,
+          "absolute_change": 9.751534563590125e-05
+        },
+        {
+          "path": "forecast_metrics.csv[69].rmse",
+          "historical": 0.5498761172735556,
+          "reference": 0.5497198079828055,
+          "absolute_change": 0.00015630929075005628
+        },
+        {
+          "path": "forecast_metrics.csv[69].wape",
+          "historical": 0.23321902428371485,
+          "reference": 0.2332746922325506,
+          "absolute_change": 5.566794883574144e-05
+        },
+        {
+          "path": "forecast_metrics.csv[74].mae",
+          "historical": 0.4569590479119137,
+          "reference": 0.4566649151763042,
+          "absolute_change": 0.00029413273560952025
+        },
+        {
+          "path": "forecast_metrics.csv[74].rmse",
+          "historical": 0.6735901472979713,
+          "reference": 0.6736042862500815,
+          "absolute_change": 1.413895211022087e-05
+        },
+        {
+          "path": "forecast_metrics.csv[74].wape",
+          "historical": 0.2661129917122417,
+          "reference": 0.2659417016533377,
+          "absolute_change": 0.0001712900589039834
+        },
+        {
+          "path": "forecast_metrics.csv[79].mae",
+          "historical": 0.4523690766007066,
+          "reference": 0.45165005360891036,
+          "absolute_change": 0.0007190229917962143
+        },
+        {
+          "path": "forecast_metrics.csv[79].rmse",
+          "historical": 0.64220578097402,
+          "reference": 0.6405470027683278,
+          "absolute_change": 0.0016587782056922684
+        },
+        {
+          "path": "forecast_metrics.csv[79].wape",
+          "historical": 0.24251627731863998,
+          "reference": 0.24213080716098187,
+          "absolute_change": 0.00038547015765810766
+        },
+        {
+          "path": "forecast_metrics.csv[84].mae",
+          "historical": 0.39911238692856627,
+          "reference": 0.3993700457184657,
+          "absolute_change": 0.0002576587898994176
+        },
+        {
+          "path": "forecast_metrics.csv[84].rmse",
+          "historical": 0.5242465356333987,
+          "reference": 0.5246494804929509,
+          "absolute_change": 0.00040294485955216786
+        },
+        {
+          "path": "forecast_metrics.csv[84].wape",
+          "historical": 0.20892682449423033,
+          "reference": 0.2090617033768202,
+          "absolute_change": 0.00013487888258986724
+        },
+        {
+          "path": "forecast_metrics.csv[89].mae",
+          "historical": 0.5055041756571571,
+          "reference": 0.5038107007507469,
+          "absolute_change": 0.0016934749064102528
+        },
+        {
+          "path": "forecast_metrics.csv[89].rmse",
+          "historical": 0.7414229285188709,
+          "reference": 0.7382652165028536,
+          "absolute_change": 0.0031577120160173333
+        },
+        {
+          "path": "forecast_metrics.csv[89].wape",
+          "historical": 0.2776833623099452,
+          "reference": 0.2767531033157674,
+          "absolute_change": 0.0009302589941778128
+        },
+        {
+          "path": "forecast_metrics.csv[94].mae",
+          "historical": 0.42589494813749107,
+          "reference": 0.42643212663966545,
+          "absolute_change": 0.0005371785021743847
+        },
+        {
+          "path": "forecast_metrics.csv[94].rmse",
+          "historical": 0.6252160628172336,
+          "reference": 0.6259152607017171,
+          "absolute_change": 0.0006991978844834712
+        },
+        {
+          "path": "forecast_metrics.csv[94].wape",
+          "historical": 0.35557815511638813,
+          "reference": 0.35602664350914,
+          "absolute_change": 0.0004484883927518557
+        },
+        {
+          "path": "forecast_metrics.csv[99].mae",
+          "historical": 0.41979734697812626,
+          "reference": 0.4202884369226448,
+          "absolute_change": 0.0004910899445185191
+        },
+        {
+          "path": "forecast_metrics.csv[99].rmse",
+          "historical": 0.6077539614922819,
+          "reference": 0.608465643632508,
+          "absolute_change": 0.0007116821402260998
+        },
+        {
+          "path": "forecast_metrics.csv[99].wape",
+          "historical": 0.32211882662211044,
+          "reference": 0.32249564967216765,
+          "absolute_change": 0.00037682305005720673
+        },
+        {
+          "path": "forecast_metrics.csv[104].mae",
+          "historical": 0.43301058357737615,
+          "reference": 0.4336015454224843,
+          "absolute_change": 0.0005909618451081511
+        },
+        {
+          "path": "forecast_metrics.csv[104].rmse",
+          "historical": 0.6449961146656404,
+          "reference": 0.6456822309410383,
+          "absolute_change": 0.00068611627539783
+        },
+        {
+          "path": "forecast_metrics.csv[104].wape",
+          "historical": 0.40292872317640943,
+          "reference": 0.4034786300625834,
+          "absolute_change": 0.0005499068861739564
+        },
+        {
+          "path": "forecast_metrics.csv[109].mae",
+          "historical": 0.4689734391025677,
+          "reference": 0.46987534226739264,
+          "absolute_change": 0.0009019031648249132
+        },
+        {
+          "path": "forecast_metrics.csv[109].rmse",
+          "historical": 0.7120374809544915,
+          "reference": 0.7126980552671184,
+          "absolute_change": 0.0006605743126268937
+        },
+        {
+          "path": "forecast_metrics.csv[109].wape",
+          "historical": 0.3443957142241264,
+          "reference": 0.3450580365620508,
+          "absolute_change": 0.0006623223379244036
+        },
+        {
+          "path": "forecast_metrics.csv[114].mae",
+          "historical": 0.46354923721564945,
+          "reference": 0.4639240936532963,
+          "absolute_change": 0.0003748564376468422
+        },
+        {
+          "path": "forecast_metrics.csv[114].rmse",
+          "historical": 0.7146447495363684,
+          "reference": 0.7138844233431685,
+          "absolute_change": 0.0007603261931998784
+        },
+        {
+          "path": "forecast_metrics.csv[114].wape",
+          "historical": 0.31356240430962007,
+          "reference": 0.31381597151763774,
+          "absolute_change": 0.00025356720801766874
+        },
+        {
+          "path": "forecast_metrics.csv[119].mae",
+          "historical": 0.47541396752851617,
+          "reference": 0.4769416695664215,
+          "absolute_change": 0.0015277020379053097
+        },
+        {
+          "path": "forecast_metrics.csv[119].rmse",
+          "historical": 0.7089292393255986,
+          "reference": 0.7112868291211955,
+          "absolute_change": 0.0023575897955968594
+        },
+        {
+          "path": "forecast_metrics.csv[119].wape",
+          "historical": 0.38863954711909293,
+          "reference": 0.3898884069942686,
+          "absolute_change": 0.0012488598751756452
+        }
+      ]
+    },
+    "interval_metrics.json": {
+      "historical_sha256": "97dec5c470eeb838ba090d7735afa6214490cb9b4f7f600e5e710971fcaed2a8",
+      "reference_sha256": "25dad1986939727c9936b106bd8fa917a84cce8a128106c77b12e76f2e5ee9d8",
+      "changed_values": 27,
+      "max_absolute_change": 0.004842615012106477,
+      "changes": [
+        {
+          "path": "interval_metrics.json[0].mean_width",
+          "historical": 1.2311204731963474,
+          "reference": 1.2286343565134459,
+          "absolute_change": 0.0024861166829015513
+        },
+        {
+          "path": "interval_metrics.json[0].pinball10_raw",
+          "historical": 0.08324967801739641,
+          "reference": 0.08325288746993986,
+          "absolute_change": 3.2094525434511745e-06
+        },
+        {
+          "path": "interval_metrics.json[0].pinball90_raw",
+          "historical": 0.09090090389085431,
+          "reference": 0.09087783195005299,
+          "absolute_change": 2.307194080132524e-05
+        },
+        {
+          "path": "interval_metrics.json[1].coverage80",
+          "historical": 0.8013513513513514,
+          "reference": 0.8006756756756757,
+          "absolute_change": 0.0006756756756757243
+        },
+        {
+          "path": "interval_metrics.json[1].mean_width",
+          "historical": 1.3632739810124164,
+          "reference": 1.3598800981636614,
+          "absolute_change": 0.00339388284875497
+        },
+        {
+          "path": "interval_metrics.json[1].pinball10_raw",
+          "historical": 0.09265128929423788,
+          "reference": 0.09271926767691548,
+          "absolute_change": 6.797838267759426e-05
+        },
+        {
+          "path": "interval_metrics.json[1].pinball90_raw",
+          "historical": 0.10133335850301889,
+          "reference": 0.10138760649414785,
+          "absolute_change": 5.4247991128963946e-05
+        },
+        {
+          "path": "interval_metrics.json[2].coverage80",
+          "historical": 0.8036157787572998,
+          "reference": 0.8045107734992057,
+          "absolute_change": 0.0008949947419059079
+        },
+        {
+          "path": "interval_metrics.json[2].mean_width",
+          "historical": 1.4529552605394045,
+          "reference": 1.4521490671396204,
+          "absolute_change": 0.0008061933997840498
+        },
+        {
+          "path": "interval_metrics.json[2].pinball10_raw",
+          "historical": 0.10481116668112425,
+          "reference": 0.10482959245199568,
+          "absolute_change": 1.8425770871424718e-05
+        },
+        {
+          "path": "interval_metrics.json[2].pinball90_raw",
+          "historical": 0.10719798246138654,
+          "reference": 0.1071274736866713,
+          "absolute_change": 7.050877471523331e-05
+        },
+        {
+          "path": "interval_metrics.json[3].coverage80",
+          "historical": 0.8011499760421658,
+          "reference": 0.8020124580737902,
+          "absolute_change": 0.000862482031624423
+        },
+        {
+          "path": "interval_metrics.json[3].mean_width",
+          "historical": 1.6936132287010959,
+          "reference": 1.6899174625051896,
+          "absolute_change": 0.0036957661959062804
+        },
+        {
+          "path": "interval_metrics.json[3].pinball10_raw",
+          "historical": 0.12540575088140238,
+          "reference": 0.12546451179329432,
+          "absolute_change": 5.876091189194188e-05
+        },
+        {
+          "path": "interval_metrics.json[3].pinball90_raw",
+          "historical": 0.12777002160315126,
+          "reference": 0.12738253552237933,
+          "absolute_change": 0.00038748608077193714
+        },
+        {
+          "path": "interval_metrics.json[4].coverage80",
+          "historical": 0.8326607479149852,
+          "reference": 0.8375033629270917,
+          "absolute_change": 0.004842615012106477
+        },
+        {
+          "path": "interval_metrics.json[4].mean_width",
+          "historical": 1.507205659310997,
+          "reference": 1.506864451528303,
+          "absolute_change": 0.00034120778269408625
+        },
+        {
+          "path": "interval_metrics.json[4].pinball10_raw",
+          "historical": 0.10360570072492671,
+          "reference": 0.10358918908259722,
+          "absolute_change": 1.6511642329491982e-05
+        },
+        {
+          "path": "interval_metrics.json[4].pinball90_raw",
+          "historical": 0.09649596077867739,
+          "reference": 0.09653427688249795,
+          "absolute_change": 3.831610382055983e-05
+        },
+        {
+          "path": "interval_metrics.json[5].coverage80",
+          "historical": 0.8308571428571428,
+          "reference": 0.832,
+          "absolute_change": 0.0011428571428571122
+        },
+        {
+          "path": "interval_metrics.json[5].mean_width",
+          "historical": 1.5737291251003516,
+          "reference": 1.5725684286728496,
+          "absolute_change": 0.0011606964275019394
+        },
+        {
+          "path": "interval_metrics.json[5].pinball10_raw",
+          "historical": 0.11509791423430865,
+          "reference": 0.11490460488507587,
+          "absolute_change": 0.0001933093492327842
+        },
+        {
+          "path": "interval_metrics.json[5].pinball90_raw",
+          "historical": 0.09885881079522947,
+          "reference": 0.09878688839212425,
+          "absolute_change": 7.192240310521791e-05
+        },
+        {
+          "path": "interval_metrics.json[6].pinball10_raw",
+          "historical": 0.08427295684402558,
+          "reference": 0.08430923945382632,
+          "absolute_change": 3.6282609800736276e-05
+        },
+        {
+          "path": "interval_metrics.json[6].pinball90_raw",
+          "historical": 0.10638405308381112,
+          "reference": 0.10700933593942345,
+          "absolute_change": 0.0006252828556123358
+        },
+        {
+          "path": "interval_metrics.json[7].pinball10_raw",
+          "historical": 0.0920591242297694,
+          "reference": 0.09207348056388275,
+          "absolute_change": 1.4356334113341251e-05
+        },
+        {
+          "path": "interval_metrics.json[7].pinball90_raw",
+          "historical": 0.11628025682378416,
+          "reference": 0.1168629953767343,
+          "absolute_change": 0.0005827385529501294
+        }
+      ]
+    },
+    "bootstrap.json": {
+      "historical_sha256": "4a2fab7953338c06c322b704645baf5ec2698f71f7f50c55a6b2fa631ef2c0af",
+      "reference_sha256": "71f90e6e3df2b8d57453505a6c3ca41dc3259384babeab0a0749d781ee0b2ff6",
+      "changed_values": 3,
+      "max_absolute_change": 0.00024355030291010882,
+      "changes": [
+        {
+          "path": "bootstrap.json.ci95_percentile[0]",
+          "historical": -0.09248092441610381,
+          "reference": -0.09272447471901392,
+          "absolute_change": 0.00024355030291010882
+        },
+        {
+          "path": "bootstrap.json.ci95_percentile[1]",
+          "historical": -0.06957246629881514,
+          "reference": -0.06970050253282863,
+          "absolute_change": 0.00012803623401348718
+        },
+        {
+          "path": "bootstrap.json.daily_average_mae_difference_pooled_minus_seasonal",
+          "historical": -0.08003396559165851,
+          "reference": -0.08021049468206086,
+          "absolute_change": 0.000176529090402347
+        }
+      ]
+    },
+    "artificial_masking.json": {
+      "historical_sha256": "8c492e6fbc8aba8a5de116a34e7f1dee0ff35469196a332fd1dfe45eca13f297",
+      "reference_sha256": "63c2eafa1d8e23ffe1e769da06c6e9cc00139243f1880e89b2619dccd2d172f2",
+      "changed_values": 0,
+      "max_absolute_change": 0,
+      "changes": []
+    },
+    "decision_summary.json": {
+      "historical_sha256": "b53d5737618712590e1b9ee14f227d58f795bd77571f73f8e43b078163077189",
+      "reference_sha256": "96ba118e4272d4afcca8ce512a55770ad32d0ff2c00da2fb8f688788e7d91784",
+      "changed_values": 18,
+      "max_absolute_change": 0.11486486486486314,
+      "changes": [
+        {
+          "path": "decision_summary.json.results[1].mean_excess",
+          "historical": 0.6758243243243245,
+          "reference": 0.6724459459459461,
+          "absolute_change": 0.0033783783783783994
+        },
+        {
+          "path": "decision_summary.json.results[1].mean_proxy_cost",
+          "historical": 5.57204054054054,
+          "reference": 5.546364864864865,
+          "absolute_change": 0.02567567567567508
+        },
+        {
+          "path": "decision_summary.json.results[1].mean_shortage",
+          "historical": 4.896216216216216,
+          "reference": 4.8739189189189185,
+          "absolute_change": 0.022297297297297902
+        },
+        {
+          "path": "decision_summary.json.results[2].mean_excess",
+          "historical": 0.9585135135135138,
+          "reference": 0.9500000000000002,
+          "absolute_change": 0.008513513513513593
+        },
+        {
+          "path": "decision_summary.json.results[2].mean_proxy_cost",
+          "historical": 5.730662162162162,
+          "reference": 5.713635135135135,
+          "absolute_change": 0.01702702702702652
+        },
+        {
+          "path": "decision_summary.json.results[2].mean_shortage",
+          "historical": 4.772148648648648,
+          "reference": 4.763635135135135,
+          "absolute_change": 0.00851351351351326
+        },
+        {
+          "path": "decision_summary.json.results[5].mean_excess",
+          "historical": 0.6758243243243245,
+          "reference": 0.6724459459459461,
+          "absolute_change": 0.0033783783783783994
+        },
+        {
+          "path": "decision_summary.json.results[5].mean_proxy_cost",
+          "historical": 15.36447297297297,
+          "reference": 15.294202702702702,
+          "absolute_change": 0.07027027027026911
+        },
+        {
+          "path": "decision_summary.json.results[5].mean_shortage",
+          "historical": 4.896216216216216,
+          "reference": 4.8739189189189185,
+          "absolute_change": 0.022297297297297902
+        },
+        {
+          "path": "decision_summary.json.results[6].mean_excess",
+          "historical": 0.9585135135135138,
+          "reference": 0.9500000000000002,
+          "absolute_change": 0.008513513513513593
+        },
+        {
+          "path": "decision_summary.json.results[6].mean_proxy_cost",
+          "historical": 15.27495945945946,
+          "reference": 15.240905405405405,
+          "absolute_change": 0.034054054054054816
+        },
+        {
+          "path": "decision_summary.json.results[6].mean_shortage",
+          "historical": 4.772148648648648,
+          "reference": 4.763635135135135,
+          "absolute_change": 0.00851351351351326
+        },
+        {
+          "path": "decision_summary.json.results[9].mean_excess",
+          "historical": 0.6758243243243245,
+          "reference": 0.6724459459459461,
+          "absolute_change": 0.0033783783783783994
+        },
+        {
+          "path": "decision_summary.json.results[9].mean_proxy_cost",
+          "historical": 25.156905405405404,
+          "reference": 25.04204054054054,
+          "absolute_change": 0.11486486486486314
+        },
+        {
+          "path": "decision_summary.json.results[9].mean_shortage",
+          "historical": 4.896216216216216,
+          "reference": 4.8739189189189185,
+          "absolute_change": 0.022297297297297902
+        },
+        {
+          "path": "decision_summary.json.results[10].mean_excess",
+          "historical": 0.9585135135135138,
+          "reference": 0.9500000000000002,
+          "absolute_change": 0.008513513513513593
+        },
+        {
+          "path": "decision_summary.json.results[10].mean_proxy_cost",
+          "historical": 24.819256756756754,
+          "reference": 24.76817567567567,
+          "absolute_change": 0.05108108108108311
+        },
+        {
+          "path": "decision_summary.json.results[10].mean_shortage",
+          "historical": 4.772148648648648,
+          "reference": 4.763635135135135,
+          "absolute_change": 0.00851351351351326
+        }
+      ]
+    },
+    "weekly_summary.json": {
+      "historical_sha256": "81cd2638805c622fecfb057e3fab9f521eb27a94938a4e768b07ee33a0075be8",
+      "reference_sha256": "56cf2a00ebc89b7cf9009a0d7708734c6f9e5c9806bb644e4ac61295269d2071",
+      "changed_values": 0,
+      "max_absolute_change": 0,
+      "changes": []
+    },
+    "weekly_metrics.csv": {
+      "historical_sha256": "9e81549ecae7507563957096d979830ff584f4f68ecab7016a00334a33aec524",
+      "reference_sha256": "0a049b610bfab78357bf873eecf3e6062b3f88f54ca8c184758eccd82b51af93",
+      "changed_values": 44,
+      "max_absolute_change": 0.0013836796371219373,
+      "changes": [
+        {
+          "path": "weekly_metrics.csv[4].mae",
+          "historical": 0.48912632768546604,
+          "reference": 0.4887805710444831,
+          "absolute_change": 0.00034575664098296377
+        },
+        {
+          "path": "weekly_metrics.csv[4].wape",
+          "historical": 0.32782806432003336,
+          "reference": 0.3275963271921719,
+          "absolute_change": 0.00023173712786145328
+        },
+        {
+          "path": "weekly_metrics.csv[9].mae",
+          "historical": 0.406366076119691,
+          "reference": 0.4063968298095038,
+          "absolute_change": 3.075368981281246e-05
+        },
+        {
+          "path": "weekly_metrics.csv[9].wape",
+          "historical": 0.2628125705446749,
+          "reference": 0.26283246013868483,
+          "absolute_change": 1.9889594009947498e-05
+        },
+        {
+          "path": "weekly_metrics.csv[14].mae",
+          "historical": 0.41257415841812645,
+          "reference": 0.41232840497190754,
+          "absolute_change": 0.0002457534462189104
+        },
+        {
+          "path": "weekly_metrics.csv[14].wape",
+          "historical": 0.26675010575006214,
+          "reference": 0.2665912136904657,
+          "absolute_change": 0.00015889205959646047
+        },
+        {
+          "path": "weekly_metrics.csv[19].mae",
+          "historical": 0.46063432031797935,
+          "reference": 0.46022384158965324,
+          "absolute_change": 0.00041047872832611354
+        },
+        {
+          "path": "weekly_metrics.csv[19].wape",
+          "historical": 0.3234209080465677,
+          "reference": 0.32313270241968917,
+          "absolute_change": 0.0002882056268785349
+        },
+        {
+          "path": "weekly_metrics.csv[24].mae",
+          "historical": 0.47999598345233463,
+          "reference": 0.47961394174767097,
+          "absolute_change": 0.0003820417046636604
+        },
+        {
+          "path": "weekly_metrics.csv[24].wape",
+          "historical": 0.3371057458484214,
+          "reference": 0.33683743432450086,
+          "absolute_change": 0.00026831152392053914
+        },
+        {
+          "path": "weekly_metrics.csv[29].mae",
+          "historical": 0.4765140661781271,
+          "reference": 0.4772009109985788,
+          "absolute_change": 0.0006868448204517263
+        },
+        {
+          "path": "weekly_metrics.csv[29].wape",
+          "historical": 0.28934446399773656,
+          "reference": 0.2897615235570003,
+          "absolute_change": 0.00041705955926374383
+        },
+        {
+          "path": "weekly_metrics.csv[34].mae",
+          "historical": 0.4998050120561321,
+          "reference": 0.49951698063753386,
+          "absolute_change": 0.00028803141859823356
+        },
+        {
+          "path": "weekly_metrics.csv[34].wape",
+          "historical": 0.3254637369016323,
+          "reference": 0.3252761761937946,
+          "absolute_change": 0.00018756070783765288
+        },
+        {
+          "path": "weekly_metrics.csv[39].mae",
+          "historical": 0.4581263558573901,
+          "reference": 0.4577691560414765,
+          "absolute_change": 0.0003571998159135892
+        },
+        {
+          "path": "weekly_metrics.csv[39].wape",
+          "historical": 0.2933447426505222,
+          "reference": 0.293116022589486,
+          "absolute_change": 0.0002287200610361917
+        },
+        {
+          "path": "weekly_metrics.csv[44].mae",
+          "historical": 0.4512642709357248,
+          "reference": 0.451257348021289,
+          "absolute_change": 6.922914435825156e-06
+        },
+        {
+          "path": "weekly_metrics.csv[44].wape",
+          "historical": 0.29236315417692726,
+          "reference": 0.2923586689889101,
+          "absolute_change": 4.485188017155917e-06
+        },
+        {
+          "path": "weekly_metrics.csv[49].mae",
+          "historical": 0.4624916527528909,
+          "reference": 0.46173598869837973,
+          "absolute_change": 0.0007556640545111626
+        },
+        {
+          "path": "weekly_metrics.csv[49].wape",
+          "historical": 0.2797964795224684,
+          "reference": 0.27933932069398926,
+          "absolute_change": 0.0004571588284791317
+        },
+        {
+          "path": "weekly_metrics.csv[54].mae",
+          "historical": 0.4562662135523398,
+          "reference": 0.4566447323644882,
+          "absolute_change": 0.00037851881214839844
+        },
+        {
+          "path": "weekly_metrics.csv[54].wape",
+          "historical": 0.25453934699386466,
+          "reference": 0.2547505130377385,
+          "absolute_change": 0.00021116604387383386
+        },
+        {
+          "path": "weekly_metrics.csv[59].mae",
+          "historical": 0.5763694008358213,
+          "reference": 0.5759658082436897,
+          "absolute_change": 0.0004035925921316297
+        },
+        {
+          "path": "weekly_metrics.csv[59].wape",
+          "historical": 0.3175351955583243,
+          "reference": 0.3173128470913818,
+          "absolute_change": 0.00022234846694252353
+        },
+        {
+          "path": "weekly_metrics.csv[64].mae",
+          "historical": 0.5020271204300972,
+          "reference": 0.5023604323726926,
+          "absolute_change": 0.0003333119425953379
+        },
+        {
+          "path": "weekly_metrics.csv[64].wape",
+          "historical": 0.2583012257663477,
+          "reference": 0.25847272025306217,
+          "absolute_change": 0.0001714944867144963
+        },
+        {
+          "path": "weekly_metrics.csv[69].mae",
+          "historical": 0.5164730578652742,
+          "reference": 0.516301023408048,
+          "absolute_change": 0.00017203445722624444
+        },
+        {
+          "path": "weekly_metrics.csv[69].wape",
+          "historical": 0.26192386791738337,
+          "reference": 0.26183662245556194,
+          "absolute_change": 8.7245461821428e-05
+        },
+        {
+          "path": "weekly_metrics.csv[74].mae",
+          "historical": 0.5920485750614125,
+          "reference": 0.5911911526315394,
+          "absolute_change": 0.0008574224298730782
+        },
+        {
+          "path": "weekly_metrics.csv[74].wape",
+          "historical": 0.3317522313551594,
+          "reference": 0.33127177786484424,
+          "absolute_change": 0.00048045349031516915
+        },
+        {
+          "path": "weekly_metrics.csv[79].mae",
+          "historical": 0.6107275612901825,
+          "reference": 0.6093438816530605,
+          "absolute_change": 0.0013836796371219373
+        },
+        {
+          "path": "weekly_metrics.csv[79].wape",
+          "historical": 0.3527357285977266,
+          "reference": 0.35193656170911436,
+          "absolute_change": 0.0007991668886122572
+        },
+        {
+          "path": "weekly_metrics.csv[84].mae",
+          "historical": 0.6432689993904778,
+          "reference": 0.6427113913670832,
+          "absolute_change": 0.0005576080233945513
+        },
+        {
+          "path": "weekly_metrics.csv[84].wape",
+          "historical": 0.31361289992538155,
+          "reference": 0.3133410493163764,
+          "absolute_change": 0.000271850609005142
+        },
+        {
+          "path": "weekly_metrics.csv[89].mae",
+          "historical": 0.6271897997143099,
+          "reference": 0.6258924261673089,
+          "absolute_change": 0.0012973735470009906
+        },
+        {
+          "path": "weekly_metrics.csv[89].wape",
+          "historical": 0.35938036079770264,
+          "reference": 0.35863696450263693,
+          "absolute_change": 0.0007433962950657014
+        },
+        {
+          "path": "weekly_metrics.csv[94].mae",
+          "historical": 0.5110936966249314,
+          "reference": 0.5100547171814857,
+          "absolute_change": 0.0010389794434457755
+        },
+        {
+          "path": "weekly_metrics.csv[94].wape",
+          "historical": 0.30337756621860673,
+          "reference": 0.30276084357658395,
+          "absolute_change": 0.0006167226420227823
+        },
+        {
+          "path": "weekly_metrics.csv[99].mae",
+          "historical": 0.45500451488552784,
+          "reference": 0.4548069002137541,
+          "absolute_change": 0.00019761467177376035
+        },
+        {
+          "path": "weekly_metrics.csv[99].wape",
+          "historical": 0.2733359928180591,
+          "reference": 0.2732172792652534,
+          "absolute_change": 0.00011871355280568263
+        },
+        {
+          "path": "weekly_metrics.csv[104].mae",
+          "historical": 0.4871822610300521,
+          "reference": 0.487046637895184,
+          "absolute_change": 0.0001356231348680903
+        },
+        {
+          "path": "weekly_metrics.csv[104].wape",
+          "historical": 0.28042384474807613,
+          "reference": 0.2803457795885687,
+          "absolute_change": 7.806515950742332e-05
+        },
+        {
+          "path": "weekly_metrics.csv[109].mae",
+          "historical": 0.47856557880411116,
+          "reference": 0.4791517261455562,
+          "absolute_change": 0.0005861473414450202
+        },
+        {
+          "path": "weekly_metrics.csv[109].wape",
+          "historical": 0.2416077810793825,
+          "reference": 0.24190370240098275,
+          "absolute_change": 0.000295921321600251
+        }
+      ]
+    }
+  },
+  "scope": "No model or protocol tuning. Aggregate numerical changes are not accepted as mere roundoff."
+}

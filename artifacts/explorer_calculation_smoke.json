@@ -1,8 +1,1 @@
-{
-  "status": "passed",
-  "method": "Node JavaScript execution with minimal DOM stub; not a browser",
-  "states": 7,
-  "coverage": "four evaluation/identity filter combinations; three cost ratios; five model rows and finite chart calculations",
-  "javascript_sha256": "166ff7a71f037fc70475bf2b436682da7fa806c5bd31a5732acc2931a2361a45",
-  "no_visual_layout_claim": true
-}
+{"checks":42,"status":"passed","executed_utc":"2026-10-28T09:42:12.248Z","html_sha256":"094579b3d55e1eec82290040c918a6ce6646e213d85480f4129f0d312f011cc7","scope":"DOM calculations for all forecast groups and cost controls; null telemetry handling; no visual browser claim"}

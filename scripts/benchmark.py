@@ -1,29 +1,52 @@
 """Actual HTTP loopback benchmark. No external network call or paid service."""
 from __future__ import annotations
 from concurrent.futures import ThreadPoolExecutor
-import argparse,json,os,platform,socket,subprocess,sys,threading,time,uuid,math
+import argparse,json,os,platform,socket,subprocess,sys,threading,time,uuid,math,sqlite3
 from pathlib import Path
+from datetime import datetime,timezone
 import httpx,numpy as np,psutil
-from stockout.common import atomic_json
+from stockout.common import atomic_json,file_hash
 from stockout.features import served_features
 from stockout.model import ModelBundle
 from stockout.decisions import allocate
 
 BASE=Path(__file__).resolve().parents[1]
+def verify_closed_database(path, expected_counts):
+    """Validate durable state after the server has stopped, not only HTTP replies."""
+    connection=sqlite3.connect(Path(path).resolve().as_uri()+"?mode=ro",uri=True)
+    try:
+        integrity=[row[0] for row in connection.execute("PRAGMA integrity_check")]
+        foreign_keys=connection.execute("PRAGMA foreign_key_check").fetchall()
+        if integrity != ["ok"] or foreign_keys:
+            raise RuntimeError("post-shutdown database integrity failed")
+        allowed={"events","batches","jobs","results","feature_ledger","forecasts"}
+        if set(expected_counts)-allowed:raise ValueError("unexpected table in validation contract")
+        counts={name:connection.execute("SELECT count(*) FROM "+name).fetchone()[0] for name in expected_counts}
+        states=dict(connection.execute("SELECT state,count(*) FROM jobs GROUP BY state"))
+        if counts != expected_counts or states != {"succeeded":expected_counts["jobs"]}:
+            raise RuntimeError("post-shutdown durable job/count conservation failed")
+        return {"integrity_check":integrity,"foreign_key_check":foreign_keys,"counts":counts,"states":states}
+    finally:
+        connection.close()
+
 def percentiles(values):
     return {"n":len(values),"p50_ms":float(np.quantile(values,.5)),"p95_ms":float(np.quantile(values,.95)),"p99_ms":float(np.quantile(values,.99)),"max_ms":max(values)}
 def stop_owned_server(run_id):
     # Match only a server created by this benchmark, including its unique database name.
-    for proc in psutil.process_iter(["pid","cmdline"],ad_value=None):
+    try:
+        processes = list(psutil.process_iter(["pid","cmdline"],ad_value=None))
+    except (OSError, psutil.Error):
+        return  # Popen handle below still terminates this run's own child.
+    for proc in processes:
         cmd=proc.info.get("cmdline") or []
-        match_script=any(arg.replace("\\","/").endswith("/stockout-decision-platform/scripts/serve.py") for arg in cmd)
+        match_script=any(Path(arg).resolve() == (BASE/"scripts/serve.py").resolve() for arg in cmd)
         match_run=any(("benchmark-"+run_id+".sqlite") in arg for arg in cmd)
         if match_script and match_run:
             try:
                 children=proc.children(recursive=True)
                 for child in children:child.terminate()
                 proc.terminate();psutil.wait_procs(children+[proc],timeout=5)
-            except (psutil.NoSuchProcess,psutil.AccessDenied):pass
+            except (OSError, psutil.Error):pass
 
 def run(a):
     prior=BASE/"artifacts/benchmark.json"
@@ -33,6 +56,7 @@ def run(a):
     keys=sorted({(e["store_id"],e["product_id"]) for e in fixture})
     if not keys:raise RuntimeError("no real history fixture")
     bundle=ModelBundle(BASE/"artifacts");version=bundle.version
+    artifact_identity={name:file_hash(BASE/"artifacts"/name) for name in ["models.pkl","model_manifest.json"]}
     feature=served_features([e for e in fixture if (e["store_id"],e["product_id"])==keys[0]],"2025-05-01","2025-05-01T00:00:00Z")
     expected=bundle.predict([feature])[0]
     run_id=uuid.uuid4().hex[:12];db=a.runtime/f"benchmark-{run_id}.sqlite"
@@ -41,13 +65,15 @@ def run(a):
     for name in ["OMP_NUM_THREADS","OPENBLAS_NUM_THREADS","MKL_NUM_THREADS"]:env[name]="2"
     logpath=a.runtime/f"server-{run_id}.log";log=logpath.open("w",encoding="utf-8")
     server=subprocess.Popen([sys.executable,str(BASE/"scripts/serve.py"),"--db",str(db),"--port",str(port)],env=env,stdout=log,stderr=subprocess.STDOUT,creationflags=getattr(subprocess,"CREATE_NO_WINDOW",0))
-    stop=threading.Event();memory=[];process_counts=[];errors=[]
+    stop=threading.Event();memory=[];process_counts=[];errors=[];telemetry_errors=[]
     def sampler():
         while not stop.wait(.02):
             try:
                 parent=psutil.Process(server.pid);processes=[parent]+parent.children(recursive=True)
                 memory.append(sum(proc.memory_info().rss for proc in processes)/1024**2);process_counts.append(len(processes))
-            except (psutil.NoSuchProcess,psutil.AccessDenied):pass
+            except (OSError, psutil.Error) as exc:
+                if not telemetry_errors: telemetry_errors.append(type(exc).__name__+": "+str(exc))
+                return
     thread=threading.Thread(target=sampler,daemon=True);thread.start()
     try:
         with httpx.Client(base_url=url,timeout=10,trust_env=False) as client:
@@ -118,23 +144,40 @@ def run(a):
             scenarios_equal=np.allclose(expected_scenarios,multi["allocation"]["scenario_values"],rtol=0,atol=1e-12)
             assert allocation_equal and scenarios_equal and allocation_error<1e-12
             metrics=client.get("/v1/metrics",params={"as_of":"2025-05-01T00:00:00Z"}).json()
+        if not job_ms:
+            raise RuntimeError("No measured jobs completed: "+repr(errors[:5]))
+        def optional_metric(label, fn):
+            try: return fn()
+            except (OSError, psutil.Error) as exc:
+                telemetry_errors.append(label+": "+type(exc).__name__+": "+str(exc))
+                return None
         jobstats=percentiles(job_ms);submitstats=percentiles(request_times["submit"]);statusstats=percentiles(request_times["status"])
         peak=max(memory) if memory else None
         result={"run_id":run_id,"model_version":version,"served_configuration_sha256":bundle.manifest["served_configuration_sha256"],"transport":"real HTTP on IPv4 loopback","load":{"warmup_jobs_excluded":20,"measured_single_series_jobs":200,"concurrent_clients":4,"worker_threads":1,"history":"same real 28-day fixture repeatedly; cache-warm tiny local workload","max_series_contract":64,"model_threads":2},
-            "environment":{"os":platform.system(),"os_release":platform.release(),"python":platform.python_version(),"logical_cpus":psutil.cpu_count(logical=True),"physical_cpus":psutil.cpu_count(logical=False),"host_ram_gib":round(psutil.virtual_memory().total/1024**3,2),"shared_machine":True,"hardware_model":"not reliably exposed; no dedicated-machine claim"},
+            "environment":{"os":platform.system(),"os_release":platform.release(),"python":platform.python_version(),"logical_cpus":os.cpu_count(),"physical_cpus":optional_metric("physical_cpus", lambda: psutil.cpu_count(logical=False)),"host_ram_gib":optional_metric("host_ram_gib", lambda: round(psutil.virtual_memory().total/1024**3,2)),"shared_machine":True,"hardware_model":"not reliably exposed; no dedicated-machine claim"},
             "completed_jobs":len(job_ms),"errors":errors,"error_rate":len(errors)/200,"elapsed_seconds":elapsed,"jobs_per_second":len(job_ms)/elapsed,
             "job_end_to_end":jobstats,"requests":{k:percentiles(v) for k,v in request_times.items()},"direct_model_compute_only":percentiles(direct),
-            "peak_server_process_tree_rss_mb":peak,"max_server_processes":max(process_counts) if process_counts else 0,"memory_sampling_scope":"Windows venv launcher plus all Python server descendants; summed working-set RSS may double-count shared pages","memory_sampling_interval_ms":20,"offline_service_max_absolute_error":max(parity_errors),"multi_series_parity_absolute_error":batch_error,"multi_series_items":len(keys),"allocation_policy_id":multi["allocation"]["policy_id"],"offline_service_allocation_identical":allocation_equal,"offline_service_scenarios_identical":bool(scenarios_equal),"offline_service_allocation_objective_error":allocation_error,
-            "slo":{"request_p95_below_250ms":max(submitstats["p95_ms"],statusstats["p95_ms"])<=250,"job_p95_below_2000ms":jobstats["p95_ms"]<=2000,"zero_errors":len(errors)==0,"server_process_tree_rss_below_1500mb":peak is not None and 10<peak<1500},
+            "peak_server_process_tree_rss_mb":peak,"max_server_processes":max(process_counts) if process_counts else None,"telemetry_errors":telemetry_errors,"memory_sampling_scope":"Server process and descendants when OS telemetry is available; summed RSS may double-count shared pages; null means unmeasured","memory_sampling_interval_ms":20,"offline_service_max_absolute_error":max(parity_errors),"multi_series_parity_absolute_error":batch_error,"multi_series_items":len(keys),"allocation_policy_id":multi["allocation"]["policy_id"],"offline_service_allocation_identical":allocation_equal,"offline_service_scenarios_identical":bool(scenarios_equal),"offline_service_allocation_objective_error":allocation_error,
+            "slo":{"request_p95_below_250ms":max(submitstats["p95_ms"],statusstats["p95_ms"])<=250,"job_p95_below_2000ms":jobstats["p95_ms"]<=2000,"zero_errors":len(errors)==0,"server_process_tree_rss_below_1500mb":None if peak is None else 10<peak<1500},
             "ledger_counts":metrics["ledger"],"limitations":"single machine; warmed repeated history, one active model, no multi-host/load-balancer/failover or sustained production claim; whole-machine peak and client memory excluded"}
-        atomic_json(BASE/"artifacts/benchmark.json",result);atomic_json(BASE/"artifacts/demo_result.json",multi)
-        print(json.dumps(result,indent=2))
-        if errors or max(parity_errors)>1e-10 or batch_error>1e-10:raise RuntimeError("benchmark correctness failure")
+        if len(job_ms)!=200 or errors or max(parity_errors)>1e-10 or batch_error>1e-10:
+            raise RuntimeError("benchmark correctness failure")
+    except BaseException as exc:
+        atomic_json(a.runtime/f"failure-{run_id}.json",{"run_id":run_id,"error_type":type(exc).__name__,"error":str(exc),"log":str(logpath),"status":"failed; no successful benchmark receipt written"})
+        raise
     finally:
         stop.set();thread.join(timeout=2);stop_owned_server(run_id)
         if server.poll() is None:server.terminate()
         try:server.wait(timeout=15)
         except subprocess.TimeoutExpired:server.kill();server.wait(timeout=5)
         log.close()
+    result["durable_state_after_shutdown"]=verify_closed_database(db,{"events":len(fixture),"batches":1,"jobs":221,"results":221,"feature_ledger":220+len(keys),"forecasts":220+len(keys)})
+    after={name:file_hash(BASE/"artifacts"/name) for name in artifact_identity}
+    if after != artifact_identity:
+        raise RuntimeError("model/manifest files changed during benchmark")
+    result["artifact_sha256_before_and_after"]=artifact_identity
+    result["executed_utc"]=datetime.now(timezone.utc).isoformat()
+    atomic_json(BASE/"artifacts/benchmark.json",result);atomic_json(BASE/"artifacts/demo_result.json",multi)
+    print(json.dumps(result,indent=2))
 if __name__=="__main__":
     ap=argparse.ArgumentParser();ap.add_argument("--runtime",type=Path,required=True);run(ap.parse_args())

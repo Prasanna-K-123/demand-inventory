@@ -16,7 +16,7 @@
   "cohort_rows": 634383,
   "conservation_absolute_delta": 1.1641532182693481e-10,
   "database_bytes": 491413504,
-  "derived_cohort_sha256": "83fc8e7002434849179184eb40f363bd3b5eb51a8768cd62c8d9722ccc9c45bb",
+  "derived_cohort_sha256": "0c9fd284e16d51243811946ddb8a6f1ea2b8f71fd56b83dbb0e22aa0b466ca7c",
   "durable_normalized_sales_sum": 986086.396,
   "durable_rows": 634383,
   "ingestion_counts": {
@@ -26,10 +26,10 @@
     "received": 634383
   },
   "logical_state_sha256": "4e5f2a3bca58a9231f838a28fcc1711f3c7f58003dcb403df055d601c587af49",
-  "records_per_second": 2544.3809820285337,
+  "records_per_second": 7589.051445272566,
   "replay_probe_batches": 4,
   "replay_unchanged": true,
-  "seconds": 249.32704830006696,
+  "seconds": 83.59186975800185,
   "source_checkpoints": [
     {
       "next_offset": 4592,
@@ -45,5 +45,10 @@
     "370ca7f995d2a059744e1659eb681e60db694bec2f80a84252426afdd2b6d626"
   ],
   "source_normalized_sales_sum": 986086.3960000001,
-  "sqlite_integrity": "ok"
+  "sqlite_integrity": "ok",
+  "journal_mode": "delete",
+  "foreign_key_violations": 0,
+  "post_run_integrity_verified": true,
+  "sqlite_version": "3.53.1",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.39"
 }

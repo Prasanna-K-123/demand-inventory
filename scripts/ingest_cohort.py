@@ -1,8 +1,8 @@
 """Materialize every selected real record through the typed durable ingestion path.
 Arrival times are a declared synthetic next-midnight schedule, never original data.
 """
-import argparse,json,time
-from datetime import date,timedelta
+import argparse,json,time,sqlite3,platform
+from datetime import date,timedelta,datetime,timezone
 from pathlib import Path
 import duckdb
 from stockout.common import atomic_json,file_hash
@@ -40,14 +40,18 @@ def main(a):
         actual_count,actual_sum=c.execute("select count(*),sum(sale_amount) from events").fetchone()
         bysource=[dict(r) for r in c.execute("select source_sha256,count(*) rows,sum(sale_amount) normalized_sales_sum from events group by source_sha256")]
         checkpoints=[dict(r) for r in c.execute("select sha256,next_offset from sources order by sha256")]
-        integrity=c.execute("pragma integrity_check").fetchone()[0]
-        c.execute("pragma wal_checkpoint(TRUNCATE)")
+        integrity=[row[0] for row in c.execute("pragma integrity_check")]
+        foreign_keys=c.execute("pragma foreign_key_check").fetchall()
+        journal_mode=c.execute("pragma journal_mode").fetchone()[0]
+        synchronization=c.execute("pragma synchronous").fetchone()[0]
+        if integrity!=["ok"] or foreign_keys or journal_mode!="delete" or synchronization!=2:
+            raise RuntimeError("durable ledger integrity/journal contract failed")
     source_sum=float(frame.sale_amount.sum());delta=float(actual_sum-source_sum)
     assert actual_count==len(frame) and abs(delta)<1e-6 and counts["quarantined"]==0
     out={"cohort_rows":len(frame),"derived_cohort_sha256":file_hash(a.cohort),"source_manifest_hashes":manifest["source_hashes"],
          "ingestion_counts":counts,"durable_rows":actual_count,"source_normalized_sales_sum":source_sum,"durable_normalized_sales_sum":actual_sum,
          "conservation_absolute_delta":abs(delta),"source_checkpoints":checkpoints,"by_source":bysource,"logical_state_sha256":before,
-         "replay_probe_batches":len(replay_probes),"replay_unchanged":before==after,"sqlite_integrity":integrity,
+         "replay_probe_batches":len(replay_probes),"replay_unchanged":before==after,"sqlite_integrity":integrity[0],"foreign_key_violations":len(foreign_keys),"journal_mode":journal_mode,"synchronous":synchronization,"sqlite_version":sqlite3.sqlite_version,"executed_utc":datetime.now(timezone.utc).isoformat(),"platform":platform.platform(),
          "seconds":seconds,"records_per_second":len(frame)/seconds,"database_bytes":a.db.stat().st_size,
          "arrival_policy":"SYNTHETIC next UTC midnight following operational date; source contains no actual arrival timestamps",
          "checkpoint_scope":"offsets in deterministic projected-cohort stream per immutable raw-source hash, not original parquet physical row offsets"}

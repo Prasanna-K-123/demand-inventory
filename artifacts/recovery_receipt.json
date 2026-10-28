@@ -1,7 +1,10 @@
 {
   "all_semantically_equal": true,
+  "executed_utc": "2026-10-28T09:18:20.047037+00:00",
+  "journal_mode": "DELETE",
   "lease_seconds": 1.0,
-  "scope": "actual abrupt Python process exits around SQLite result commit; clean versus crash/restart outputs excluding run identifiers; one Windows host; no distributed failover claim",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+  "scope": "actual abrupt Python process exits around SQLite result commit; clean versus crash/restart outputs excluding run identifiers; one local host; no distributed failover claim",
   "trials": [
     {
       "final_attempt": 2,
@@ -18,11 +21,11 @@
         }
       },
       "process_exit_code": 93,
-      "recovery_seconds_after_process_exit": 0.9845668999478221,
+      "recovery_seconds_after_process_exit": 0.9981086250008957,
       "repetition": 0,
-      "result_semantic_sha256": "d920c4226d852318998f0db97039755123b909b9677e7c0a570c05d26def883c",
+      "result_semantic_sha256": "a7e992e2657e2467149ffd597e476f2ec49afe93d7644b907168d0fb97602b78",
       "semantic_equivalence_to_clean_run": true,
-      "total_seconds_including_child_startup": 4.15232599992305
+      "total_seconds_including_child_startup": 3.068411840002227
     },
     {
       "final_attempt": 2,
@@ -39,11 +42,11 @@
         }
       },
       "process_exit_code": 93,
-      "recovery_seconds_after_process_exit": 1.012228700099513,
+      "recovery_seconds_after_process_exit": 0.9974209409992909,
       "repetition": 1,
-      "result_semantic_sha256": "d920c4226d852318998f0db97039755123b909b9677e7c0a570c05d26def883c",
+      "result_semantic_sha256": "a7e992e2657e2467149ffd597e476f2ec49afe93d7644b907168d0fb97602b78",
       "semantic_equivalence_to_clean_run": true,
-      "total_seconds_including_child_startup": 4.197478200076148
+      "total_seconds_including_child_startup": 3.251852294000855
     },
     {
       "final_attempt": 1,
@@ -60,11 +63,11 @@
         }
       },
       "process_exit_code": 94,
-      "recovery_seconds_after_process_exit": 0.014703599968925118,
+      "recovery_seconds_after_process_exit": 0.0010348850009904709,
       "repetition": 0,
-      "result_semantic_sha256": "d920c4226d852318998f0db97039755123b909b9677e7c0a570c05d26def883c",
+      "result_semantic_sha256": "a7e992e2657e2467149ffd597e476f2ec49afe93d7644b907168d0fb97602b78",
       "semantic_equivalence_to_clean_run": true,
-      "total_seconds_including_child_startup": 3.3293119999580085
+      "total_seconds_including_child_startup": 2.200042223001219
     },
     {
       "final_attempt": 1,
@@ -81,15 +84,11 @@
         }
       },
       "process_exit_code": 94,
-      "recovery_seconds_after_process_exit": 0.05155090009793639,
+      "recovery_seconds_after_process_exit": 0.001006393002171535,
       "repetition": 1,
-      "result_semantic_sha256": "d920c4226d852318998f0db97039755123b909b9677e7c0a570c05d26def883c",
+      "result_semantic_sha256": "a7e992e2657e2467149ffd597e476f2ec49afe93d7644b907168d0fb97602b78",
       "semantic_equivalence_to_clean_run": true,
-      "total_seconds_including_child_startup": 3.4797086999751627
+      "total_seconds_including_child_startup": 2.2567192020032962
     }
-  ],
-  "model_versions": [
-    "509b40e9d63ead14"
-  ],
-  "version_note": "Actual publication-crash trials use the listed serving version. Later fail-only fencing repair is separately tested by tests-final-fencing.xml and current-version HTTP smoke; no model refit."
+  ]
 }

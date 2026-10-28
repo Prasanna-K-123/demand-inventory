@@ -39,9 +39,9 @@ The 21 features use past sales and stockout hours, missingness/history coverage 
 
 Four baselines are last observation, weekly lag with mean fallback, 28-day mean and the average of four prior matching weekdays. Fixed HistGradientBoosting models use 160 iterations, 15 leaves, learning rate 0.05, minimum leaf size 40, L2 penalty 3, seed 42 and no early stopping. Poisson loss is a mean-model/quasi-likelihood choice for non-integer normalized quantities, not a validated count distribution. Quantile 0.1 and 0.9 models use the same settings. No final-outcome tuning occurred.
 
-Quantile crossing is removed by sorting. CQR uses score max(lower−y, y−upper) and the ceil((n+1)×0.8)-th calibration score, expanding endpoints and clipping lower at zero. Realized expansion is 0.000153. Temporal dependence, shared series shocks and shift prevent an automatic exchangeability coverage guarantee.
+Quantile crossing is removed by sorting. CQR uses score max(lower−y, y−upper) and the ceil((n+1)×0.8)-th calibration score, expanding endpoints and clipping lower at zero. Realized expansion is 0.000216. Temporal dependence, shared series shocks and shift prevent an automatic exchangeability coverage guarantee.
 
-Point selection used only validation MAE: pooled 0.4259 versus seasonal 0.5144. Calibration does not affect that choice. Validation CQR coverage was suppressed because March–April calibration was unavailable in January–February. Calibration coverage is an in-sample diagnostic; final/external intervals are holdouts.
+Point selection used only validation MAE: pooled 0.4264 versus seasonal 0.5144. Calibration does not affect that choice. Validation CQR coverage was suppressed because March–April calibration was unavailable in January–February. Calibration coverage is an in-sample diagnostic; final/external intervals are holdouts.
 
 ## Forecast evidence
 
@@ -51,20 +51,20 @@ Point selection used only validation MAE: pooled 0.4259 versus seasonal 0.5144. 
 | Weekly lag | 0.6123 | 39.57% |
 | 28-day mean | 0.5170 | 33.41% |
 | Four-week seasonal | 0.5378 | 34.76% |
-| Pooled Poisson loss | 0.4587 | 29.65% |
+| Pooled Poisson loss | 0.4585 | 29.64% |
 
 | Evaluation | Rows | Pooled MAE | Seasonal MAE |
 | --- | --- | --- | --- |
-| validation / fitting_identities | 44,856 | 0.4259 | 0.5144 |
-| validation / transfer_holdout | 10,425 | 0.4690 | 0.5603 |
-| final / fitting_identities | 44,693 | 0.4587 | 0.5378 |
-| final / transfer_holdout | 10,435 | 0.5497 | 0.6454 |
-| official_external / fitting_identities | 3,717 | 0.4319 | 0.4902 |
-| official_external / transfer_holdout | 875 | 0.4524 | 0.5226 |
+| validation / fitting_identities | 44,856 | 0.4264 | 0.5144 |
+| validation / transfer_holdout | 10,425 | 0.4699 | 0.5603 |
+| final / fitting_identities | 44,693 | 0.4585 | 0.5378 |
+| final / transfer_holdout | 10,435 | 0.5492 | 0.6454 |
+| official_external / fitting_identities | 3,717 | 0.4318 | 0.4902 |
+| official_external / transfer_holdout | 875 | 0.4517 | 0.5226 |
 
-Final pooled MAE is 14.7% lower than seasonality and 11.3% lower than the best simple baseline. Final nominal-80% interval coverage is 80.36%, mean width 1.4530. The pooled model beats seasonality in 10 of 10 full disjoint weeks and is best of all five models in 9. Empirical interval coverage varies from about 74.0% to 83.6% across these full weeks; pooled coverage is not a per-window guarantee.
+Final pooled MAE is 14.7% lower than seasonality and 11.3% lower than the best simple baseline. Final nominal-80% interval coverage is 80.45%, mean width 1.4521. The pooled model beats seasonality in 10 of 10 full disjoint weeks and is best of all five models in 9. Aggregate coverage is not a per-window guarantee.
 
-The predeclared exploratory bootstrap first averages paired errors within dates, then resamples contiguous seven-day blocks, preserving within-day dependence across series. With 500 draws, pooled-minus-seasonal daily-average MAE is -0.0800, with 95% percentile interval [-0.0925, -0.0696]. Row-weighted and day-weighted differences differ slightly because attrition changes daily sample sizes. This is descriptive under the resampling scheme, not a universal significance or causal claim.
+The predeclared exploratory bootstrap first averages paired errors within dates, then resamples contiguous seven-day blocks, preserving within-day dependence across series. With 500 draws, pooled-minus-seasonal daily-average MAE is -0.0802, with 95% percentile interval [-0.0927, -0.0697]. Row-weighted and day-weighted differences differ slightly because attrition changes daily sample sizes. This is descriptive under the resampling scheme, not a universal significance or causal claim.
 
 ![Final comparison](../artifacts/forecast_mae.png)
 ![Error trend](../artifacts/error_over_time.png)
@@ -96,9 +96,9 @@ Exact recurrence: `V_i(b)=min_q[V_(i−1)(b−q)+L_i(0.1q)]`, with integer q bet
 
 | Shortage : excess | Scenario DP | Proportional point | Hindsight oracle |
 | --- | --- | --- | --- |
-| 1 : 1 | 5.7307 | 5.5720 | 3.9704 |
-| 3 : 1 | 15.2750 | 15.3645 | 11.9104 |
-| 5 : 1 | 24.8193 | 25.1569 | 19.8501 |
+| 1 : 1 | 5.7136 | 5.5464 | 3.9704 |
+| 3 : 1 | 15.2409 | 15.2942 | 11.9104 |
+| 5 : 1 | 24.7682 | 25.0420 | 19.8501 |
 
 These are mean realized **proxy** costs over 74 dates, evaluated against observed sales. The scenario rule slightly improves on proportional allocation at shortage weights 3 and 5 and loses at 1. The hindsight grid oracle is unattainable prospective information and supplies only a same-grid lower bound. There is no uniformly winning allocation result or retailer-savings claim.
 
@@ -108,6 +108,6 @@ The final API uses `raw-quantile-point-grid-v1`, with the same scenario and cap 
 
 ## Maturity and limitations
 
-The complete serving identity binds fitted bytes, selected point model, calibration and source/feature metadata plus implementation digests. Final version is `47ae70b6ffe5eb2d`; model fitting and scientific outcomes are unchanged by the systems fixes.
+The complete serving identity binds fitted bytes, selected point model, calibration and source/feature metadata plus implementation digests. Current version is `9d74170418437ab8`. Systems fixes do not refit the model. These tables use the separately executed Linux reference; the historical Windows outputs and their numerical differences are recorded in [REPRODUCIBILITY.md](REPRODUCIBILITY.md).
 
 Original arrival timestamps are absent. Next-midnight, late-arrival and fault schedules are synthetic. They support a declared information schedule and systems tests, not empirical arrival-latency claims. No actual inventory, physical capacity, costs, lead times, prices or operational feedback are available. The sample is bounded, attrition is substantial and the external week is short. This is an executed single-machine research prototype, with no production, cloud, client-impact or personal-mastery claim.

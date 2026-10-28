@@ -1,5 +1,6 @@
 """Actual process-exit tests around the atomic result publication transaction."""
-import argparse,json,os,subprocess,sys,time,uuid
+import argparse,json,os,subprocess,sys,time,uuid,platform
+from datetime import datetime,timezone
 from pathlib import Path
 from stockout.common import atomic_json,digest
 from stockout.contracts import JobRequest
@@ -42,7 +43,7 @@ def run(a):
             result=db.result(jid);equal=semantic(result)==expected
             assert equal and db.counters()["results"]==1
             rows.append({"phase":phase,"repetition":repetition,"process_exit_code":code,"recovery_seconds_after_process_exit":time.perf_counter()-crash_finished,"total_seconds_including_child_startup":time.perf_counter()-start,"post_crash_counts":post_crash,"final_attempt":db.status(jid)["attempt"],"semantic_equivalence_to_clean_run":equal,"result_semantic_sha256":digest(semantic(result))})
-    atomic_json(BASE/"artifacts/recovery_receipt.json",{"lease_seconds":1.,"trials":rows,"all_semantically_equal":all(r["semantic_equivalence_to_clean_run"] for r in rows),"scope":"actual abrupt Python process exits around SQLite result commit; clean versus crash/restart outputs excluding run identifiers; one Windows host; no distributed failover claim"})
+    atomic_json(BASE/"artifacts/recovery_receipt.json",{"lease_seconds":1.,"trials":rows,"all_semantically_equal":all(r["semantic_equivalence_to_clean_run"] for r in rows),"executed_utc":datetime.now(timezone.utc).isoformat(),"platform":platform.platform(),"journal_mode":"DELETE","scope":"actual abrupt Python process exits around SQLite result commit; clean versus crash/restart outputs excluding run identifiers; one local host; no distributed failover claim"})
     print(json.dumps(rows,indent=2))
 if __name__=="__main__":
     p=argparse.ArgumentParser();p.add_argument("--runtime",type=Path);p.add_argument("--child");p.add_argument("--db",type=Path);run(p.parse_args())

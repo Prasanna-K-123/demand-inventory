@@ -3,7 +3,7 @@
 ```mermaid
 flowchart LR
  A[Hash-checked public files] --> B[Typed event batches]
- B --> C[(SQLite WAL: immutable events and checkpoints)]
+ B --> C[(SQLite rollback journal: immutable events and checkpoints)]
  B --> Q[(Conflict and invalid-record quarantine)]
  C --> D[Idempotent job + fixed input snapshot]
  D --> E[One bounded worker with fenced lease]
@@ -51,16 +51,16 @@ The ASGI boundary rejects bodies over 1 MiB, including streamed bodies without r
 
 ## Executed evidence
 
-44 tests passed. Four abrupt publication-process exits recovered semantically identical outputs to a clean run on version 509b40e9d63ead14. The subsequent fail-only fencing repair is checked by the final regression suite and current-version HTTP smoke; no model fit changed. One-second test leases recovered before-commit failures in 0.985–1.012 seconds after exit; after-commit results required no recomputation. Default application leases remain 30 seconds.
+63 tests passed. Four abrupt publication-process exits recovered semantically identical outputs to a clean run on version 509b40e9d63ead14. The subsequent fail-only fencing repair is checked by the final regression suite and current-version HTTP smoke; no model fit changed. One-second test leases recovered before-commit failures in 0.997–0.998 seconds after exit; after-commit results required no recomputation. Default application leases remain 30 seconds.
 
-Real HTTP used 20 excluded warm-ups and 200 measured single-series jobs, four clients, one worker and two numerical threads. End-to-end p50/p95/p99: 283.3/457.6/506.3 ms. Throughput: 13.54 jobs/s. Peak sampled aggregate server-tree RSS: 178.8 MiB; summed working sets may double-count shared pages. Client memory and whole-host peak are excluded. The shared Windows host exposes 8 logical CPUs and 7.75 GiB RAM.
+Real HTTP used 20 excluded warm-ups and 200 measured single-series jobs, four clients, one worker and two numerical threads. End-to-end p50/p95/p99: 97.3/144.7/164.2 ms. Throughput: 39.11 jobs/s. Peak sampled aggregate server-tree RSS: unmeasured (OS telemetry unavailable); available summed working sets may double-count shared pages. Client memory and whole-host peak are excluded. The shared Linux host reports 9 logical CPUs and unmeasured host RAM.
 
-Predeclared local thresholds were request p95 ≤250 ms, job p95 ≤2,000 ms, zero errors and server RSS <1,500 MiB. All passed for this small warm repeated-history workload. Direct model-only timings exclude queue, durability and HTTP and are labelled separately. No cloud, sustained-load or production guarantee follows.
+Predeclared local thresholds were request p95 ≤250 ms, job p95 ≤2,000 ms, zero errors and server RSS <1,500 MiB. Timing and zero-error thresholds passed for this small warm repeated-history workload. The memory threshold is unverified when RSS is null. Direct model-only timings exclude queue, durability and HTTP and are labelled separately. No cloud, sustained-load or production guarantee follows.
 
 ## Security and operations
 
 Bind to IPv4 loopback only; authentication and TLS are absent. SQL values are parameterized. The served model identity binds the pickle, calibration/selection configuration and normalized-text digests of feature, model, policy, ledger and API implementations. Manifest-only or runtime-implementation changes are rejected. Trusted bundled pickle is hash-checked before deserialization; a digest detects corruption but does not authenticate an attacker who replaces both model and manifest. No request supplies a model path. Dependency closure is pinned, `pip check` passed, and static checks found no shell=True calls or high-specificity secret patterns. The local dependency receipt does not itself claim a vulnerability-database audit.
 
-SQLite WAL/FULL protects local transaction boundaries. Backups, disk exhaustion, operating-system failure and multihost coordination require additional work. Structured logs contain run IDs, event classes, checkpoint counts and versions, not entire raw event payloads. Reproduction creates runtime files under the chosen runtime directory.
+SQLite DELETE journaling with FULL synchronization protects local transaction boundaries under the filesystem contract. The observed WAL corruption and the tested mitigation are documented in [REPRODUCIBILITY.md](REPRODUCIBILITY.md); its initiating cause is unresolved. Backups, disk exhaustion, operating-system failure and multihost coordination require additional work. Structured logs contain run IDs, event classes, checkpoint counts and versions, not entire raw event payloads. Reproduction creates runtime files under the chosen runtime directory.
 
 [Source schema](source_schema.json) · [Event schema](event.schema.json) · [Job schema](job.schema.json) · [Result schema](result.schema.json) · [Benchmark](../artifacts/benchmark.json) · [Recovery](../artifacts/recovery_receipt.json).

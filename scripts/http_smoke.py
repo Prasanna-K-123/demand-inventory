@@ -45,7 +45,7 @@ def run(runtime):
                 same=all(result['allocation'][k]==direct[k] for k in ['quantity_steps','caps','used_steps','objective'])
                 assert forecast_error==0 and same and result['allocation']['scenario_values']==scenarios
                 assert result['model_version']==bundle.version and result['monitoring']['model_version']==bundle.version
-                receipt={'run_id':run_id,'model_version':bundle.version,'served_configuration_sha256':bundle.manifest['served_configuration_sha256'],'http_transport':'actual IPv4 loopback','fixture_records':56,'series':len(keys),'idempotent_submission':True,'forecast_max_absolute_error':forecast_error,'allocation_identical':same,'monitoring_version_bound':True,'status':'passed','scope':'correctness smoke after expired-failure fencing repair; prior 200-job performance receipt retains its measured version'}
+                receipt={'run_id':run_id,'model_version':bundle.version,'served_configuration_sha256':bundle.manifest['served_configuration_sha256'],'http_transport':'actual IPv4 loopback','fixture_records':56,'series':len(keys),'idempotent_submission':True,'forecast_max_absolute_error':forecast_error,'allocation_identical':same,'monitoring_version_bound':True,'status':'passed','scope':'current-version correctness smoke; performance and post-stop durability are measured separately in benchmark.json'}
                 atomic_json(BASE/'artifacts/http_smoke.json',receipt);atomic_json(BASE/'artifacts/demo_result.json',result);print(json.dumps(receipt,indent=2))
         finally:
             stop_owned_server(run_id)
